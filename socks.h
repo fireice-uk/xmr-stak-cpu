@@ -73,11 +73,24 @@ inline void sock_close(SOCKET s)
 	close(s);
 }
 
+#ifdef __APPLE__
+inline const char* sock_strerror(char* buf, size_t len)
+{
+	buf[0] = '\0';
+	
+	if(strerror_r(errno, buf, len) == 0){
+		return buf;
+	} else {
+		return "";
+	}
+}
+#else
 inline const char* sock_strerror(char* buf, size_t len)
 {
 	buf[0] = '\0';
 	return strerror_r(errno, buf, len);
 }
+#endif //__APPLE__
 
 inline const char* sock_gai_strerror(int err, char* buf, size_t len)
 {
