@@ -125,9 +125,13 @@ cryptonight_ctx* cryptonight_alloc_ctx(size_t use_fast_mem, size_t use_mlock, al
 		return ptr;
 	}
 #else
+#ifdef __APPLE__
+	ptr->long_state = mmap(0, MEMORY, PROT_READ | PROT_WRITE,
+		MAP_PRIVATE | MAP_ANONYMOUS, 0, 0);
+#else
 	ptr->long_state = mmap(0, MEMORY, PROT_READ | PROT_WRITE,
 		MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB | MAP_POPULATE, 0, 0);
-
+#endif //__APPLE__
 	if (ptr->long_state == MAP_FAILED)
 	{
 		_mm_free(ptr);

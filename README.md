@@ -51,6 +51,18 @@ To do a static build for a system without gcc 5.1+
 ```
 Note - cmake caches variables, so if you want to do a dynamic build later you need to specify '-DCMAKE_BUILD_TYPE=RELEASE'
 
+#### Usage on OSX
+First install the latest version of gcc using [Homebrew](http://brew.sh)
+```
+brew install gcc
+```
+
+Then build XMR-Stak using homebrew's gcc as the default c/cpp compiler
+```
+	cmake -DCMAKE_C_COMPILER=$(brew list gcc | grep "bin/gcc-[0-9]") -DCMAKE_CXX_COMPILER=$(brew list gcc | grep "bin/g++-[0-9]")
+	make
+```
+
 #### CPU mining performance 
 
 Performance is nearly identical to the closed source paid miners. Here are some numbers:
