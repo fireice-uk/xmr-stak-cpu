@@ -245,7 +245,6 @@ void cryptonight_hash_ctx(const void* input, size_t len, void* output, cryptonig
 		_mm_store_si128((__m128i *)&l0[idx0 & 0x1FFFF0], _mm_xor_si128(bx0, cx));
 		idx0 = _mm_cvtsi128_si64(cx);
 		bx0 = cx;
-		_mm_prefetch(&l0[idx0 & 0x1FFFF0], _MM_HINT_T0);
 
 		uint64_t hi, lo, cl, ch;
 		cl = ((uint64_t*)&l0[idx0 & 0x1FFFF0])[0];
@@ -258,7 +257,6 @@ void cryptonight_hash_ctx(const void* input, size_t len, void* output, cryptonig
 		ah0 ^= ch;
 		al0 ^= cl;
 		idx0 = al0;
-		_mm_prefetch(&l0[idx0 & 0x1FFFF0], _MM_HINT_T0);
 	}
 
 	// Optim - 90% time boundary
@@ -352,14 +350,12 @@ void cryptonight_double_hash_ctx(const void* input, size_t len, void* output, cr
 		_mm_store_si128((__m128i *)&l0[idx0 & 0x1FFFF0], _mm_xor_si128(bx0, cx));
 		idx0 = _mm_cvtsi128_si64(cx);
 		bx0 = cx;
-		_mm_prefetch(&l0[idx0 & 0x1FFFF0], _MM_HINT_T0);
 
 		cx = _mm_load_si128((__m128i *)&l1[idx1 & 0x1FFFF0]);
 		cx = _mm_aesenc_si128(cx, ax1);
 		_mm_store_si128((__m128i *)&l1[idx1 & 0x1FFFF0], _mm_xor_si128(bx1, cx));
 		idx1 = _mm_cvtsi128_si64(cx);
 		bx1 = cx;
-		_mm_prefetch(&l1[idx1 & 0x1FFFF0], _MM_HINT_T0);
 
 		uint64_t hi, lo;
 		cx = _mm_load_si128((__m128i *)&l0[idx0 & 0x1FFFF0]);
@@ -368,7 +364,6 @@ void cryptonight_double_hash_ctx(const void* input, size_t len, void* output, cr
 		_mm_store_si128((__m128i*)&l0[idx0 & 0x1FFFF0], ax0);
 		ax0 = _mm_xor_si128(ax0, cx);
 		idx0 = _mm_cvtsi128_si64(ax0);
-		_mm_prefetch(&l0[idx0 & 0x1FFFF0], _MM_HINT_T0);
 
 		cx = _mm_load_si128((__m128i *)&l1[idx1 & 0x1FFFF0]);
 		lo = _umul128(idx1, _mm_cvtsi128_si64(cx), &hi);
@@ -376,7 +371,6 @@ void cryptonight_double_hash_ctx(const void* input, size_t len, void* output, cr
 		_mm_store_si128((__m128i*)&l1[idx1 & 0x1FFFF0], ax1);
 		ax1 = _mm_xor_si128(ax1, cx);
 		idx1 = _mm_cvtsi128_si64(ax1);
-		_mm_prefetch(&l1[idx1 & 0x1FFFF0], _MM_HINT_T0);
 	}
 
 	// Optim - 90% time boundary
