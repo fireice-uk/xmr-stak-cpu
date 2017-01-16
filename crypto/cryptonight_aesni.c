@@ -65,12 +65,12 @@ static inline void aes_genkey(const __m128i* memory, __m128i* k0, __m128i* k1, _
 	*k1 = xout2;
 
 	xout1 = _mm_aeskeygenassist_si128(xout2, 0x01);
-	xout1 = _mm_shuffle_epi32(xout1, 0xFF); // see PSHUFD, set all elems to 4th elem
+	xout1 = _mm_shuffle_epi32(xout1, 0xFF); // see PUSHFD, set all elems to 4th elem
 	xout0 = sl_xor(xout0);
 	xout0 = _mm_xor_si128(xout0, xout1);
 
 	xout1 = _mm_aeskeygenassist_si128(xout0, 0x00);
-	xout1 = _mm_shuffle_epi32(xout1, 0xAA); // see PSHUFD, set all elems to 3rd elem
+	xout1 = _mm_shuffle_epi32(xout1, 0xAA); // see PUSHFD, set all elems to 3rd elem
 	xout2 = sl_xor(xout2);
 	xout2 = _mm_xor_si128(xout2, xout1);
 	*k2 = xout0;
