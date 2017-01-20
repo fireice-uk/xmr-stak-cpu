@@ -2,6 +2,10 @@
 #include <string.h>
 #include <assert.h>
 
+#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+#include <string>
+#endif
+
 // Structures that we use to pass info between threads constructors are here just to make
 // the stack allocation take up less space, heap is a shared resouce that needs locks too of course
 

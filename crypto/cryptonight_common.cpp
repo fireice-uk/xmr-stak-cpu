@@ -25,6 +25,10 @@ extern "C"
 #include <stdio.h>
 #include <stdlib.h>
 
+#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+#include <mach/vm_statistics.h>
+#endif
+
 #ifdef __GNUC__
 #include <mm_malloc.h>
 #else
@@ -129,9 +133,13 @@ cryptonight_ctx* cryptonight_alloc_ctx(size_t use_fast_mem, size_t use_mlock, al
 		return ptr;
 	}
 #else
+#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+    ptr->long_state  = (uint8_t*)mmap(0, MEMORY, PROT_READ | PROT_WRITE,
+                    MAP_PRIVATE | MAP_ANON, VM_FLAGS_SUPERPAGE_SIZE_2MB, 0);
+#else
 	ptr->long_state = (uint8_t*)mmap(0, MEMORY, PROT_READ | PROT_WRITE,
 		MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB | MAP_POPULATE, 0, 0);
-
+#endif
 	if (ptr->long_state == MAP_FAILED)
 	{
 		_mm_free(ptr);

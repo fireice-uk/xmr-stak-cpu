@@ -51,6 +51,16 @@ To do a static build for a system without gcc 5.1+
 ```
 Note - cmake caches variables, so if you want to do a dynamic build later you need to specify '-DCMAKE_BUILD_TYPE=RELEASE'
 
+#### Usage on macOS
+```
+	Install homebrew:
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	
+    brew install libmicrohttpd
+    cmake .
+    make
+```
+
 #### CPU mining performance 
 
 Performance is nearly identical to the closed source paid miners. Here are some numbers:
