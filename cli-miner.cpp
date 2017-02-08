@@ -18,7 +18,9 @@
 #include "jconf.h"
 #include "console.h"
 #include "donate-level.h"
-#include "httpd.h"
+#ifdef WITH_LIBMICROHTTPD
+# include "httpd.h"
+#endif
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -89,11 +91,15 @@ int main(int argc, char *argv[])
 
 	if(jconf::inst()->GetHttpdPort() != 0)
 	{
+#ifdef WITH_LIBMICROHTTPD
 		if (!httpd::inst()->start_daemon())
 		{
 			win_exit();
 			return 0;
 		}
+#else
+		printer::inst()->print_msg(L0, "Notice: http monitor not available");
+#endif
 	}
 
 	printer::inst()->print_str("-------------------------------------------------------------------\n");
