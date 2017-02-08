@@ -10,7 +10,11 @@ endif()
 
 find_library(MHTD NAMES microhttpd)
 if("${MHTD}" STREQUAL "MHTD-NOTFOUND")
-    message(FATAL_ERROR "libmicrohttpd is required")
+    message(STATUS "libmicrohttpd not found.")
+else()
+    message(STATUS "libmicrohttpd found.")
+    add_definitions(-DWITH_LIBMICROHTTPD)
+    set(USE_HTTPD 1)
 endif()
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -27,9 +31,28 @@ set(CMAKE_EXE_LINKER_FLAGS_STATIC "-static-libgcc -static-libstdc++")
 
 set(EXECUTABLE_OUTPUT_PATH "bin")
 
-file(GLOB SOURCES "crypto/*.c" "crypto/*.cpp" "*.cpp")
+set(SOURCES
+    crypto/c_blake256.c
+    crypto/c_groestl.c
+    crypto/c_jh.c
+    crypto/c_keccak.c
+    crypto/c_skein.c
+    crypto/soft_aes.c
+    crypto/cryptonight_common.cpp
+    cli-miner.cpp
+    console.cpp
+    executor.cpp
+    jconf.cpp
+    jpsock.cpp
+    minethd.cpp)
+
+if(USE_HTTPD)
+    set(SOURCES ${SOURCES} httpd.cpp)
+endif(USE_HTTPD)
 
 add_executable(xmr-stak-cpu ${SOURCES})
-target_link_libraries(xmr-stak-cpu pthread microhttpd)
- 
+target_link_libraries(xmr-stak-cpu pthread)
 
+if(USE_HTTPD)
+    target_link_libraries(xmr-stak-cpu microhttpd)
+endif(USE_HTTPD)
