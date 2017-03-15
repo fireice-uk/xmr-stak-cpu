@@ -37,6 +37,39 @@ void thd_setaffinity(std::thread::native_handle_type h, uint64_t cpu_id)
 #else
 #include <pthread.h>
 
+#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+#include <mach/thread_policy.h>
+#include <mach/thread_act.h>
+
+#define SYSCTL_CORE_COUNT   "machdep.cpu.core_count"
+
+typedef struct cpu_set {
+  uint32_t    count;
+} cpu_set_t;
+
+static inline void CPU_ZERO(cpu_set_t *cs) { cs->count = 0; }
+
+static inline void CPU_SET(int num, cpu_set_t *cs) { cs->count |= (1 << num); }
+
+static inline int CPU_ISSET(int num, cpu_set_t *cs) { return (cs->count & (1 << num)); }
+
+int pthread_setaffinity_np(pthread_t thread, size_t cpu_size,
+                           cpu_set_t *cpu_set)
+{
+  thread_port_t mach_thread;
+  int core = 0;
+
+  for (core = 0; core < 8 * cpu_size; core++) {
+    if (CPU_ISSET(core, cpu_set)) break;
+  }
+  printf("binding to core %d\n", core);
+  thread_affinity_policy_data_t policy = { core };
+  mach_thread = pthread_mach_thread_np(thread);
+  thread_policy_set(mach_thread, THREAD_AFFINITY_POLICY, (thread_policy_t)&policy, 1);
+  return 0;
+}
+#endif
+
 void thd_setaffinity(std::thread::native_handle_type h, uint64_t cpu_id)
 {
 	cpu_set_t mn;
