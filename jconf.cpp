@@ -48,7 +48,8 @@ using namespace rapidjson;
 enum configEnum { iCpuThreadNum, aCpuThreadsConf, sUseSlowMem, bNiceHashMode,
 	bTlsMode, bTlsSecureAlgo, sTlsFingerprint, sPoolAddr, sWalletAddr, sPoolPwd,
 	iCallTimeout, iNetRetry, iGiveUpLimit, iVerboseLevel, iAutohashTime,
-	sOutputFile, iHttpdPort, bPreferIpv4 };
+	sOutputFile, iHttpdPort, bPreferIpv4, dDonatePercent, sDonatePoolAddr,
+	sDonateWalletAddr, sDonatePoolPwd };
 
 struct configVal {
 	configEnum iName;
@@ -75,7 +76,12 @@ configVal oConfigValues[] = {
 	{ iAutohashTime, "h_print_time", kNumberType },
 	{ sOutputFile, "output_file", kStringType },
 	{ iHttpdPort, "httpd_port", kNumberType },
-	{ bPreferIpv4, "prefer_ipv4", kTrueType }
+	{ bPreferIpv4, "prefer_ipv4", kTrueType },
+	{ dDonatePercent, "donate_percent", kNumberType },
+	{ sDonatePoolAddr, "donate_pool_address", kStringType },
+	{ sDonateWalletAddr, "donate_wallet_address", kStringType },
+	{ sDonatePoolPwd, "donate_pool_password", kStringType }
+
 };
 
 constexpr size_t iConfigCnt = (sizeof(oConfigValues)/sizeof(oConfigValues[0]));
@@ -247,6 +253,26 @@ bool jconf::NiceHashMode()
 const char* jconf::GetOutputFile()
 {
 	return prv->configValues[sOutputFile]->GetString();
+}
+
+double jconf::GetDonatePercentage()
+{
+	return prv->configValues[dDonatePercent]->GetDouble();
+}
+
+const char* jconf::GetDonatePoolAddress()
+{
+	return prv->configValues[sDonatePoolAddr]->GetString();
+}
+
+const char* jconf::GetDonatePoolPwd()
+{
+	return prv->configValues[sDonatePoolPwd]->GetString();
+}
+
+const char* jconf::GetDonateWalletAddress()
+{
+	return prv->configValues[sDonateWalletAddr]->GetString();
 }
 
 bool jconf::check_cpu_features()
@@ -439,6 +465,12 @@ bool jconf::parse_config(const char* sFilename)
 		return false;
 	}
 #endif // _WIN32
+
+	if (GetDonatePercentage() < 0 || GetDonatePercentage() > 100)
+	{
+		printer::inst()->print_msg(L0, "Donation percentage should be between 0 and 100.");
+		return false;
+	}
 
 	printer::inst()->set_verbose_level(prv->configValues[iVerboseLevel]->GetUint64());
 	return true;
