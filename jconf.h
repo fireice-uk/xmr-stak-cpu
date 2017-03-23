@@ -55,6 +55,11 @@ public:
 
 	bool PreferIpv4();
 
+	double GetDonatePercentage();
+	const char* GetDonatePoolAddress();
+	const char* GetDonatePoolPwd();
+	const char* GetDonateWalletAddress();
+
 	inline bool HaveHardwareAes() { return bHaveAes; }
 
 private:
