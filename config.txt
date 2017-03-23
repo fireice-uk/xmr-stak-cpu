@@ -167,6 +167,10 @@
 /*
  * Donation options
  * Choose to give a portion of your hashes to someone else. By default these go to fireice_uk.
+ * You could also donate directly to the Monero team by using
+ *    "donate_pool_address": "pool.supportxmr.com:3333",
+ *    "donate_wallet_address": "44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A",
+ *    "donate_pool_password": "donate",
  *
  * donate_percent         - Percentage between 0 and 100 of your hashes to donate.
  * donate_pool_address    - Pool address should be in the form "pool.supportxmr.com:3333". Only stratum pools are supported.
