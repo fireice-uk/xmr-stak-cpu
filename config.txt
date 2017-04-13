@@ -163,3 +163,17 @@
  *               This setting will only be needed in 2020's. No need to worry about it now.
  */
 "prefer_ipv4" : true,
+
+/*
+ * Donation options
+ * Choose to give a portion of your hashes to someone else. By default these go to fireice_uk.
+ *
+ * donate_percent         - Percentage between 0 and 100 of your hashes to donate.
+ * donate_pool_address    - Pool address should be in the form "pool.supportxmr.com:3333". Only stratum pools are supported.
+ * donate_wallet_address  - Wallet to donate to
+ * donate_pool_password   - Can be empty in most cases or "x".
+ */
+"donate_percent" : 1.0,
+"donate_pool_address" : "donate.xmr-stak.net:3333",
+"donate_wallet_address" : "",
+"donate_pool_password" : "",

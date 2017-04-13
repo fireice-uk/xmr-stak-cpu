@@ -25,7 +25,6 @@
 #include "minethd.h"
 #include "jconf.h"
 #include "console.h"
-#include "donate-level.h"
 #include "httpd.h"
 
 #include <stdlib.h>
@@ -109,6 +108,7 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
+#ifndef CONF_NO_HTTPD
 	if(jconf::inst()->GetHttpdPort() != 0)
 	{
 		if (!httpd::inst()->start_daemon())
@@ -117,13 +117,14 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 	}
+#endif
 
 	printer::inst()->print_str("-------------------------------------------------------------------\n");
 	printer::inst()->print_str("XMR-Stak-CPU mining software, CPU Version.\n");
 	printer::inst()->print_str("Based on CPU mining code by wolf9466 (heavily optimized by myself).\n");
 	printer::inst()->print_str("Brought to you by fireice_uk under GPLv3.\n\n");
 	char buffer[64];
-	snprintf(buffer, sizeof(buffer), "Configurable dev donation level is set to %.1f %%\n\n", fDevDonationLevel * 100.0);
+	snprintf(buffer, sizeof(buffer), "Configurable dev donation level is set to %.1f %%\n\n", jconf::inst()->GetDonatePercentage());
 	printer::inst()->print_str(buffer);
 	printer::inst()->print_str("You can use following keys to display reports:\n");
 	printer::inst()->print_str("'h' - hashrate\n");
