@@ -63,7 +63,8 @@ void thd_setaffinity(std::thread::native_handle_type h, uint64_t cpu_id)
 #include "executor.h"
 #include "minethd.h"
 #include "jconf.h"
-#include "crypto/cryptonight_aesni.h"
+
+#include "crypto/cryptonight_hash.h"
 
 telemetry::telemetry(size_t iThd)
 {
@@ -338,26 +339,26 @@ void minethd::consume_work()
 	iConsumeCnt++;
 }
 
-minethd::cn_hash_fun minethd::func_selector(bool bHaveAes, bool bNoPrefetch, bool bMulx)
+minethd::cn_hash_fun minethd::func_selector(bool bHaveAes, bool bNoPrefetch, bool bHaveBmi2)
 {
 	// We have three independent flag bits in the functions
 	// therefore we will build a binary digit and select the
 	// function as a three digit binary
-	// Digit order SOFT_AES, NO_PREFETCH, MULX
+	// Digit order SOFT_AES, NO_PREFETCH, BMI2
 
 	static const cn_hash_fun func_table[8] = {
-		cryptonight_hash<0x80000, MEMORY, false, false, false>,
-		cryptonight_hash<0x80000, MEMORY, false, false, true>,
-		cryptonight_hash<0x80000, MEMORY, false, true, false>,
-		cryptonight_hash<0x80000, MEMORY, false, true, true>,
-		cryptonight_hash<0x80000, MEMORY, true, false, false>,
-		cryptonight_hash<0x80000, MEMORY, true, false, true>,
-		cryptonight_hash<0x80000, MEMORY, true, true, false>,
-		cryptonight_hash<0x80000, MEMORY, true, true, true>
+		cryptonight_hash_sse2<0x80000, MEMORY, false, false>,
+		cryptonight_hash_bmi2<0x80000, MEMORY, false, false>,
+		cryptonight_hash_sse2<0x80000, MEMORY, false, true>,
+		cryptonight_hash_bmi2<0x80000, MEMORY, false, true>,
+		cryptonight_hash_sse2<0x80000, MEMORY, true, false>,
+		cryptonight_hash_bmi2<0x80000, MEMORY, true, false>,
+		cryptonight_hash_sse2<0x80000, MEMORY, true, true>,
+		cryptonight_hash_bmi2<0x80000, MEMORY, true, true>
 	};
 
 	std::bitset<3> digit;
-	digit.set(0, bMulx);
+	digit.set(0, bHaveBmi2);
 	digit.set(1, !bNoPrefetch);
 	digit.set(2, !bHaveAes);
 
@@ -430,26 +431,26 @@ void minethd::work_main()
 	cryptonight_free_ctx(ctx);
 }
 
-minethd::cn_hash_fun_dbl minethd::func_dbl_selector(bool bHaveAes, bool bNoPrefetch, bool bMulx)
+minethd::cn_hash_fun_dbl minethd::func_dbl_selector(bool bHaveAes, bool bNoPrefetch, bool bHaveBmi2)
 {
 	// We have three independent flag bits in the functions
 	// therefore we will build a binary digit and select the
 	// function as a three digit binary
-	// Digit order SOFT_AES, NO_PREFETCH, MULX
+	// Digit order SOFT_AES, NO_PREFETCH, BMI2
 
 	static const cn_hash_fun_dbl func_table[8] = {
-		cryptonight_double_hash<0x80000, MEMORY, false, false, false>,
-		cryptonight_double_hash<0x80000, MEMORY, false, false, true>,
-		cryptonight_double_hash<0x80000, MEMORY, false, true, false>,
-		cryptonight_double_hash<0x80000, MEMORY, false, true, true>,
-		cryptonight_double_hash<0x80000, MEMORY, true, false, false>,
-		cryptonight_double_hash<0x80000, MEMORY, true, false, true>,
-		cryptonight_double_hash<0x80000, MEMORY, true, true, false>,
-		cryptonight_double_hash<0x80000, MEMORY, true, true, true>
+		cryptonight_double_hash_sse2<0x80000, MEMORY, false, false>,
+		cryptonight_double_hash_bmi2<0x80000, MEMORY, false, false>,
+		cryptonight_double_hash_sse2<0x80000, MEMORY, false, true>,
+		cryptonight_double_hash_bmi2<0x80000, MEMORY, false, true>,
+		cryptonight_double_hash_sse2<0x80000, MEMORY, true, false>,
+		cryptonight_double_hash_bmi2<0x80000, MEMORY, true, false>,
+		cryptonight_double_hash_sse2<0x80000, MEMORY, true, true>,
+		cryptonight_double_hash_bmi2<0x80000, MEMORY, true, true>
 	};
 
 	std::bitset<3> digit;
-	digit.set(0, bMulx);
+	digit.set(0, bHaveBmi2);
 	digit.set(1, !bNoPrefetch);
 	digit.set(2, !bHaveAes);
 

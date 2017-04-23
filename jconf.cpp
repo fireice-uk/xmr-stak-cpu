@@ -279,7 +279,7 @@ bool jconf::check_cpu_features()
 		printer::inst()->print_msg(L0, "Your CPU doesn't support hardware AES. Don't expect high hashrates.");
 
 	if(bHaveBmi2)
-		printer::inst()->print_msg(L0, "CPU supports BMI2 instructions. Faster multiplication enabled.");
+		printer::inst()->print_msg(L0, "CPU supports BMI2 instructions. Faster bit operations enabled.");
 
 	return bHaveSse2;
 }
