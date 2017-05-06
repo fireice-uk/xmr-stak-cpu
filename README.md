@@ -58,7 +58,7 @@ xXl2Nm/u3cPP/eQVrZz5H8eACwIv+LL1EV+9uLanWUa+IO5hHr3KElvKNKD6vN0=
     cmake -DCMAKE_LINK_STATIC=ON .
     make install
 ```
-Note - cmake caches variables, so if you want to do a dynamic build later you need to specify '-DCMAKE_BUILD_TYPE=RELEASE'
+Note - cmake caches variables, so if you want to do a dynamic build later you need to specify '-DCMAKE_LINK_STATIC=OFF'
 
 
 You can find a complete compile guide under [Advanced Compile Options](#advanced-compile-options).
@@ -168,12 +168,12 @@ and install.
 -`CMAKE_BUILD_TYPE` set the build type
   - valid options: `Release` or `Debug`
   - you should always keep `Release` for your productive miners
-- `MICROHTTPD_REQUIRED` allow to disable/enable the dependency *microhttpd*
+- `MICROHTTPD_ENABLE` allow to disable/enable the dependency *microhttpd*
   - by default enabled
-  - there is no *http* interface available if option is disabled: `cmake . -DMICROHTTPD_REQUIRED=OFF`
-- `OpenSSL_REQUIRED`allow to disable/enable the dependency *OpenSSL*
+  - there is no *http* interface available if option is disabled: `cmake . -DMICROHTTPD_ENABLE=OFF`
+- `OpenSSL_ENABLE`allow to disable/enable the dependency *OpenSSL*
   - by default enabled
-  - it is not possible to connect to a *https* secured pool if optin is disabled: `cmake . -DOpenSSL_REQUIRED=OFF`
+  - it is not possible to connect to a *https* secured pool if optin is disabled: `cmake . -DOpenSSL_ENABLE=OFF`
 
 ## PGP Key
 ```
