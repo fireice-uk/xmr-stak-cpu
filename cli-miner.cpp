@@ -158,6 +158,9 @@ int main(int argc, char *argv[])
 	int key;
 	while(true)
 	{
+		using namespace std::chrono;
+		uint64_t time = time_point_cast<milliseconds>(high_resolution_clock::now()).time_since_epoch().count();
+
 		key = get_key();
 
 		switch(key)
@@ -174,6 +177,12 @@ int main(int argc, char *argv[])
 		default:
 			break;
 		}
+
+		time = time - time_point_cast<milliseconds>(high_resolution_clock::now()).time_since_epoch().count();
+
+		/* Hard guard to make sure we never get called more than twice per second */
+		if(time < 500)
+			std::this_thread::sleep_for(std::chrono::milliseconds(500 - time));
 	}
 
 	return 0;
