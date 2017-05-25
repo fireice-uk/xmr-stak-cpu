@@ -46,7 +46,10 @@ xXl2Nm/u3cPP/eQVrZz5H8eACwIv+LL1EV+9uLanWUa+IO5hHr3KElvKNKD6vN0=
 
 ### GNU Compiler
 ```
+    # Ubuntu / Debian
     sudo apt-get install libmicrohttpd-dev libssl-dev cmake build-essential
+    # Fedora
+    sudo dnf install gcc gcc-c++ libmicrohttpd-devel openssl-devel cmake  
     cmake .
     make install
 ```
