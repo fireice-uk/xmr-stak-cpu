@@ -21,12 +21,30 @@
 
 #ifdef __GNUC__
 #include <x86intrin.h>
-static inline uint64_t _umul128(uint64_t a, uint64_t b, uint64_t* hi)
+/**
+   xmr-cpu/crypto/cryptonight_aesni.h: In function 'uint64_t _umul128(uint64_t, uint64_t, uint64_t*)':
+   xmr-cpu/crypto/cryptonight_aesni.h:24:24: error: 'uint64_t _umul128(uint64_t, uint64_t, uint64_t*)' was declared 'extern' and later 'static' [-fpermissive]
+   static inline uint64_t _umul128(uint64_t a, uint64_t b, uint64_t* hi)
+   MinGW-64/6.2.0/x86_64-w64-mingw32/include/winnt.h:1577:13: note: previous declaration of 'DWORD64 _umul128(DWORD64, DWORD64, DWORD64*)'
+     DWORD64 UnsignedMultiply128(DWORD64 Multiplier,DWORD64 Multiplicand,DWORD64 *HighProduct);
+
+   **MINGW-64 FIX**
+   Fixed Conflict with another decl/def of the same function later in winnt.h
+*/
+#ifndef UnsignedMultiply128
+
+extern "C"
 {
-	unsigned __int128 r = (unsigned __int128)a * (unsigned __int128)b;
-	*hi = r >> 64;
-	return (uint64_t)r;
+   static inline uint64_t _umul128(uint64_t a, uint64_t b, uint64_t* hi)
+   {
+      unsigned __int128 r = (unsigned __int128)a * (unsigned __int128)b;
+      *hi = r >> 64;
+      return (uint64_t)r;
+   }
 }
+
+#endif // UnsignedMultiply128
+
 #define _mm256_set_m128i(v0, v1)  _mm256_insertf128_si256(_mm256_castsi128_si256(v1), (v0), 1)
 #else
 #include <intrin.h>
