@@ -21,7 +21,12 @@
 
 #ifdef __GNUC__
 #include <x86intrin.h>
-static inline uint64_t _umul128(uint64_t a, uint64_t b, uint64_t* hi)
+#ifdef __MINGW64__
+   extern "C"
+#else
+   static
+#endif // __MINGW64__
+inline uint64_t _umul128(uint64_t a, uint64_t b, uint64_t* hi)
 {
 	unsigned __int128 r = (unsigned __int128)a * (unsigned __int128)b;
 	*hi = r >> 64;
