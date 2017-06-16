@@ -20,7 +20,6 @@ install:
   - cmd: cd c:\xmr-stak-cpu
   - cmd: mkdir build
   - cmd: cd build
-  - "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
   - cmd: set CMAKE_PREFIX_PATH=C:\xmr-stak-dep\hwloc-win64-build-1.11.7;C:\xmr-stak-dep\microhttpd
   - cmd: cmake -G "Visual Studio 15 2017 Win64" ..
   - cmd: msbuild xmr-stak-cpu.sln /p:Configuration=Release
