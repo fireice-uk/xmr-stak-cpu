@@ -12,7 +12,7 @@ clone_folder: c:\xmr-stak-cpu
 install:
   - cmd: mkdir c:\xmr-stak-dep
   - ps: Start-FileDownload 'https://slproweb.com/download/Win32OpenSSL-1_1_0f.exe'
-  - ps: Start-Process "Win32OpenSSL-1_0_2a.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
+  - ps: Start-Process "Win32OpenSSL-1_1_0f.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
   - ps: Start-FileDownload 'https://www.open-mpi.org/software/hwloc/v1.11/downloads/hwloc-win64-build-1.11.7.zip'
   - cmd: 7z x hwloc-win64-build-1.11.7.zip -o"c:\xmr-stak-dep" -y
   - ps: Start-FileDownload 'http://mirror.reismil.ch/gnu/libmicrohttpd/libmicrohttpd-0.9.55-w32-bin.zip'
