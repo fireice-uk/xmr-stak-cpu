@@ -1,0 +1,28 @@
+# Operating system (build VM template)
+os: Visual Studio 2015
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - cmd: cmake --version
+  - cmd: msbuild /version
+
+# clone directory
+clone_folder: c:\xmr-stak-cpu
+
+install:
+  - cmd: mkdir c:\xmr-stak-dep
+  - ps: Start-FileDownload 'http://slproweb.com/download/Win32OpenSSL-1_0_2a.exe'
+  - ps: Start-Process "Win32OpenSSL-1_0_2a.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
+  - ps: Start-FileDownload 'https://www.open-mpi.org/software/hwloc/v1.11/downloads/hwloc-win64-build-1.11.7.zip'
+  - cmd: 7z x hwloc-win64-build-1.11.7.zip -o"c:\xmr-stak-dep" -y
+  - ps: Start-FileDownload 'http://mirror.reismil.ch/gnu/libmicrohttpd/libmicrohttpd-0.9.55-w32-bin.zip'
+  - cmd: 7z x libmicrohttpd-0.9.55-w32-bin.zip -o"c:\xmr-stak-dep" -y
+  - cmd: cd c:\xmr-stak-cpu
+  - cmd: mkdir build
+  - cmd: cd build
+  - cmd: set CMAKE_PREFIX_PATH=C:\xmr-stak-dep\hwloc-win64-build-1.11.7;C:\xmr-stak-dep\microhttpd
+  - cmd: cmake -G "Visual Studio 15 2017 Win64" ..
+  - cmd: msbuild xmr-stak-cpu.sln /p:Configuration=Release
+  - cmd: cd bin\Release
+  - cmd: copy c:\xmr-stak-dep\hwloc-win64-build-1.11.7\bin\libhwloc-5.dll .
+  - cmd: xmr-stack-cpu -c ..\..\..\config.txt
