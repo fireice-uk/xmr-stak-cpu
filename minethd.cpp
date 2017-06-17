@@ -27,6 +27,7 @@
 #include <thread>
 #include <bitset>
 #include "console.h"
+#include "crypto/low_power.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -245,14 +246,16 @@ bool minethd::self_test()
 	if(res == 0 && fatal)
 		return false;
 
-	cryptonight_ctx *ctx0, *ctx1;
-	if((ctx0 = minethd_alloc_ctx()) == nullptr)
-		return false;
-
-	if((ctx1 = minethd_alloc_ctx()) == nullptr)
-	{
-		cryptonight_free_ctx(ctx0);
-		return false;
+	cryptonight_ctx* ctx[LOW_POWER_HASHES];
+	for(int i=0; i<LOW_POWER_HASHES; i++){
+		ctx[i] = minethd_alloc_ctx();
+		if (ctx[i] == nullptr) {
+			//Unable to allocate context - free everyone we've allocated so far!
+			for (int y=i-1; y >=0; y--) {
+				cryptonight_free_ctx(ctx[y]);
+			}
+			return false;
+		}
 	}
 
 	unsigned char out[64];
@@ -262,25 +265,33 @@ bool minethd::self_test()
 	cn_hash_fun_dbl hashdf;
 
 	hashf = func_selector(jconf::inst()->HaveHardwareAes(), false);
-	hashf("This is a test", 14, out, ctx0);
+	hashf("This is a test", 14, out, ctx[0]);
 	bResult = memcmp(out, "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05", 32) == 0;
 
 	hashf = func_selector(jconf::inst()->HaveHardwareAes(), true);
-	hashf("This is a test", 14, out, ctx0);
+	hashf("This is a test", 14, out, ctx[0]);
 	bResult &= memcmp(out, "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05", 32) == 0;
 
-	hashdf = func_dbl_selector(jconf::inst()->HaveHardwareAes(), false);
-	hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx0, ctx1);
-	bResult &= memcmp(out, "\x3e\xbb\x7f\x9f\x7d\x27\x3d\x7c\x31\x8d\x86\x94\x77\x55\x0c\xc8\x00\xcf\xb1\x1b\x0c\xad\xb7\xff\xbd\xf6\xf8\x9f\x3a\x47\x1c\x59"
-		                   "\xb4\x77\xd5\x02\xe4\xd8\x48\x7f\x42\xdf\xe3\x8e\xed\x73\x81\x7a\xda\x91\xb7\xe2\x63\xd2\x91\x71\xb6\x5c\x44\x3a\x01\x2a\x41\x22", 64) == 0;
+	//Test only runs if LOW_POWER_HASHES is 2, need to figure out a better way to generate the expected results.
+	if (LOW_POWER_HASHES == 2) {
+		hashdf = func_dbl_selector(jconf::inst()->HaveHardwareAes(), false);
+		hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx);
+		bResult &= memcmp(out,
+						  "\x3e\xbb\x7f\x9f\x7d\x27\x3d\x7c\x31\x8d\x86\x94\x77\x55\x0c\xc8\x00\xcf\xb1\x1b\x0c\xad\xb7\xff\xbd\xf6\xf8\x9f\x3a\x47\x1c\x59"
+								  "\xb4\x77\xd5\x02\xe4\xd8\x48\x7f\x42\xdf\xe3\x8e\xed\x73\x81\x7a\xda\x91\xb7\xe2\x63\xd2\x91\x71\xb6\x5c\x44\x3a\x01\x2a\x41\x22",
+						  64) == 0;
 
-	hashdf = func_dbl_selector(jconf::inst()->HaveHardwareAes(), true);
-	hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx0, ctx1);
-	bResult &= memcmp(out, "\x3e\xbb\x7f\x9f\x7d\x27\x3d\x7c\x31\x8d\x86\x94\x77\x55\x0c\xc8\x00\xcf\xb1\x1b\x0c\xad\xb7\xff\xbd\xf6\xf8\x9f\x3a\x47\x1c\x59"
-		                   "\xb4\x77\xd5\x02\xe4\xd8\x48\x7f\x42\xdf\xe3\x8e\xed\x73\x81\x7a\xda\x91\xb7\xe2\x63\xd2\x91\x71\xb6\x5c\x44\x3a\x01\x2a\x41\x22", 64) == 0;
+		hashdf = func_dbl_selector(jconf::inst()->HaveHardwareAes(), true);
+		hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx);
+		bResult &= memcmp(out,
+						  "\x3e\xbb\x7f\x9f\x7d\x27\x3d\x7c\x31\x8d\x86\x94\x77\x55\x0c\xc8\x00\xcf\xb1\x1b\x0c\xad\xb7\xff\xbd\xf6\xf8\x9f\x3a\x47\x1c\x59"
+								  "\xb4\x77\xd5\x02\xe4\xd8\x48\x7f\x42\xdf\xe3\x8e\xed\x73\x81\x7a\xda\x91\xb7\xe2\x63\xd2\x91\x71\xb6\x5c\x44\x3a\x01\x2a\x41\x22",
+						  64) == 0;
+	}
 
-	cryptonight_free_ctx(ctx0);
-	cryptonight_free_ctx(ctx1);
+	for(int i=0; i<LOW_POWER_HASHES; i++){
+		cryptonight_free_ctx(ctx[i]);
+	}
 
 	if(!bResult)
 		printer::inst()->print_msg(L0,
@@ -465,24 +476,22 @@ void minethd::double_work_main()
 	bindMemoryToNUMANode(this->affinity);
 
 	cn_hash_fun_dbl hash_fun;
-	cryptonight_ctx* ctx0;
-	cryptonight_ctx* ctx1;
+	cryptonight_ctx* ctx[LOW_POWER_HASHES];
 	uint64_t iCount = 0;
-	uint64_t *piHashVal0, *piHashVal1;
-	uint32_t *piNonce0, *piNonce1;
-	uint8_t bDoubleHashOut[64];
+	uint64_t *piHashVal[LOW_POWER_HASHES];
+	uint32_t *piNonce[LOW_POWER_HASHES];
+	uint8_t bDoubleHashOut[32*LOW_POWER_HASHES];
 	uint8_t	bDoubleWorkBlob[sizeof(miner_work::bWorkBlob) * 2];
 	uint32_t iNonce;
 	job_result res;
 
 	hash_fun = func_dbl_selector(jconf::inst()->HaveHardwareAes(), bNoPrefetch);
-	ctx0 = minethd_alloc_ctx();
-	ctx1 = minethd_alloc_ctx();
-
-	piHashVal0 = (uint64_t*)(bDoubleHashOut + 24);
-	piHashVal1 = (uint64_t*)(bDoubleHashOut + 32 + 24);
-	piNonce0 = (uint32_t*)(bDoubleWorkBlob + 39);
-	piNonce1 = nullptr;
+	for(int i=0; i<LOW_POWER_HASHES; i++){
+		ctx[i] = minethd_alloc_ctx();
+		piHashVal[i] = (uint64_t*)(bDoubleHashOut + (32*i) + 24);
+		piNonce[i] = nullptr;
+	}
+	piNonce[0] = (uint32_t*)(bDoubleWorkBlob + 39);
 
 	iConsumeCnt++;
 
@@ -498,14 +507,15 @@ void minethd::double_work_main()
 				std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
 			consume_work();
-			memcpy(bDoubleWorkBlob, oWork.bWorkBlob, oWork.iWorkSize);
-			memcpy(bDoubleWorkBlob + oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
-			piNonce1 = (uint32_t*)(bDoubleWorkBlob + oWork.iWorkSize + 39);
+			for(int i=0; i<LOW_POWER_HASHES; i++){
+				memcpy(bDoubleWorkBlob + i*oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
+				piNonce[i] = (uint32_t*)(bDoubleWorkBlob + i*oWork.iWorkSize + 39);
+			}
 			continue;
 		}
 
 		if(oWork.bNiceHash)
-			iNonce = calc_nicehash_nonce(*piNonce0, oWork.iResumeCnt);
+			iNonce = calc_nicehash_nonce(*piNonce[0], oWork.iResumeCnt);
 		else
 			iNonce = calc_start_nonce(oWork.iResumeCnt);
 
@@ -521,28 +531,28 @@ void minethd::double_work_main()
 				iTimestamp.store(iStamp, std::memory_order_relaxed);
 			}
 
-			iCount += 2;
+			iCount += LOW_POWER_HASHES;
 
-			*piNonce0 = ++iNonce;
-			*piNonce1 = ++iNonce;
+			for(int i=0; i<LOW_POWER_HASHES; i++)
+				*piNonce[i] = ++iNonce;
 
-			hash_fun(bDoubleWorkBlob, oWork.iWorkSize, bDoubleHashOut, ctx0, ctx1);
+			hash_fun(bDoubleWorkBlob, oWork.iWorkSize, bDoubleHashOut, ctx);
 
-			if (*piHashVal0 < oWork.iTarget)
-				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-1, bDoubleHashOut), oWork.iPoolId));
-
-			if (*piHashVal1 < oWork.iTarget)
-				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce, bDoubleHashOut + 32), oWork.iPoolId));
+			for(int i=0;i<LOW_POWER_HASHES;i++){
+				if (*piHashVal[i] < oWork.iTarget)
+					executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-(LOW_POWER_HASHES-i-1), bDoubleHashOut + 32*i), oWork.iPoolId));
+			}
 
 			std::this_thread::yield();
 		}
 
 		consume_work();
-		memcpy(bDoubleWorkBlob, oWork.bWorkBlob, oWork.iWorkSize);
-		memcpy(bDoubleWorkBlob + oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
-		piNonce1 = (uint32_t*)(bDoubleWorkBlob + oWork.iWorkSize + 39);
+		for(int i=0; i<LOW_POWER_HASHES; i++){
+			memcpy(bDoubleWorkBlob + i*oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
+			if(i>0) {piNonce[i] = (uint32_t*)(bDoubleWorkBlob + i*oWork.iWorkSize + 39);}
+		}
 	}
 
-	cryptonight_free_ctx(ctx0);
-	cryptonight_free_ctx(ctx1);
+	for(int i=0; i<LOW_POWER_HASHES; i++)
+		cryptonight_free_ctx(ctx[i]);
 }

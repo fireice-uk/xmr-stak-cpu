@@ -18,6 +18,7 @@
 #include "cryptonight.h"
 #include <memory.h>
 #include <stdio.h>
+#include "low_power.h"
 
 #ifdef __GNUC__
 #include <x86intrin.h>
@@ -350,108 +351,75 @@ void cryptonight_hash(const void* input, size_t len, void* output, cryptonight_c
 	extra_hashes[ctx0->hash_state[0] & 3](ctx0->hash_state, 200, (char*)output);
 }
 
-// This lovely creation will do 2 cn hashes at a time. We have plenty of space on silicon
+// This lovely creation will do 2 (or more, see low_power.h to configure) cn hashes at a time. We have plenty of space on silicon
 // to fit temporary vars for two contexts. Function will read len*2 from input and write 64 bytes to output
 // We are still limited by L3 cache, so doubling will only work with CPUs where we have more than 2MB to core (Xeons)
 template<size_t ITERATIONS, size_t MEM, bool SOFT_AES, bool PREFETCH>
-void cryptonight_double_hash(const void* input, size_t len, void* output, cryptonight_ctx* __restrict ctx0, cryptonight_ctx* __restrict ctx1)
+void cryptonight_double_hash(const void* input, size_t len, void* output, cryptonight_ctx** __restrict ctx)
 {
-	keccak((const uint8_t *)input, len, ctx0->hash_state, 200);
-	keccak((const uint8_t *)input+len, len, ctx1->hash_state, 200);
+	for(int i = 0; i<LOW_POWER_HASHES; i++){
+		keccak((const uint8_t *)input+(i*len), len, ctx[i]->hash_state, 200);
+		cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[i]->hash_state, (__m128i*)ctx[i]->long_state);
+	}
 
-	// Optim - 99% time boundary
-	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx0->hash_state, (__m128i*)ctx0->long_state);
-	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx1->hash_state, (__m128i*)ctx1->long_state);
+	uint8_t* l[LOW_POWER_HASHES];
+	uint64_t* h[LOW_POWER_HASHES], idx[LOW_POWER_HASHES], axl[LOW_POWER_HASHES], axh[LOW_POWER_HASHES];
+	__m128i bx[LOW_POWER_HASHES], cx[LOW_POWER_HASHES];
 
-	uint8_t* l0 = ctx0->long_state;
-	uint64_t* h0 = (uint64_t*)ctx0->hash_state;
-	uint8_t* l1 = ctx1->long_state;
-	uint64_t* h1 = (uint64_t*)ctx1->hash_state;
+	for(int i = 0; i<LOW_POWER_HASHES; i++){
+		l[i] = ctx[i]->long_state;
+		h[i] = (uint64_t*)ctx[i]->hash_state;
 
-	uint64_t axl0 = h0[0] ^ h0[4];
-	uint64_t axh0 = h0[1] ^ h0[5];
-	__m128i bx0 = _mm_set_epi64x(h0[3] ^ h0[7], h0[2] ^ h0[6]);
-	uint64_t axl1 = h1[0] ^ h1[4];
-	uint64_t axh1 = h1[1] ^ h1[5];
-	__m128i bx1 = _mm_set_epi64x(h1[3] ^ h1[7], h1[2] ^ h1[6]);
+		axl[i] = h[i][0] ^ h[i][4];
+		axh[i] = h[i][1] ^ h[i][5];
+		bx[i] = _mm_set_epi64x(h[i][3] ^ h[i][7], h[i][2] ^ h[i][6]);
 
-	uint64_t idx0 = h0[0] ^ h0[4];
-	uint64_t idx1 = h1[0] ^ h1[4];
+		idx[i] = h[i][0] ^ h[i][4];
+	}
 
 	// Optim - 90% time boundary
 	for (size_t i = 0; i < ITERATIONS; i++)
 	{
 		__m128i cx;
-		cx = _mm_load_si128((__m128i *)&l0[idx0 & 0x1FFFF0]);
+		for(int i = 0; i<LOW_POWER_HASHES; i++) {
+			cx = _mm_load_si128((__m128i * ) & l[i][idx[i] & 0x1FFFF0]);
 
-		if(SOFT_AES)
-			cx = soft_aesenc(cx, _mm_set_epi64x(axh0, axl0));
-		else
-			cx = _mm_aesenc_si128(cx, _mm_set_epi64x(axh0, axl0));
+			if (SOFT_AES)
+				cx = soft_aesenc(cx, _mm_set_epi64x(axh[i], axl[i]));
+			else
+				cx = _mm_aesenc_si128(cx, _mm_set_epi64x(axh[i], axl[i]));
 
-		_mm_store_si128((__m128i *)&l0[idx0 & 0x1FFFF0], _mm_xor_si128(bx0, cx));
-		idx0 = _mm_cvtsi128_si64(cx);
-		bx0 = cx;
+			_mm_store_si128((__m128i * ) & l[i][idx[i] & 0x1FFFF0], _mm_xor_si128(bx[i], cx));
+			idx[i] = _mm_cvtsi128_si64(cx);
+			bx[i] = cx;
 
-		if(PREFETCH)
-			_mm_prefetch((const char*)&l0[idx0 & 0x1FFFF0], _MM_HINT_T0);
-
-		cx = _mm_load_si128((__m128i *)&l1[idx1 & 0x1FFFF0]);
-
-		if(SOFT_AES)
-			cx = soft_aesenc(cx, _mm_set_epi64x(axh1, axl1));
-		else
-			cx = _mm_aesenc_si128(cx, _mm_set_epi64x(axh1, axl1));
-
-		_mm_store_si128((__m128i *)&l1[idx1 & 0x1FFFF0], _mm_xor_si128(bx1, cx));
-		idx1 = _mm_cvtsi128_si64(cx);
-		bx1 = cx;
-
-		if(PREFETCH)
-			_mm_prefetch((const char*)&l1[idx1 & 0x1FFFF0], _MM_HINT_T0);
+			if (PREFETCH)
+				_mm_prefetch((const char *) &l[i][idx[i] & 0x1FFFF0], _MM_HINT_T0);
+		}
 
 		uint64_t hi, lo, cl, ch;
-		cl = ((uint64_t*)&l0[idx0 & 0x1FFFF0])[0];
-		ch = ((uint64_t*)&l0[idx0 & 0x1FFFF0])[1];
+		for(int i = 0; i<LOW_POWER_HASHES; i++) {
+			cl = ((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[0];
+			ch = ((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[1];
 
-		lo = _umul128(idx0, cl, &hi);
+			lo = _umul128(idx[i], cl, &hi);
 
-		axl0 += hi;
-		axh0 += lo;
-		((uint64_t*)&l0[idx0 & 0x1FFFF0])[0] = axl0;
-		((uint64_t*)&l0[idx0 & 0x1FFFF0])[1] = axh0;
-		axh0 ^= ch;
-		axl0 ^= cl;
-		idx0 = axl0;
+			axl[i] += hi;
+			axh[i] += lo;
+			((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[0] = axl[i];
+			((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[1] = axh[i];
+			axh[i] ^= ch;
+			axl[i] ^= cl;
+			idx[i] = axl[i];
 
-		if(PREFETCH)
-			_mm_prefetch((const char*)&l0[idx0 & 0x1FFFF0], _MM_HINT_T0);
-
-		cl = ((uint64_t*)&l1[idx1 & 0x1FFFF0])[0];
-		ch = ((uint64_t*)&l1[idx1 & 0x1FFFF0])[1];
-
-		lo = _umul128(idx1, cl, &hi);
-
-		axl1 += hi;
-		axh1 += lo;
-		((uint64_t*)&l1[idx1 & 0x1FFFF0])[0] = axl1;
-		((uint64_t*)&l1[idx1 & 0x1FFFF0])[1] = axh1;
-		axh1 ^= ch;
-		axl1 ^= cl;
-		idx1 = axl1;
-
-		if(PREFETCH)
-			_mm_prefetch((const char*)&l1[idx1 & 0x1FFFF0], _MM_HINT_T0);
+			if (PREFETCH)
+				_mm_prefetch((const char *) &l[i][idx[i] & 0x1FFFF0], _MM_HINT_T0);
+		}
 	}
 
-	// Optim - 90% time boundary
-	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx0->long_state, (__m128i*)ctx0->hash_state);
-	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx1->long_state, (__m128i*)ctx1->hash_state);
-
-	// Optim - 99% time boundary
-
-	keccakf((uint64_t*)ctx0->hash_state, 24);
-	extra_hashes[ctx0->hash_state[0] & 3](ctx0->hash_state, 200, (char*)output);
-	keccakf((uint64_t*)ctx1->hash_state, 24);
-	extra_hashes[ctx1->hash_state[0] & 3](ctx1->hash_state, 200, (char*)output + 32);
+	for(int i = 0; i<LOW_POWER_HASHES; i++){
+		cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[i]->long_state, (__m128i*)ctx[i]->hash_state);
+		keccakf((uint64_t*)ctx[i]->hash_state, 24);
+		extra_hashes[ctx[i]->hash_state[0] & 3](ctx[i]->hash_state, 200, (char*)output + 32*i);
+	}
 }
