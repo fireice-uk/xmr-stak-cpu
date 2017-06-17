@@ -10,22 +10,22 @@ init:
 clone_folder: c:\xmr-stak-cpu
 
 install:
-  - cmd: echo %VS140COMNTOOLS%
-  - cmd: dir %VS140COMNTOOLS%\VsMSBuildCmd.bat
-  - cmd: "%VS140COMNTOOLS%\VsMSBuildCmd.bat"
-  - cmd: mkdir c:\xmr-stak-dep
+  - echo %VS140COMNTOOLS%
+  - dir %VS140COMNTOOLS%\VsMSBuildCmd.bat
+  - %VS140COMNTOOLS%\VsMSBuildCmd.bat
+  - mkdir c:\xmr-stak-dep
   - ps: Start-FileDownload 'https://slproweb.com/download/Win32OpenSSL-1_1_0f.exe'
   - ps: Start-Process "Win32OpenSSL-1_1_0f.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
   - ps: Start-FileDownload 'https://www.open-mpi.org/software/hwloc/v1.11/downloads/hwloc-win64-build-1.11.7.zip'
-  - cmd: 7z x hwloc-win64-build-1.11.7.zip -o"c:\xmr-stak-dep" -y
+  - 7z x hwloc-win64-build-1.11.7.zip -o"c:\xmr-stak-dep" -y
   - ps: Start-FileDownload 'http://mirror.reismil.ch/gnu/libmicrohttpd/libmicrohttpd-0.9.55-w32-bin.zip'
-  - cmd: 7z x libmicrohttpd-0.9.55-w32-bin.zip -o"c:\xmr-stak-dep" -y
-  - cmd: cd c:\xmr-stak-cpu
-  - cmd: mkdir build
-  - cmd: cd build
-  - cmd: set CMAKE_PREFIX_PATH=C:\xmr-stak-dep\hwloc-win64-build-1.11.7;C:\xmr-stak-dep\microhttpd
-  - cmd: cmake -G "Visual Studio 15 2017 Win64" ..
-  - cmd: msbuild xmr-stak-cpu.sln /p:Configuration=Release
-  - cmd: cd bin\Release
-  - cmd: copy c:\xmr-stak-dep\hwloc-win64-build-1.11.7\bin\libhwloc-5.dll .
-  - cmd: xmr-stack-cpu -c ..\..\..\config.txt
+  - 7z x libmicrohttpd-0.9.55-w32-bin.zip -o"c:\xmr-stak-dep" -y
+  - cd c:\xmr-stak-cpu
+  - mkdir build
+  - cd build
+  - set CMAKE_PREFIX_PATH=C:\xmr-stak-dep\hwloc-win64-build-1.11.7;C:\xmr-stak-dep\microhttpd
+  - cmake -G "Visual Studio 15 2017 Win64" ..
+  - msbuild xmr-stak-cpu.sln /p:Configuration=Release
+  - cd bin\Release
+  - copy c:\xmr-stak-dep\hwloc-win64-build-1.11.7\bin\libhwloc-5.dll .
+  - xmr-stack-cpu -c ..\..\..\config.txt
