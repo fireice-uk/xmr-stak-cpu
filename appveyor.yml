@@ -11,8 +11,8 @@ clone_folder: c:\xmr-stak-cpu
 
 install:
   - echo %VS140COMNTOOLS%
-  - dir %VS140COMNTOOLS%\\VsMSBuildCmd.bat
-  - %VS140COMNTOOLS%\\VsMSBuildCmd.bat
+  - dir '%VS140COMNTOOLS%\VsMSBuildCmd.bat'
+  - '%VS140COMNTOOLS%\VsMSBuildCmd.bat'
   - mkdir c:\xmr-stak-dep
   - ps: Start-FileDownload 'https://slproweb.com/download/Win32OpenSSL-1_1_0f.exe'
   - ps: Start-Process "Win32OpenSSL-1_1_0f.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
