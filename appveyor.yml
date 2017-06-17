@@ -10,7 +10,9 @@ init:
 clone_folder: c:\xmr-stak-cpu
 
 install:
-  - cmd: where /r c:\ VsMSBuildCmd.bat
+  - cmd: echo %VS140COMNTOOLS%
+  - cmd: echo %VS150COMNTOOLS%
+  - cmd: 'c:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsMSBuildCmd.bat'
   - cmd: mkdir c:\xmr-stak-dep
   - ps: Start-FileDownload 'https://slproweb.com/download/Win32OpenSSL-1_1_0f.exe'
   - ps: Start-Process "Win32OpenSSL-1_1_0f.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
