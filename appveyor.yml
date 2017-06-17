@@ -11,9 +11,9 @@ clone_folder: c:\xmr-stak-cpu
 
 install:
   - echo %VS140COMNTOOLS%
-  - dir '%VS140COMNTOOLS%'
-  - dir '%VS140COMNTOOLS%\VsMSBuildCmd.bat'
-  - '%VS140COMNTOOLS%\VsMSBuildCmd.bat'
+  - dir %VS140COMNTOOLS%
+  - dir '%VS140COMNTOOLS%\\VsMSBuildCmd.bat'
+  - '%VS140COMNTOOLS%\\VsMSBuildCmd.bat'
   - mkdir c:\xmr-stak-dep
   - ps: Start-FileDownload 'https://slproweb.com/download/Win32OpenSSL-1_1_0f.exe'
   - ps: Start-Process "Win32OpenSSL-1_1_0f.exe" -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes" -Wait
@@ -30,3 +30,6 @@ install:
   - cd bin\Release
   - copy c:\xmr-stak-dep\hwloc-win64-build-1.11.7\bin\libhwloc-5.dll .
   - xmr-stack-cpu -c ..\..\..\config.txt
+
+
+#c:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsMSBuildCmd.bat
