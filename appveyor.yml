@@ -11,6 +11,7 @@ clone_folder: c:\xmr-stak-cpu
 
 install:
   - echo %VS140COMNTOOLS%
+  - dir '%VS140COMNTOOLS%'
   - dir '%VS140COMNTOOLS%\VsMSBuildCmd.bat'
   - '%VS140COMNTOOLS%\VsMSBuildCmd.bat'
   - mkdir c:\xmr-stak-dep
