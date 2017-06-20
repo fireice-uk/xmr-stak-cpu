@@ -382,14 +382,14 @@ void cryptonight_double_hash(const void* input, size_t len, void* output, crypto
 	{
 		__m128i cx;
 		for(int i = 0; i<LOW_POWER_HASHES; i++) {
-			cx = _mm_load_si128((__m128i * ) & l[i][idx[i] & 0x1FFFF0]);
+			cx = _mm_load_si128((__m128i *) & l[i][idx[i] & 0x1FFFF0]);
 
 			if (SOFT_AES)
 				cx = soft_aesenc(cx, _mm_set_epi64x(axh[i], axl[i]));
 			else
 				cx = _mm_aesenc_si128(cx, _mm_set_epi64x(axh[i], axl[i]));
 
-			_mm_store_si128((__m128i * ) & l[i][idx[i] & 0x1FFFF0], _mm_xor_si128(bx[i], cx));
+			_mm_store_si128((__m128i *) & l[i][idx[i] & 0x1FFFF0], _mm_xor_si128(bx[i], cx));
 			idx[i] = _mm_cvtsi128_si64(cx);
 			bx[i] = cx;
 
@@ -399,15 +399,15 @@ void cryptonight_double_hash(const void* input, size_t len, void* output, crypto
 
 		uint64_t hi, lo, cl, ch;
 		for(int i = 0; i<LOW_POWER_HASHES; i++) {
-			cl = ((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[0];
-			ch = ((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[1];
+			cl = ((uint64_t *) & l[i][idx[i] & 0x1FFFF0])[0];
+			ch = ((uint64_t *) & l[i][idx[i] & 0x1FFFF0])[1];
 
 			lo = _umul128(idx[i], cl, &hi);
 
 			axl[i] += hi;
 			axh[i] += lo;
-			((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[0] = axl[i];
-			((uint64_t * ) & l[i][idx[i] & 0x1FFFF0])[1] = axh[i];
+			((uint64_t *) & l[i][idx[i] & 0x1FFFF0])[0] = axl[i];
+			((uint64_t *) & l[i][idx[i] & 0x1FFFF0])[1] = axh[i];
 			axh[i] ^= ch;
 			axl[i] ^= cl;
 			idx[i] = axl[i];

@@ -1,6 +1,3 @@
-#ifndef XMR_STAK_CPU_LOW_POWER_H
-#define XMR_STAK_CPU_LOW_POWER_H
+#pragma once
 
 #define LOW_POWER_HASHES 2
-
-#endif //XMR_STAK_CPU_LOW_POWER_H
