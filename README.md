@@ -57,7 +57,7 @@ xXl2Nm/u3cPP/eQVrZz5H8eACwIv+LL1EV+9uLanWUa+IO5hHr3KElvKNKD6vN0=
     sudo dnf install gcc gcc-c++ hwloc-devel libmicrohttpd-devel openssl-devel cmake
     cmake .
 
-    # CentOS
+    # CentOS 7.x
     sudo yum install centos-release-scl cmake3 hwloc-devel libmicrohttpd-devel openssl-devel
     sudo yum install devtoolset-4-gcc*
     sudo scl enable devtoolset-4 bash
