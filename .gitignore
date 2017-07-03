@@ -12,3 +12,6 @@ config-debug.txt
 
 # merge original backup files
 *.orig
+
+#Jetbrains IDE project files
+.idea
