@@ -40,12 +40,12 @@ public:
 			printf("*** The number of sockets is unknown\n");
 		}
 
-		for (int i = 0; i < hwloc_get_nbobjs_by_depth(topology, depth); i++)
+		for (size_t i = 0; i < hwloc_get_nbobjs_by_depth(topology, depth); i++)
 		{
 			socket = hwloc_get_obj_by_depth(topology, depth, i);
 
 			// search cacheprinter::inst()->print_str("\n**************** Copy&Paste ****************\n\n");
-			for (int j = 0; j < socket->arity; j++)
+			for (size_t j = 0; j < socket->arity; j++)
 			{
 				hwloc_obj_t nextLvl = socket->children[j];
 				findCache(topology, nextLvl);
@@ -54,13 +54,13 @@ public:
 
 		/* Destroy topology object. */
 		hwloc_topology_destroy(topology);
-		
+
 		printer::inst()->print_str("],\n\n**************** Copy&Paste END ****************\n");
 	}
 
 private:
 
-	inline void getConfig(hwloc_topology_t topology, hwloc_obj_t obj, size_t& numHashes, int& numCachesLeft)
+	inline void getConfig(hwloc_topology_t topology, hwloc_obj_t obj, size_t numHashes, size_t numCachesLeft)
 	{
 		if (obj->type == HWLOC_OBJ_CORE)
 		{
@@ -69,7 +69,7 @@ private:
 				hwloc_cpuset_t cpuset;
 				/* Get a copy of its cpuset that we may modify. */
 				cpuset = hwloc_bitmap_dup(obj->cpuset);
-				size_t allcpu = hwloc_bitmap_to_ulong(cpuset);
+
 				/* Get only one logical processor (in case the core is
 				   SMT/hyperthreaded). */
 				hwloc_bitmap_singlify(cpuset);
@@ -77,21 +77,21 @@ private:
 
 				int firstNativeCore = hwloc_bitmap_first(cpuset);
 
-				int nativeCores = hwloc_bitmap_weight(cpuset);
-				int numPus = obj->arity;
-				for (int i = 0; i < numPus && numHashes != 0 && firstNativeCore != -1; i++)
+				size_t nativeCores = hwloc_bitmap_weight(cpuset);
+				size_t numPus = obj->arity;
+				for (size_t i = 0; i < numPus && numHashes != 0 && firstNativeCore != -1; i++)
 				{
 					hwloc_obj_t pu = obj->children[i];
 					// only use native pu's
 					if (pu->type == HWLOC_OBJ_PU && hwloc_bitmap_isset( cpuset, i + firstNativeCore ))
 					{
 						// if no cache is available we give each native core a hash
-						int numUnit = numCachesLeft != 0 ? numCachesLeft : nativeCores;
+						size_t numUnit = numCachesLeft != 0 ? numCachesLeft : nativeCores;
 
 						// two hashes per native pu if number of hashes if larger than compute units
-						int power = numHashes > numUnit ? 2 : 1;
+						size_t power = numHashes > numUnit ? 2 : 1;
 						char strbuf[256];
-	
+
 						snprintf(strbuf, sizeof(strbuf), "   { \"low_power_mode\" : %s, \"no_prefetch\" : true, \"affine_to_cpu\" : %u },\n",
 							power == 2 ? "true" : "false", pu->os_index);
 						printer::inst()->print_str(strbuf);
@@ -107,7 +107,7 @@ private:
 		}
 		else
 		{
-			for (int i = 0; i < obj->arity; i++)
+			for (size_t i = 0; i < obj->arity; i++)
 				getConfig(topology, obj->children[i], numHashes, numCachesLeft);
 		}
 	}
@@ -127,8 +127,8 @@ private:
 			if (value == NULL || value[0] != 49 || cacheSize == 0)
 			{
 				size_t numHashes = 0;
-				int numL2 = obj->arity;
-				for (int k = 0; k < numL2; k++)
+				size_t numL2 = obj->arity;
+				for (size_t k = 0; k < numL2; k++)
 				{
 					hwloc_obj_t l3Cache = obj->children[k];
 					size_t l2Cache = 0;
@@ -149,26 +149,25 @@ private:
 					/* if more hashes available than objects in the current depth of the topology
 					 * than divide with round down else round up
 					 */
-					int extraHash = numHashL3 > numL2 ? numHashL3 / numL2 : (numHashL3 + numL2 - 1) / numL2;
+					size_t extraHash = numHashL3 > numL2 ? numHashL3 / numL2 : (numHashL3 + numL2 - 1) / numL2;
 					numHashL3 -= extraHash;
 					if (numHashL3 < 0)
 						numHashL3 = 0;
 					numHashes += extraHash;
 					//add L2 hashes
 					numHashes += ( l2Cache + m_scratchPadMemSize / 2llu ) / m_scratchPadMemSize;
-					int numCachesLeft = numL2;
-					getConfig(topology, l3Cache, numHashes, numCachesLeft);
+
+					getConfig(topology, l3Cache, numHashes, numL2);
 					doL3 = false;
 				}
 			}
 			if (doL3)
 			{
-				int numCachesLeft = obj->arity;
-				getConfig(topology, obj, numHashL3, numCachesLeft);
+				getConfig(topology, obj, numHashL3, obj->arity);
 			}
 		}
 		else
-			for (int j = 0; j < obj->arity; j++)
+			for (size_t j = 0; j < obj->arity; j++)
 				findCache(topology, obj->children[j]);
 	}
 
