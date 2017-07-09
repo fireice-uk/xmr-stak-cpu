@@ -60,7 +60,7 @@ public:
 
 private:
 
-	inline void getConfig(hwloc_topology_t topology, hwloc_obj_t obj, size_t numHashes, size_t numCachesLeft)
+	inline void getConfig(hwloc_topology_t topology, hwloc_obj_t obj, size_t& numHashes, size_t& numCachesLeft)
 	{
 		if (obj->type == HWLOC_OBJ_CORE)
 		{
@@ -157,13 +157,15 @@ private:
 					//add L2 hashes
 					numHashes += ( l2Cache + m_scratchPadMemSize / 2llu ) / m_scratchPadMemSize;
 
-					getConfig(topology, l3Cache, numHashes, numL2);
+					size_t numCachesLeft = numL2;
+					getConfig(topology, l3Cache, numHashes, numCachesLeft);
 					doL3 = false;
 				}
 			}
 			if (doL3)
 			{
-				getConfig(topology, obj, numHashL3, obj->arity);
+				size_t numCachesLeft = obj->arity;
+				getConfig(topology, obj, numHashL3, numCachesLeft);
 			}
 		}
 		else
