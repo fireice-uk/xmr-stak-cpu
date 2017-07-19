@@ -45,10 +45,10 @@ using namespace rapidjson;
 /*
  * This enum needs to match index in oConfigValues, otherwise we will get a runtime error
  */
-enum configEnum { aCpuThreadsConf, sUseSlowMem, bNiceHashMode,
+enum configEnum { aCpuThreadsConf, sUseSlowMem, bNiceHashMode, bAesOverride,
 	bTlsMode, bTlsSecureAlgo, sTlsFingerprint, sPoolAddr, sWalletAddr, sPoolPwd,
 	iCallTimeout, iNetRetry, iGiveUpLimit, iVerboseLevel, iAutohashTime,
-	sOutputFile, iHttpdPort, bPreferIpv4 };
+	bDaemonMode, sOutputFile, iHttpdPort, bPreferIpv4 };
 
 struct configVal {
 	configEnum iName;
@@ -62,6 +62,7 @@ configVal oConfigValues[] = {
 	{ aCpuThreadsConf, "cpu_threads_conf", kNullType },
 	{ sUseSlowMem, "use_slow_memory", kStringType },
 	{ bNiceHashMode, "nicehash_nonce", kTrueType },
+	{ bAesOverride, "aes_override", kNullType },
 	{ bTlsMode, "use_tls", kTrueType },
 	{ bTlsSecureAlgo, "tls_secure_algo", kTrueType },
 	{ sTlsFingerprint, "tls_fingerprint", kStringType },
@@ -73,6 +74,7 @@ configVal oConfigValues[] = {
 	{ iGiveUpLimit, "giveup_limit", kNumberType },
 	{ iVerboseLevel, "verbose_level", kNumberType },
 	{ iAutohashTime, "h_print_time", kNumberType },
+	{ bDaemonMode, "daemon_mode", kTrueType },
 	{ sOutputFile, "output_file", kStringType },
 	{ iHttpdPort, "httpd_port", kNumberType },
 	{ bPreferIpv4, "prefer_ipv4", kTrueType }
@@ -249,6 +251,11 @@ uint16_t jconf::GetHttpdPort()
 bool jconf::NiceHashMode()
 {
 	return prv->configValues[bNiceHashMode]->GetBool();
+}
+
+bool jconf::DaemonMode()
+{
+	return prv->configValues[bDaemonMode]->GetBool();
 }
 
 const char* jconf::GetOutputFile()
@@ -447,11 +454,14 @@ bool jconf::parse_config(const char* sFilename)
 
 	printer::inst()->set_verbose_level(prv->configValues[iVerboseLevel]->GetUint64());
 
-	if(!NeedsAutoconf())
-	{
-		if(!bHaveAes)
-			printer::inst()->print_msg(L0, "Your CPU doesn't support hardware AES. Don't expect high hashrates.");
-	}
+	if(NeedsAutoconf())
+		return true;
+
+	if(prv->configValues[bAesOverride]->IsBool())
+		bHaveAes = prv->configValues[bAesOverride]->GetBool();
+
+	if(!bHaveAes)
+		printer::inst()->print_msg(L0, "Your CPU doesn't support hardware AES. Don't expect high hashrates.");
 
 	return true;
 }

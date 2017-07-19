@@ -77,6 +77,16 @@ null,
 "nicehash_nonce" : false,
 
 /*
+ * Manual hardware AES override
+ *
+ * Some VMs don't report AES capability correctly. You can set this value to true to enforce hardware AES or 
+ * to false to force disable AES or null to let the miner decide if AES is used.
+ * 
+ * WARNING: setting this to true on a CPU that doesn't support hardware AES will crash the miner.
+ */
+"aes_override" : null,
+
+/*
  * TLS Settings
  * If you need real security, make sure tls_secure_algo is enabled (otherwise MITM attack can downgrade encryption
  * to trivially breakable stuff like DES and MD5), and verify the server's fingerprint through a trusted channel. 
@@ -93,8 +103,10 @@ null,
  * pool_address	  - Pool address should be in the form "pool.supportxmr.com:3333". Only stratum pools are supported.
  * wallet_address - Your wallet, or pool login.
  * pool_password  - Can be empty in most cases or "x".
+ *
+ * We feature pools up to 1MH/s. For a more complete list see M5M400's pool list at www.moneropools.com
  */
-"pool_address" : "pool.supportxmr.com:3333",
+"pool_address" : "pool.usxmrpool.com:3333",
 "wallet_address" : "",
 "pool_password" : "",
 
@@ -138,6 +150,14 @@ null,
  *                This option has no effect if verbose_level is not 4.
  */
 "h_print_time" : 60,
+
+/*
+ * Daemon mode
+ *
+ * If you are running the process in the background and you don't need the keyboard reports, set this to true.
+ * This should solve the hashrate problems on some emulated terminals.
+ */
+"daemon_mode" : false,
 
 /*
  * Output file

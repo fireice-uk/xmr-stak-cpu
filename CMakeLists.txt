@@ -22,9 +22,9 @@ list(APPEND CMAKE_PREFIX_PATH "$ENV{CMAKE_PREFIX_PATH}")
 # https://github.com/fireice-uk/xmr-stak-nvidia/pull/10#issuecomment-290821792
 # If you remove this guard to compile with older gcc versions the miner will produce
 # a high rate of wrong shares.
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.1)
-        message(FATAL_ERROR "GCC version must be at least 5.1!")
+        message(FATAL_ERROR "g++ version must be at least 5.1!")
     endif()
 endif()
 
@@ -48,36 +48,98 @@ set(LIBS ${LIBS} ${CMAKE_THREAD_LIBS_INIT})
 # Find microhttpd
 ################################################################################
 
-option(MICROHTTPD_REQUIRED "Enable or disable the requirement of microhttp (http deamon)" ON)
-find_library(MHTD NAMES microhttpd)
-if("${MHTD}" STREQUAL "MHTD-NOTFOUND")
-    if(MICROHTTPD_REQUIRED)
-        message(FATAL_ERROR "microhttpd NOT found: use `-DMICROHTTPD_REQUIRED=OFF` to build without http deamon support")
+option(MICROHTTPD_ENABLE "Enable or disable the requirement of microhttp (http deamon)" ON)
+if(MICROHTTPD_ENABLE)
+    find_path(MTHD_INCLUDE_DIR
+        NAMES
+            microhttpd.h
+        PATHS
+            /opt/local
+            /usr/local
+            /usr
+            ENV "PROGRAMFILES(X86)"
+            ENV "HWLOC_ROOT"
+        PATH_SUFFIXES
+            include)
+
+    find_library(MHTD
+        NAMES
+            microhttpd
+            libmicrohttpd.lib
+        PATHS
+            ENV "MICROHTTPD_ROOT"
+        PATH_SUFFIXES
+            lib)
+    if("${MHTD}" STREQUAL "MHTD-NOTFOUND")
+        message(FATAL_ERROR "microhttpd NOT found: use `-DMICROHTTPD_ENABLE=OFF` to build without http deamon support")
     else()
-        message(STATUS "microhttpd NOT found: disable http server")
-        add_definitions("-DCONF_NO_HTTPD")
+        set(LIBS ${LIBS} ${MHTD})
+        include_directories(AFTER ${MTHD_INCLUDE_DIR})
     endif()
 else()
-    set(LIBS ${LIBS} ${MHTD})
+    add_definitions("-DCONF_NO_HTTPD")
 endif()
 
 ###############################################################################
 # Find OpenSSL
 ###############################################################################
 
-option(OpenSSL_REQUIRED "Enable or disable the requirement of OpenSSL" ON)
-find_package(OpenSSL)
-if(OPENSSL_FOUND)
-    include_directories(${OPENSSL_INCLUDE_DIR})
-    set(LIBS ${LIBS} ${OPENSSL_LIBRARIES})
-else()
-    if(OpenSSL_REQUIRED)
-        message(FATAL_ERROR "OpenSSL NOT found: use `-DOpenSSL_REQUIRED=OFF` to build without SSL support")
+option(OpenSSL_ENABLE "Enable or disable the requirement of OpenSSL" ON)
+if(OpenSSL_ENABLE)
+    find_package(OpenSSL)
+    if(OPENSSL_FOUND)
+        include_directories(${OPENSSL_INCLUDE_DIR})
+        set(LIBS ${LIBS} ${OPENSSL_LIBRARIES})
     else()
-        if(NOT OPENSSL_FOUND)
-            add_definitions("-DCONF_NO_TLS")
-        endif()
+        message(FATAL_ERROR "OpenSSL NOT found: use `-DOpenSSL_ENABLE=OFF` to build without SSL support")
     endif()
+else()
+    add_definitions("-DCONF_NO_TLS")
+endif()
+
+################################################################################
+# Find hwloc
+################################################################################
+
+option(HWLOC_ENABLE "Enable or disable the requirement of hwloc" ON)
+if(HWLOC_ENABLE)
+    find_path(HWLOC_INCLUDE_DIR
+        NAMES
+            hwloc.h
+        PATHS
+            /opt/local
+            /usr/local
+            /usr
+            ENV "PROGRAMFILES(X86)"
+            ENV "HWLOC_ROOT"
+        PATH_SUFFIXES
+            include)
+
+    find_library(HWLOC
+        NAMES
+            libhwloc.lib
+            hwloc
+        PATHS
+            ENV "HWLOC_ROOT"
+        PATH_SUFFIXES
+            lib)
+
+    if("${HWLOC}" STREQUAL "MHTD-NOTFOUND" OR ${HWLOC_INCLUDE_DIR} STREQUAL "HWLOC_INCLUDE_DIR-NOTFOUND")
+        message(FATAL_ERROR "hwloc NOT found: use `-DHWLOC_ENABLE=OFF` to build without hwloc support")
+    else()
+        set(LIBS ${LIBS} ${HWLOC})
+        include_directories(AFTER ${HWLOC_INCLUDE_DIR})
+    endif()
+else()
+    add_definitions("-DCONF_NO_HWLOC")
+endif()
+
+################################################################################
+# Windows Sockets
+################################################################################
+
+if(WIN32)
+    set(LIBS ${LIBS} wsock32 ws2_32)
 endif()
 
 ################################################################################
@@ -85,8 +147,10 @@ endif()
 ################################################################################
 
 # activate sse2 and aes-ni
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2 -maes")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -maes")
+if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2 -maes")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -maes")
+endif()
 
 # activate static libgcc and libstdc++ linking
 if(CMAKE_LINK_STATIC)
@@ -104,6 +168,7 @@ add_library(xmr-stak-c
     ${SRCFILES_C}
 )
 set_property(TARGET xmr-stak-c PROPERTY C_STANDARD 99)
+target_link_libraries(xmr-stak-c ${LIBS})
 
 add_executable(xmr-stak-cpu
     ${SRCFILES_CPP}

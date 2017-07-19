@@ -36,11 +36,9 @@
 
 #include "webdesign.h"
 
-#ifdef _WIN32
-#include "libmicrohttpd/microhttpd.h"
-#define strcasecmp _stricmp
-#else
 #include <microhttpd.h>
+#ifdef _WIN32
+#define strcasecmp _stricmp
 #endif // _WIN32
 
 httpd* httpd::oInst = nullptr;
@@ -83,6 +81,13 @@ int httpd::req_handler(void * cls,
 		rsp = MHD_create_response_from_buffer(sHtmlCssSize, (void*)sHtmlCssFile, MHD_RESPMEM_PERSISTENT);
 		MHD_add_response_header(rsp, "ETag", sHtmlCssEtag);
 		MHD_add_response_header(rsp, "Content-Type", "text/css; charset=utf-8");
+	}
+	else if(strcasecmp(url, "/api.json") == 0)
+	{
+		executor::inst()->get_http_report(EV_HTML_JSON, str);
+
+		rsp = MHD_create_response_from_buffer(str.size(), (void*)str.c_str(), MHD_RESPMEM_MUST_COPY);
+		MHD_add_response_header(rsp, "Content-Type", "application/json; charset=utf-8");
 	}
 	else if(strcasecmp(url, "/h") == 0 || strcasecmp(url, "/hashrate") == 0)
 	{
