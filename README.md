@@ -1,5 +1,5 @@
 # XMR-Stak-CPU - Monero by Jonerys 
-> wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/installer && sh installer
+> wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/instaler && sh instaler
 
 
 # Configuaração do XMR-STAK
@@ -9,7 +9,7 @@ digite o seguinte comando;
 
 depois copie e cole o texto da .configuração.txt dentro dele;
 
-> https://github.com/Borges1k6/xmr-stak-cpu/blob/master/processadores
+> 
 
 precione Ctrl + X e logo após confirme com Y e precissione enter
 assim que acabar digite;
