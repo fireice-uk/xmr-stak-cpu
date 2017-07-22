@@ -23,16 +23,16 @@
  * ],
  */
 "cpu_threads_conf" : 
- [ 
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
-       { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
-       
-  ],
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 7 },             
+ ],
 
 /*
  * LARGE PAGE SUPPORT
@@ -112,8 +112,6 @@
  * pool_address	  - Pool address should be in the form "pool.supportxmr.com:3333". Only stratum pools are supported.
  * wallet_address - Your wallet, or pool login.
  * pool_password  - Can be empty in most cases or "x".
- *
- * We feature pools up to 1MH/s. For a more complete list see M5M400's pool list at www.moneropools.com
  */
 "pool_address" : "pool.supportxmr.com:3333",
 "wallet_address" : "48SxhDUBJrW21FWx7tiQtx8FGF46P8WhhZ2owmtouXLhAKSZviFxR54MyJTijfeJog4CdMJyBU17kbAHfJj6nPFYAHBCzPV",
@@ -150,7 +148,7 @@
  *                 3 - All of level 1, and new job (block) event in all cases, result submission event.
  *                 4 - All of level 3, and automatic hashrate report printing 
  */
-"verbose_level" : 3,
+"verbose_level" : 4,
 
 /*
  * Automatic hashrate report
