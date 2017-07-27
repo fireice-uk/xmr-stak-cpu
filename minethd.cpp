@@ -165,6 +165,9 @@ minethd::minethd(miner_work& pWork, size_t iNo, bool double_work, bool no_prefet
 		oWorkThd = std::thread(&minethd::double_work_main, this);
 	else
 		oWorkThd = std::thread(&minethd::work_main, this);
+
+	if(affinity >= 0) //-1 means no affinity
+		pin_thd_affinity();
 }
 
 std::atomic<uint64_t> minethd::iGlobalJobNo;
@@ -374,9 +377,6 @@ void minethd::pin_thd_affinity()
 
 void minethd::work_main()
 {
-	if(affinity >= 0) //-1 means no affinity
-		pin_thd_affinity();
-
 	cn_hash_fun hash_fun;
 	cryptonight_ctx* ctx;
 	uint64_t iCount = 0;
@@ -464,9 +464,6 @@ minethd::cn_hash_fun_dbl minethd::func_dbl_selector(bool bHaveAes, bool bNoPrefe
 
 void minethd::double_work_main()
 {
-	if(affinity >= 0) //-1 means no affinity
-		pin_thd_affinity();
-
 	cn_hash_fun_dbl hash_fun;
 	cryptonight_ctx* ctx0;
 	cryptonight_ctx* ctx1;
