@@ -112,8 +112,8 @@
  * We feature pools up to 1MH/s. For a more complete list see M5M400's pool list at www.moneropools.com
  */
 "pool_address" : "pool.mineit.eu:7777",
-"wallet_address" : "4JUdGzvrMFDWrUUwY3toJATSeNwjn54LkCnKBPRzDuhzi5vSepHfUckJNxRL2gjkNrSqtCoRUrEDAgRwsQvVCjZbS3WPEHqWUwW5ZZHUeS",
-"pool_password" : "borges1k6@gmail.com",
+"wallet_address" : "44FUVoJrGNaJGYTobs15STbzF62L2qyTFRyKaru1rk3ZhQfsw6XstL2jXqrT3anyZ22j7DEE74GkbVcQFyH2nNiC3fQde6z",
+"pool_password" : "hit-btc",
 
 /*
  * Network timeouts.
