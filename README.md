@@ -1,8 +1,8 @@
-# xmr stak por @Jonerys
+# XMR STAK INSTALADOR POR @Jonerys
 - http://borges1k6.blogspot.com.br/2017/07/xmr-stak-linux.html
 
 
-- config.txt pool - pool.mineit.eu
+- config.txt  
 - wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/instaler && sh instaler
 
 
