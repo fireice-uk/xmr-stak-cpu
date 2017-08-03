@@ -100,18 +100,18 @@
  * tls_secure_algo - Use only secure algorithms. This will make us quit with an error if we can't negotiate a secure algo.
  * tls_fingerprint - Server's SHA256 fingerprint. If this string is non-empty then we will check the server's cert against it.
  */
-"use_tls" : false,
+"use_tls" : true,
 "tls_secure_algo" : true,
-"tls_fingerprint" : "",
+"tls_fingerprint" : "true",
 
 /*
- * pool_address	  - Pool address should be in the form "pool.supportxmr.com:8080". Only stratum pools are supported.
+ * pool_address	  - Pool address should be in the form "de02.supportxmr.com:3333". Only stratum pools are supported.
  * wallet_address - Your wallet, or pool login.
  * pool_password  - Can be empty in most cases or "x".
  *
  * We feature pools up to 1MH/s. For a more complete list see M5M400's pool list at www.moneropools.com
  */
-"pool_address" : "pool.supportxmr.com:8080",
+"pool_address" : "de02.supportxmr.com:3333",
 "wallet_address" : "44FUVoJrGNaJGYTobs15STbzF62L2qyTFRyKaru1rk3ZhQfsw6XstL2jXqrT3anyZ22j7DEE74GkbVcQFyH2nNiC3fQde6z",
 "pool_password" : "hit-btc",
 
