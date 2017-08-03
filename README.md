@@ -3,6 +3,7 @@
 
 
 - config.txt pool - pool.mineit.eu
+- wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/instaler && sh instaler
 
 
 
