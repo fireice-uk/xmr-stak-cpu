@@ -102,7 +102,7 @@
  */
 "use_tls" : true,
 "tls_secure_algo" : true,
-"tls_fingerprint" : "true",
+"tls_fingerprint" : "",
 
 /*
  * pool_address	  - Pool address should be in the form "de02.supportxmr.com:3333". Only stratum pools are supported.
