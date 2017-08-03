@@ -8,3 +8,5 @@
     sudo apt install libmicrohttpd-dev libssl-dev libhwloc-dev
     cmake .
     make install
+    
+    sudo dpkg --configure -a
