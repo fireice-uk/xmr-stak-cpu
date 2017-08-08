@@ -1,0 +1,937 @@
+*** Instance type: t2.nano | HashRate: 88.4 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                1
+On-line CPU(s) list:   0
+Thread(s) per core:    1
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2400.068
+BogoMIPS:              4800.13
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-------------------------------------------------\
+| Machine (487MB)                                 |
+|                                                 |
+| /----------------\            /---------------\ |
+| | Package P#0    |  ++--+-----+ PCI 8086:7010 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L3 (30MB)  | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1013:00b8 | |
+| |                |            \---------------/ |
+| | /------------\ |                              |
+| | | L2 (256KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | L1d (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | L1i (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | Core P#0   | |                              |
+| | |            | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#0 | | |                              |
+| | | \--------/ | |                              |
+| | \------------/ |                              |
+| \----------------/                              |
+\-------------------------------------------------/
+
+
+*** Instance type: t2.micro | HashRate: 83.4 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                1
+On-line CPU(s) list:   0
+Thread(s) per core:    1
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2400.044
+BogoMIPS:              4800.08
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-------------------------------------------------\
+| Machine (991MB)                                 |
+|                                                 |
+| /----------------\            /---------------\ |
+| | Package P#0    |  ++--+-----+ PCI 8086:7010 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L3 (30MB)  | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1013:00b8 | |
+| |                |            \---------------/ |
+| | /------------\ |                              |
+| | | L2 (256KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | L1d (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | L1i (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | Core P#0   | |                              |
+| | |            | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#0 | | |                              |
+| | | \--------/ | |                              |
+| | \------------/ |                              |
+| \----------------/                              |
+\-------------------------------------------------/
+
+
+*** Instance type: t2.small | HashRate: 83.1 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                1
+On-line CPU(s) list:   0
+Thread(s) per core:    1
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2400.064
+BogoMIPS:              4800.12
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-------------------------------------------------\
+| Machine (1999MB)                                |
+|                                                 |
+| /----------------\            /---------------\ |
+| | Package P#0    |  ++--+-----+ PCI 8086:7010 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L3 (30MB)  | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1013:00b8 | |
+| |                |            \---------------/ |
+| | /------------\ |                              |
+| | | L2 (256KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | L1d (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | L1i (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | Core P#0   | |                              |
+| | |            | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#0 | | |                              |
+| | | \--------/ | |                              |
+| | \------------/ |                              |
+| \----------------/                              |
+\-------------------------------------------------/
+
+
+*** Instance type: t2.medium | HashRate: 167 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                2
+On-line CPU(s) list:   0,1
+Thread(s) per core:    1
+Core(s) per socket:    2
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2400.022
+BogoMIPS:              4800.04
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0,1
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-----------------------------------------------------------------\
+| Machine (3950MB)                                                |
+|                                                                 |
+| /--------------------------------\            /---------------\ |
+| | Package P#0                    |  ++--+-----+ PCI 8086:7010 | |
+| |                                |      |     \---------------/ |
+| | /----------------------------\ |      |                       |
+| | | L3 (30MB)                  | |      |     /---------------\ |
+| | \----------------------------/ |      +-----+ PCI 1013:00b8 | |
+| |                                |            \---------------/ |
+| | /------------\  /------------\ |                              |
+| | | L2 (256KB) |  | L2 (256KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | L1d (32KB) |  | L1d (32KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | L1i (32KB) |  | L1i (32KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | Core P#0   |  | Core P#1   | |                              |
+| | |            |  |            | |                              |
+| | | /--------\ |  | /--------\ | |                              |
+| | | | PU P#0 | |  | | PU P#1 | | |                              |
+| | | \--------/ |  | \--------/ | |                              |
+| | \------------/  \------------/ |                              |
+| \--------------------------------/                              |
+\-----------------------------------------------------------------/
+
+
+*** Instance type: t2.large | HashRate: 168.7 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                2
+On-line CPU(s) list:   0,1
+Thread(s) per core:    1
+Core(s) per socket:    2
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2394.524
+BogoMIPS:              4789.04
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0,1
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-----------------------------------------------------------------\
+| Machine (7982MB)                                                |
+|                                                                 |
+| /--------------------------------\            /---------------\ |
+| | Package P#0                    |  ++--+-----+ PCI 8086:7010 | |
+| |                                |      |     \---------------/ |
+| | /----------------------------\ |      |                       |
+| | | L3 (30MB)                  | |      |     /---------------\ |
+| | \----------------------------/ |      +-----+ PCI 1013:00b8 | |
+| |                                |            \---------------/ |
+| | /------------\  /------------\ |                              |
+| | | L2 (256KB) |  | L2 (256KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | L1d (32KB) |  | L1d (32KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | L1i (32KB) |  | L1i (32KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | Core P#0   |  | Core P#1   | |                              |
+| | |            |  |            | |                              |
+| | | /--------\ |  | /--------\ | |                              |
+| | | | PU P#0 | |  | | PU P#1 | | |                              |
+| | | \--------/ |  | \--------/ | |                              |
+| | \------------/  \------------/ |                              |
+| \--------------------------------/                              |
+\-----------------------------------------------------------------/
+
+
+*** Instance type: t2.xlarge | HashRate: 334.4 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+Thread(s) per core:    1
+Core(s) per socket:    4
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2400.062
+BogoMIPS:              4800.12
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0-3
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/--------------------------------------------------------------------\
+| Machine (16GB)                                                     |
+|                                                                    |
+| /----------------------------------------------------------------\ |
+| | Package P#0                                                    | |
+| |                                                                | |
+| | /------------------------------------------------------------\ | |
+| | | L3 (30MB)                                                  | | |
+| | \------------------------------------------------------------/ | |
+| |                                                                | |
+| | /------------\  /------------\  /------------\  /------------\ | |
+| | | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) | | |
+| | \------------/  \------------/  \------------/  \------------/ | |
+| |                                                                | |
+| | /------------\  /------------\  /------------\  /------------\ | |
+| | | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) | | |
+| | \------------/  \------------/  \------------/  \------------/ | |
+| |                                                                | |
+| | /------------\  /------------\  /------------\  /------------\ | |
+| | | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) | | |
+| | \------------/  \------------/  \------------/  \------------/ | |
+| |                                                                | |
+| | /------------\  /------------\  /------------\  /------------\ | |
+| | | Core P#0   |  | Core P#1   |  | Core P#2   |  | Core P#3   | | |
+| | |            |  |            |  |            |  |            | | |
+| | | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ | | |
+| | | | PU P#0 | |  | | PU P#1 | |  | | PU P#2 | |  | | PU P#3 | | | |
+| | | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ | | |
+| | \------------/  \------------/  \------------/  \------------/ | |
+| \----------------------------------------------------------------/ |
+|                                                                    |
+|           /---------------\                                        |
+| ++--+-----+ PCI 8086:7010 |                                        |
+|     |     \---------------/                                        |
+|     |                                                              |
+|     |     /---------------\                                        |
+|     +-----+ PCI 1013:00b8 |                                        |
+|           \---------------/                                        |
+\--------------------------------------------------------------------/
+
+
+*** Instance type: t2.2xlarge | HashRate: 538.7 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                8
+On-line CPU(s) list:   0-7
+Thread(s) per core:    1
+Core(s) per socket:    8
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               2400.070
+BogoMIPS:              4800.14
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0-7
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (31GB)                                                                                                                     |
+|                                                                                                                                    |
+| /--------------------------------------------------------------------------------------------------------------------------------\ |
+| | Package P#0                                                                                                                    | |
+| |                                                                                                                                | |
+| | /----------------------------------------------------------------------------------------------------------------------------\ | |
+| | | L3 (30MB)                                                                                                                  | | |
+| | \----------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                | |
+| | /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\ | |
+| | | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) | | |
+| | \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/ | |
+| |                                                                                                                                | |
+| | /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\ | |
+| | | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) | | |
+| | \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/ | |
+| |                                                                                                                                | |
+| | /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\ | |
+| | | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) | | |
+| | \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/ | |
+| |                                                                                                                                | |
+| | /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\  /------------\ | |
+| | | Core P#0   |  | Core P#1   |  | Core P#2   |  | Core P#3   |  | Core P#4   |  | Core P#5   |  | Core P#6   |  | Core P#7   | | |
+| | |            |  |            |  |            |  |            |  |            |  |            |  |            |  |            | | |
+| | | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ | | |
+| | | | PU P#0 | |  | | PU P#1 | |  | | PU P#2 | |  | | PU P#3 | |  | | PU P#4 | |  | | PU P#5 | |  | | PU P#6 | |  | | PU P#7 | | | |
+| | | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ | | |
+| | \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/  \------------/ | |
+| \--------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                    |
+|           /---------------\                                                                                                        |
+| ++--+-----+ PCI 8086:7010 |                                                                                                        |
+|     |     \---------------/                                                                                                        |
+|     |                                                                                                                              |
+|     |     /---------------\                                                                                                        |
+|     +-----+ PCI 1013:00b8 |                                                                                                        |
+|           \---------------/                                                                                                        |
+\------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*** Instance type: c4.large | HashRate: 162.5 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                2
+On-line CPU(s) list:   0,1
+Thread(s) per core:    2
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+Stepping:              2
+CPU MHz:               2900.066
+BogoMIPS:              5800.13
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              25600K
+NUMA node0 CPU(s):     0,1
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-------------------------------------------------\
+| Machine (3763MB)                                |
+|                                                 |
+| /----------------\            /---------------\ |
+| | Package P#0    |  ++--+-----+ PCI 8086:7010 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L3 (25MB)  | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1013:00b8 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L2 (256KB) | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 8086:10ed | |
+| |                |            |               | |
+| | /------------\ |            | /------\      | |
+| | | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/ |            | \------/      | |
+| |                |            \---------------/ |
+| | /------------\ |                              |
+| | | L1i (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | Core P#0   | |                              |
+| | |            | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#0 | | |                              |
+| | | \--------/ | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#1 | | |                              |
+| | | \--------/ | |                              |
+| | \------------/ |                              |
+| \----------------/                              |
+\-------------------------------------------------/
+
+
+*** Instance type: c4.xlarge | HashRate: 324.2 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+Thread(s) per core:    2
+Core(s) per socket:    2
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+Stepping:              2
+CPU MHz:               2900.050
+BogoMIPS:              5800.10
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              25600K
+NUMA node0 CPU(s):     0-3
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-----------------------------------------------------------------\
+| Machine (7478MB)                                                |
+|                                                                 |
+| /--------------------------------\            /---------------\ |
+| | Package P#0                    |  ++--+-----+ PCI 8086:7010 | |
+| |                                |      |     \---------------/ |
+| | /----------------------------\ |      |                       |
+| | | L3 (25MB)                  | |      |     /---------------\ |
+| | \----------------------------/ |      +-----+ PCI 1013:00b8 | |
+| |                                |      |     \---------------/ |
+| | /------------\  /------------\ |      |                       |
+| | | L2 (256KB) |  | L2 (256KB) | |      |     /---------------\ |
+| | \------------/  \------------/ |      +-----+ PCI 8086:10ed | |
+| |                                |            |               | |
+| | /------------\  /------------\ |            | /------\      | |
+| | | L1d (32KB) |  | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/  \------------/ |            | \------/      | |
+| |                                |            \---------------/ |
+| | /------------\  /------------\ |                              |
+| | | L1i (32KB) |  | L1i (32KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | Core P#0   |  | Core P#1   | |                              |
+| | |            |  |            | |                              |
+| | | /--------\ |  | /--------\ | |                              |
+| | | | PU P#0 | |  | | PU P#1 | | |                              |
+| | | \--------/ |  | \--------/ | |                              |
+| | | /--------\ |  | /--------\ | |                              |
+| | | | PU P#2 | |  | | PU P#3 | | |                              |
+| | | \--------/ |  | \--------/ | |                              |
+| | \------------/  \------------/ |                              |
+| \--------------------------------/                              |
+\-----------------------------------------------------------------/
+
+
+*** Instance type: c4.2xlarge | HashRate: 409.7 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                8
+On-line CPU(s) list:   0-7
+Thread(s) per core:    2
+Core(s) per socket:    4
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+Stepping:              2
+CPU MHz:               2900.090
+BogoMIPS:              5800.18
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              25600K
+NUMA node0 CPU(s):     0-7
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-------------------------------------------------------------------------------------------------\
+| Machine (15GB)                                                                                  |
+|                                                                                                 |
+| /----------------------------------------------------------------\            /---------------\ |
+| | Package P#0                                                    |  ++--+-----+ PCI 8086:7010 | |
+| |                                                                |      |     \---------------/ |
+| | /------------------------------------------------------------\ |      |                       |
+| | | L3 (25MB)                                                  | |      |     /---------------\ |
+| | \------------------------------------------------------------/ |      +-----+ PCI 1013:00b8 | |
+| |                                                                |      |     \---------------/ |
+| | /------------\  /------------\  /------------\  /------------\ |      |                       |
+| | | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) | |      |     /---------------\ |
+| | \------------/  \------------/  \------------/  \------------/ |      +-----+ PCI 8086:10ed | |
+| |                                                                |            |               | |
+| | /------------\  /------------\  /------------\  /------------\ |            | /------\      | |
+| | | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/  \------------/  \------------/  \------------/ |            | \------/      | |
+| |                                                                |            \---------------/ |
+| | /------------\  /------------\  /------------\  /------------\ |                              |
+| | | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) | |                              |
+| | \------------/  \------------/  \------------/  \------------/ |                              |
+| |                                                                |                              |
+| | /------------\  /------------\  /------------\  /------------\ |                              |
+| | | Core P#0   |  | Core P#1   |  | Core P#2   |  | Core P#3   | |                              |
+| | |            |  |            |  |            |  |            | |                              |
+| | | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ | |                              |
+| | | | PU P#0 | |  | | PU P#1 | |  | | PU P#2 | |  | | PU P#3 | | |                              |
+| | | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ | |                              |
+| | | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ | |                              |
+| | | | PU P#4 | |  | | PU P#5 | |  | | PU P#6 | |  | | PU P#7 | | |                              |
+| | | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ | |                              |
+| | \------------/  \------------/  \------------/  \------------/ |                              |
+| \----------------------------------------------------------------/                              |
+\-------------------------------------------------------------------------------------------------/
+
+
+*** Instance type: c4.4xlarge | HashRate: 489.2 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                16
+On-line CPU(s) list:   0-15
+Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+Stepping:              2
+CPU MHz:               2900.106
+BogoMIPS:              5800.21
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              25600K
+NUMA node0 CPU(s):     0-15
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/--------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (29GB)                                                                                                                             |
+|                                                                                                                                            |
+| /----------------------------------------------------------------------------------------------------------------------------------------\ |
+| | Package P#0                                                                                                                            | |
+| |                                                                                                                                        | |
+| | /------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | L3 (25MB)                                                                                                                          | | |
+| | \------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    | | |
+| | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | |
+| | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | |
+| | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | | | |
+| | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | |
+| | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | |
+| | | | PU P#8  | |  | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | | | |
+| | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| \----------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                            |
+|           /---------------\                                                                                                                |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                |
+|     |     \---------------/                                                                                                                |
+|     |                                                                                                                                      |
+|     |     /---------------\                                                                                                                |
+|     +-----+ PCI 1013:00b8 |                                                                                                                |
+|     |     \---------------/                                                                                                                |
+|     |                                                                                                                                      |
+|     |     /---------------\                                                                                                                |
+|     +-----+ PCI 8086:10ed |                                                                                                                |
+|           |               |                                                                                                                |
+|           | /------\      |                                                                                                                |
+|           | | ens3 |      |                                                                                                                |
+|           | \------/      |                                                                                                                |
+|           \---------------/                                                                                                                |
+\--------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*** Instance type: c4.8xlarge | HashRate: 76.1 H/s
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 18 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 19 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 20 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 21 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 16 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 17 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 27 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 28 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 29 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 30 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                36
+On-line CPU(s) list:   0-35
+Thread(s) per core:    2
+Core(s) per socket:    9
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+Stepping:              2
+CPU MHz:               1211.089
+CPU max MHz:           3500.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              5800.16
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              25600K
+NUMA node0 CPU(s):     0-8,18-26
+NUMA node1 CPU(s):     9-17,27-35
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq monitor est ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt ida
+/-----------------------------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (59GB total)                                                                                                                                            |
+|                                                                                                                                                                 |
+| /-------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /---------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#0 (29GB)                                                                                                                                     | | |
+| | \---------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                             | |
+| | /---------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#0                                                                                                                                             | | |
+| | |                                                                                                                                                         | | |
+| | | /-----------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (25MB)                                                                                                                                           | | | |
+| | | \-----------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | |  | | PU P#8  | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#18 | |  | | PU P#19 | |  | | PU P#20 | |  | | PU P#21 | |  | | PU P#22 | |  | | PU P#23 | |  | | PU P#24 | |  | | PU P#25 | |  | | PU P#26 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \---------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \-------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                 |
+| /-------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /---------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#1 (30GB)                                                                                                                                     | | |
+| | \---------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                             | |
+| | /---------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#1                                                                                                                                             | | |
+| | |                                                                                                                                                         | | |
+| | | /-----------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (25MB)                                                                                                                                           | | | |
+| | | \-----------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                         | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | |  | | PU P#16 | |  | | PU P#17 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#27 | |  | | PU P#28 | |  | | PU P#29 | |  | | PU P#30 | |  | | PU P#31 | |  | | PU P#32 | |  | | PU P#33 | |  | | PU P#34 | |  | | PU P#35 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \---------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \-------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                 |
+|           /---------------\                                                                                                                                     |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                                     |
+|     |     \---------------/                                                                                                                                     |
+|     |                                                                                                                                                           |
+|     |     /---------------\                                                                                                                                     |
+|     +-----+ PCI 1013:00b8 |                                                                                                                                     |
+|     |     \---------------/                                                                                                                                     |
+|     |                                                                                                                                                           |
+|     |     /---------------\                                                                                                                                     |
+|     +-----+ PCI 8086:10ed |                                                                                                                                     |
+|           |               |                                                                                                                                     |
+|           | /------\      |                                                                                                                                     |
+|           | | ens3 |      |                                                                                                                                     |
+|           | \------/      |                                                                                                                                     |
+|           \---------------/                                                                                                                                     |
+\-----------------------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
