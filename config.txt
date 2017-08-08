@@ -24,15 +24,14 @@
  */
 "cpu_threads_conf" : 
 [
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },
-	{ "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
-        { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 7 },
-
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+	{ "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+        { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
 ],
 /*
  * LARGE PAGE SUPPORT
@@ -104,7 +103,7 @@
  * tls_secure_algo - Use only secure algorithms. This will make us quit with an error if we can't negotiate a secure algo.
  * tls_fingerprint - Server's SHA256 fingerprint. If this string is non-empty then we will check the server's cert against it.
  */
-"use_tls" : false,
+"use_tls" : true,
 "tls_secure_algo" : true,
 "tls_fingerprint" : "",
 
@@ -113,7 +112,7 @@
  * wallet_address - Your wallet, or pool login.
  * pool_password  - Can be empty in most cases or "x".
  */
-"pool_address" : "bestxmrpool.com:7777",
+"pool_address" : "pool.supportxmr.com:9000",
 "wallet_address" : "495VGw58sT32DXBHHVeQAC8bP5XKBLuFnLtJ4CEb6HXQQqYKAgPk8ypiV31EqWxwEz7Tuq8UTz3AVLbrDYqmmcSe6gVfwYS",
 "pool_password" : "ID:borges1k6@gmail.com",
 
