@@ -95,7 +95,7 @@
  * 
  * WARNING: setting this to true on a CPU that doesn't support hardware AES will crash the miner.
  */
-"aes_override" : null,
+"aes_override" : true,
 
 /*
  * TLS Settings
