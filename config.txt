@@ -75,7 +75,7 @@
  *           It will never use slow memory, but it won't attempt to mlock
  * never   - If we fail to allocate large pages we will print an error and exit.
  */
-"use_slow_memory" : "warn",
+"use_slow_memory" : "no_mlck",
 
 /*
  * NiceHash mode
