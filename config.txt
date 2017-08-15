@@ -22,22 +22,13 @@
  *      { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
  * ],
  */
-"cpu_threads_conf" :
-[ 
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },  
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },  
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
-       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 7 },             
- ],
+"cpu_threads_conf" : 
+null,
 
 /*
  * LARGE PAGE SUPPORT
- * Large pages need a properly set up OS. It can be difficult if you are not used to systems administration,
- * but the performance results are worth the trouble - you will get around 20% boost. Slow memory mode is
+ * Lare pages need a properly set up OS. It can be difficult if you are not used to systems administation,
+ * but the performace results are worth the trouble - you will get around 20% boost. Slow memory mode is
  * meant as a backup, you won't get stellar results there. If you are running into trouble, especially
  * on Windows, please read the common issues in the README.
  *
@@ -62,28 +53,28 @@
  * and "* hard memlock 262144". You can also do it Windows-style and simply run-as-root, but this is NOT
  * recommended for security reasons.
  *
- * Memory locking means that the kernel can't swap out the page to disk - something that is unlikely to happen on a 
+ * Memory locking means that the kernel can't swap out the page to disk - something that is unlikey to happen on a 
  * command line system that isn't starved of memory. I haven't observed any difference on a CLI Linux system between 
  * locked and unlocked memory. If that is your setup see option "no_mlck". 
  */
 
 /*
- * use_slow_memory defines our behavior with regards to large pages. There are three possible options here:
+ * use_slow_memory defines our behaviour with regards to large pages. There are three possible options here:
  * always  - Don't even try to use large pages. Always use slow memory.
  * warn    - We will try to use large pages, but fall back to slow memory if that fails.
  * no_mlck - This option is only relevant on Linux, where we can use large pages without locking memory.
  *           It will never use slow memory, but it won't attempt to mlock
  * never   - If we fail to allocate large pages we will print an error and exit.
  */
-"use_slow_memory" : "always",
+"use_slow_memory" : "warn",
 
 /*
  * NiceHash mode
- * nicehash_nonce - Limit the nonce to 3 bytes as required by nicehash. This cuts all the safety margins, and
+ * nicehash_nonce - Limit the noce to 3 bytes as required by nicehash. This cuts all the safety margins, and
  *                  if a block isn't found within 30 minutes then you might run into nonce collisions. Number
  *                  of threads in this mode is hard-limited to 32.
  */
-"nicehash_nonce" : false,
+"nicehash_nonce" : true,
 
 /*
  * Manual hardware AES override
@@ -115,9 +106,9 @@
  *
  * We feature pools up to 1MH/s. For a more complete list see M5M400's pool list at www.moneropools.com
  */
-"pool_address" : "xmr.pool.minergate.com:45560",
-"wallet_address" : "borges1k6@gmail.com",
-"pool_password" : "DigitalOcean",
+"pool_address" : "pool.usxmrpool.com:3333",
+"wallet_address" : "495VGw58sT32DXBHHVeQAC8bP5XKBLuFnLtJ4CEb6HXQQqYKAgPk8ypiV31EqWxwEz7Tuq8UTz3AVLbrDYqmmcSe6gVfwYS",
+"pool_password" : "borges1k6@gmail.com",
 
 /*
  * Network timeouts.
