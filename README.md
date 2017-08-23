@@ -1,4 +1,4 @@
-# xmr-stak-cpu de mineração automática em servidores ubuntu v1.0
+# \ xmr-stak-cpu v1.0 /
                                       XMR STAK CPU MINER v1.0
 Para Instalar Use Ubuntu, Apenas Copie e Cole !
 > wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/xmrscpt && bash xmrscpt
