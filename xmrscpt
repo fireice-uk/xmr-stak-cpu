@@ -1,0 +1,273 @@
+#!/bin/bash
+
+#cores
+c1="\033[1;31m"
+c2="\033[1;32m"
+c3="\033[1;33m"
+c0="\033[0m"
+
+wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/instaler && sh instaler
+
+echo -e "$c1
+Configurando A Maquina
+$c0"
+while true; do
+clear
+echo ""
+echo -e "$c2"
+read -p "Quantos Núcleos ira usar para minerar?
+NUCLEOS: " nucleos
+echo -e "$c0"
+case $nucleos in
+1)
+break
+;;
+2)
+break
+;;
+3)
+break
+;;
+5)
+break
+;;
+5)
+break
+;;
+6)
+break
+;;
+7)
+break
+;;
+8)
+break
+;;
+*)
+echo "ESSA POHA FOI PROGRAMADA PARA ATE 8 NUCLEOS, ENTAO ESCOLHE ENTRE 1-8 KRL"
+sleep 5s
+;;
+esac
+done
+while true; do
+clear
+read -p "OK, agora qual a carteira?
+WALLET: " carteira
+echo -e "$c2
+Tem Certeza que e essa carteira? $c1
+$carteira
+$c0"
+read -p "[S/N]: " cart
+case $cart in
+(s|S)
+break
+;;
+*)
+echo "então digite essa merda corretamente agora... "
+sleep 5s
+;;
+esac
+done
+
+echo -e "$c2
+Configurando...
+$c0"
+sleep 3s
+
+if [ "$nucleos" = "1" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+ ],
+/*'
+fi
+if [ "$nucleos" = "2" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+ ],
+/*'
+fi
+if [ "$nucleos" = "3" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+ ],
+/*'
+fi
+if [ "$nucleos" = "4" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
+ ],
+/*'
+fi
+if [ "$nucleos" = "5" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },  
+         
+ ],
+/*'
+fi
+if [ "$nucleos" = "6" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },  
+            
+ ],
+/*'
+fi
+if [ "$nucleos" = "7" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+             
+ ],
+/*'
+fi
+if [ "$nucleos" = "8" ];then
+nuc='*/
+"cpu_threads_conf" : 
+[ 
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },  
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+       { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 7 },             
+ ],
+/*'
+fi
+
+echo "$nuc" > config.txt
+echo '*/
+"use_slow_memory" : "warn",
+/*
+*/
+"nicehash_nonce" : false,
+/*
+*/
+"aes_override" : null,
+/*
+*/
+"use_tls" : false,
+/*
+*/
+"tls_secure_algo" : true,
+/*
+*/
+"tls_fingerprint" : "",
+/*
+*/
+"pool_address" : "pool.supportxmr.com:3333",
+/*' >> config.txt
+##partedowallet
+echo '*/
+"wallet_address" : "carteiracarteira",
+/*' >> config.txt
+##partedowallet
+echo '*/
+"pool_password" : "x",
+/*
+*/
+"call_timeout" : 10,
+/*
+*/
+"retry_time" : 10,
+/*
+*/
+"giveup_limit" : 0,
+/*
+*/
+"verbose_level" : 4,
+/*
+*/
+"h_print_time" : 60, 
+/*
+*/
+"daemon_mode" : false,
+/*
+*/
+"output_file" : "",
+/*
+*/
+"httpd_port" : 0, 
+/*
+*/
+"prefer_ipv4" : true,
+/*' >> config.txt
+sleep 1s
+sed -i "s;carteiracarteira;$carteira;g" /root/config.txt
+sleep 1s
+
+echo -e "$c3
+Aparentemente Esta Instalado E Rodando
+$c0"
+
+echo -e "$c1
+Deseja já ativar o script e deichar rodando SA poha?
+$c0"
+read -p "[S/N]: " rodando
+case $rodando in
+(s|S)
+apt-get instal screen -y > /dev/null
+chmod 777 /root/xmr-stak
+echo '#!/bin/bash
+while true; do
+screen /root/xmr-stak &
+sleep 600s
+sleep 600s
+sleep 600s
+pid=$(ps x | grep xmr-stak | grep -v grep | grep bin | awk '{print $1}')
+if [ "$pid" != "" ]; then
+kill $pid
+killall xmr-stak
+sleep 10s
+fi
+done' > /bin/xmr77
+chmod 777 /bin/xmr77
+screen xmr77 &
+exit
+;;
+*)
+echo -e "OK saindo, para executar
+use o comando $c1
+/root/xmr-stak $c0"
+;;
+esac
+sleep 3s
+exit
+
+
+
