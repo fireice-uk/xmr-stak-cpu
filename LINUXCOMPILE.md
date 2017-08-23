@@ -4,6 +4,8 @@
 ```
     # Ubuntu / Debian
     sudo apt install libmicrohttpd-dev libssl-dev cmake build-essential libhwloc-dev
+    git clone https://github.com/fireice-uk/xmr-stak-cpu.git
+    cd xmr-stak-cpu
     cmake .
     make install
 
