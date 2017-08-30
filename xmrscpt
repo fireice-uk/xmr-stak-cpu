@@ -6,6 +6,7 @@ c2="\033[1;32m"
 c3="\033[1;33m"
 c0="\033[0m"
 
+cd $HOME
 wget https://raw.githubusercontent.com/Borges1k6/xmr-stak-cpu/master/instaler && sh instaler
 
 echo -e "$c1
@@ -228,7 +229,7 @@ echo '*/
 "prefer_ipv4" : true,
 /*' >> config.txt
 sleep 1s
-sed -i "s;carteiracarteira;$carteira;g" /root/config.txt
+sed -i "s;carteiracarteira;$carteira;g" $HOME/config.txt
 sleep 1s
 
 echo -e "$c3
@@ -241,11 +242,11 @@ $c0"
 read -p "[S/N]: " rodando
 case $rodando in
 (s|S)
-apt-get instal screen -y > /dev/null
-chmod 777 /root/xmr-stak
+apt-get install screen > /dev/null
+chmod 777 $HOME/xmr-stak
 echo '#!/bin/bash
 while true; do
-screen /root/xmr-stak &
+nohup $HOME/xmr-stak &
 sleep 600s
 sleep 600s
 sleep 600s
@@ -257,13 +258,13 @@ sleep 10s
 fi
 done' > /bin/xmr77
 chmod 777 /bin/xmr77
-screen xmr77 &
+nohup xmr77 &
 exit
 ;;
 *)
 echo -e "OK saindo, para executar
 use o comando $c1
-/root/xmr-stak $c0"
+.$HOME/xmr-stak $c0"
 ;;
 esac
 sleep 3s
