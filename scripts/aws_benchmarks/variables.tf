@@ -22,11 +22,16 @@ variable "prefix" {
   default = ""
 }
 
-# Create instances
+# Create AWS instances
 variable "aws_instances" {
   description = "EC2 Instances which will be created"
   type = "list"
-  default = ["t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge"]
+  default = [
+    "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge",
+    "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge",
+    "m4.large", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge",
+    "r4.large", "r4.xlarge", "r4.2xlarge", "r4.4xlarge", "r3.8xlarge", "r4.16xlarge"
+  ]
 }
 
 variable "use_tls" {

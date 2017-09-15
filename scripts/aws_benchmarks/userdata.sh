@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
 echo "*** Install necessary dependencies"
-apt install -y -qq cloud-utils git hwloc libmicrohttpd-dev libssl-dev cmake build-essential libhwloc-dev
+apt update -qq
+apt install -y -qq cloud-utils git hwloc jq libmicrohttpd-dev libssl-dev cmake build-essential libhwloc-dev
 
 echo "*** Clone git repository and switch to the chosen tag"
 git clone https://github.com/fireice-uk/xmr-stak-cpu.git
@@ -9,7 +10,7 @@ git --git-dir=xmr-stak-cpu/.git --work-tree=xmr-stak-cpu checkout tags/${git_tag
 
 echo "*** Compile xmr-stak-cpu"
 cd xmr-stak-cpu
-cmake -DCMAKE_LINK_STATIC=ON .
+cmake -DMICROHTTPD_ENABLE=ON -DHWLOC_ENABLE=ON .
 make install
 
 echo "*** Generate xmr-stak-cpu temporary configuration"

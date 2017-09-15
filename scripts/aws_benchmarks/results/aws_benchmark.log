@@ -1,4 +1,6 @@
-*** Instance type: t2.nano | HashRate: 88.4 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.nano              | 125380     | 1       | 2760       | 44       44       | 84.4        | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -19,8 +21,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2400.068
-BogoMIPS:              4800.13
+CPU MHz:               2400.046
+BogoMIPS:              4800.09
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -62,7 +64,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-------------------------------------------------/
 
 
-*** Instance type: t2.micro | HashRate: 83.4 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.micro             | 89740      | 1       | 2130       | 35       35       | 83.2        | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -83,8 +87,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2400.044
-BogoMIPS:              4800.08
+CPU MHz:               2400.062
+BogoMIPS:              4800.12
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -126,7 +130,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-------------------------------------------------/
 
 
-*** Instance type: t2.small | HashRate: 83.1 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.small             | 115150     | 1       | 2580       | 46       46       | 83          | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -147,8 +153,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2400.064
-BogoMIPS:              4800.12
+CPU MHz:               2394.492
+BogoMIPS:              4788.98
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -190,7 +196,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-------------------------------------------------/
 
 
-*** Instance type: t2.medium | HashRate: 167 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.medium            | 218030     | 2       | 4830       | 57       57       | 161.4       | 7         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -212,8 +220,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2400.022
-BogoMIPS:              4800.04
+CPU MHz:               2400.088
+BogoMIPS:              4800.17
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -255,7 +263,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-----------------------------------------------------------------/
 
 
-*** Instance type: t2.large | HashRate: 168.7 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.large             | 291100     | 2       | 6240       | 50       50       | 167.8       | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -277,8 +287,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2394.524
-BogoMIPS:              4789.04
+CPU MHz:               2394.490
+BogoMIPS:              4788.98
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -320,7 +330,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-----------------------------------------------------------------/
 
 
-*** Instance type: t2.xlarge | HashRate: 334.4 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.xlarge            | 373422     | 4       | 8220       | 45       45       | 335.6       | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -344,8 +356,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2400.062
-BogoMIPS:              4800.12
+CPU MHz:               2394.534
+BogoMIPS:              4789.06
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -395,7 +407,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \--------------------------------------------------------------------/
 
 
-*** Instance type: t2.2xlarge | HashRate: 538.7 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.2xlarge           | 474650     | 8       | 10740      | 43       43       | 420.7       | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -423,8 +437,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
 Stepping:              2
-CPU MHz:               2400.070
-BogoMIPS:              4800.14
+CPU MHz:               2400.062
+BogoMIPS:              4800.12
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -474,7 +488,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \------------------------------------------------------------------------------------------------------------------------------------/
 
 
-*** Instance type: c4.large | HashRate: 162.5 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.large             | 206760     | 2       | 4530       | 48       48       | 157         | 7         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -496,8 +512,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
 Stepping:              2
-CPU MHz:               2900.066
-BogoMIPS:              5800.13
+CPU MHz:               2893.376
+BogoMIPS:              5786.75
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -542,7 +558,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-------------------------------------------------/
 
 
-*** Instance type: c4.xlarge | HashRate: 324.2 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.xlarge            | 252830     | 4       | 5460       | 49       49       | 175.2       | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -566,8 +584,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
 Stepping:              2
-CPU MHz:               2900.050
-BogoMIPS:              5800.10
+CPU MHz:               2900.118
+BogoMIPS:              5800.23
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -612,7 +630,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-----------------------------------------------------------------/
 
 
-*** Instance type: c4.2xlarge | HashRate: 409.7 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.2xlarge           | 581550     | 8       | 11940      | 49       49       | 441         | 7         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -640,8 +660,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
 Stepping:              2
-CPU MHz:               2900.090
-BogoMIPS:              5800.18
+CPU MHz:               2900.068
+BogoMIPS:              5800.13
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -686,7 +706,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \-------------------------------------------------------------------------------------------------/
 
 
-*** Instance type: c4.4xlarge | HashRate: 489.2 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.4xlarge           | 152230     | 13      | 3210       | 59       59       | 92.8        | 7         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -719,8 +741,8 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
 Stepping:              2
-CPU MHz:               2900.106
-BogoMIPS:              5800.21
+CPU MHz:               2900.042
+BogoMIPS:              5800.08
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -781,7 +803,9 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 \--------------------------------------------------------------------------------------------------------------------------------------------/
 
 
-*** Instance type: c4.8xlarge | HashRate: 76.1 H/s
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.8xlarge           | 1615500    | 26      | 33060      | 72       72       | 1040.1      | 8         | pool.supportxmr.com:443      |
 
 "cpu_threads_conf" :
 [
@@ -827,10 +851,10 @@ CPU family:            6
 Model:                 63
 Model name:            Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
 Stepping:              2
-CPU MHz:               1211.089
+CPU MHz:               1257.648
 CPU max MHz:           3500.0000
 CPU min MHz:           1200.0000
-BogoMIPS:              5800.16
+BogoMIPS:              5800.18
 Hypervisor vendor:     Xen
 Virtualization type:   full
 L1d cache:             32K
@@ -933,5 +957,1167 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 |           | \------/      |                                                                                                                                     |
 |           \---------------/                                                                                                                                     |
 \-----------------------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.large             | 245610     | 2       | 5070       | 59       59       | 143.3       | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                2
+On-line CPU(s) list:   0,1
+Thread(s) per core:    2
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2300.052
+BogoMIPS:              4600.10
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0,1
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/-------------------------------------------------\
+| Machine (7982MB)                                |
+|                                                 |
+| /----------------\            /---------------\ |
+| | Package P#0    |  ++--+-----+ PCI 8086:7010 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L3 (45MB)  | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1013:00b8 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L2 (256KB) | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 8086:10ed | |
+| |                |            |               | |
+| | /------------\ |            | /------\      | |
+| | | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/ |            | \------/      | |
+| |                |            \---------------/ |
+| | /------------\ |                              |
+| | | L1i (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | Core P#0   | |                              |
+| | |            | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#0 | | |                              |
+| | | \--------/ | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#1 | | |                              |
+| | | \--------/ | |                              |
+| | \------------/ |                              |
+| \----------------/                              |
+\-------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.4xlarge           | 887410     | 16      | 19920      | 58       58       | 688.1       | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                16
+On-line CPU(s) list:   0-15
+Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2300.044
+BogoMIPS:              4600.08
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0-15
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+/--------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (63GB)                                                                                                                             |
+|                                                                                                                                            |
+| /----------------------------------------------------------------------------------------------------------------------------------------\ |
+| | Package P#0                                                                                                                            | |
+| |                                                                                                                                        | |
+| | /------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | L3 (45MB)                                                                                                                          | | |
+| | \------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    | | |
+| | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | |
+| | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | |
+| | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | | | |
+| | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | |
+| | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | |
+| | | | PU P#8  | |  | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | | | |
+| | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| \----------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                            |
+|           /---------------\                                                                                                                |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                |
+|     |     \---------------/                                                                                                                |
+|     |                                                                                                                                      |
+|     |     /---------------\                                                                                                                |
+|     +-----+ PCI 1013:00b8 |                                                                                                                |
+|     |     \---------------/                                                                                                                |
+|     |                                                                                                                                      |
+|     |     /---------------\                                                                                                                |
+|     +-----+ PCI 8086:10ed |                                                                                                                |
+|           |               |                                                                                                                |
+|           | /------\      |                                                                                                                |
+|           | | ens3 |      |                                                                                                                |
+|           | \------/      |                                                                                                                |
+|           \---------------/                                                                                                                |
+\--------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.10xlarge          | 90060      | 30      | 2000       | 45       45       | 67          | 8         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 20 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 21 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 22 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 23 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 24 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 16 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 17 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 18 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 19 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 30 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 31 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 32 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 33 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 34 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                40
+On-line CPU(s) list:   0-39
+Thread(s) per core:    2
+Core(s) per socket:    10
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 63
+Model name:            Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+Stepping:              2
+CPU MHz:               1255.781
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4800.11
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0-9,20-29
+NUMA node1 CPU(s):     10-19,30-39
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq monitor est ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt ida
+/----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (157GB total)                                                                                                                                                            |
+|                                                                                                                                                                                  |
+| /------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#0 (79GB)                                                                                                                                                      | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                                              | |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#0                                                                                                                                                              | | |
+| | |                                                                                                                                                                          | | |
+| | | /----------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (30MB)                                                                                                                                                            | | | |
+| | | \----------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    |  | Core P#9    | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | |  | | PU P#8  | |  | | PU P#9  | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#20 | |  | | PU P#21 | |  | | PU P#22 | |  | | PU P#23 | |  | | PU P#24 | |  | | PU P#25 | |  | | PU P#26 | |  | | PU P#27 | |  | | PU P#28 | |  | | PU P#29 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                                  |
+| /------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#1 (79GB)                                                                                                                                                      | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                                              | |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#1                                                                                                                                                              | | |
+| | |                                                                                                                                                                          | | |
+| | | /----------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (30MB)                                                                                                                                                            | | | |
+| | | \----------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                          | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    |  | Core P#9    | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | |  | | PU P#16 | |  | | PU P#17 | |  | | PU P#18 | |  | | PU P#19 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#30 | |  | | PU P#31 | |  | | PU P#32 | |  | | PU P#33 | |  | | PU P#34 | |  | | PU P#35 | |  | | PU P#36 | |  | | PU P#37 | |  | | PU P#38 | |  | | PU P#39 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                                  |
+|           /---------------\                                                                                                                                                      |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                                                      |
+|     |     \---------------/                                                                                                                                                      |
+|     |                                                                                                                                                                            |
+|     |     /---------------\                                                                                                                                                      |
+|     +-----+ PCI 1013:00b8 |                                                                                                                                                      |
+|     |     \---------------/                                                                                                                                                      |
+|     |                                                                                                                                                                            |
+|     |     /---------------\                                                                                                                                                      |
+|     +-----+ PCI 8086:10ed |                                                                                                                                                      |
+|           |               |                                                                                                                                                      |
+|           | /------\      |                                                                                                                                                      |
+|           | | ens3 |      |                                                                                                                                                      |
+|           | \------/      |                                                                                                                                                      |
+|           \---------------/                                                                                                                                                      |
+\----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.16xlarge          | 1778530    | 46      | 40590      | 79       79       | 1437.8      | 8         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 32 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 33 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 34 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 35 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 36 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 37 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 38 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 16 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 17 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 18 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 19 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 20 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 21 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 22 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 23 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 24 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 25 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 26 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 27 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 28 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 29 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 30 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 31 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 48 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 49 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 50 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 51 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 52 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 53 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 54 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                64
+On-line CPU(s) list:   0-63
+Thread(s) per core:    2
+Core(s) per socket:    16
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               1289.257
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4600.07
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0-15,32-47
+NUMA node1 CPU(s):     16-31,48-63
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq monitor est ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm xsaveopt ida
+/----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (252GB total)                                                                                                                                                                                                                                                                  |
+|                                                                                                                                                                                                                                                                                        |
+| /------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#0 (126GB)                                                                                                                                                                                                                                                           | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                                                                                                                                                    | |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#0                                                                                                                                                                                                                                                                    | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (45MB)                                                                                                                                                                                                                                                                  | | | |
+| | | \----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    |  | Core P#9    |  | Core P#10   |  | Core P#11   |  | Core P#12   |  | Core P#13   |  | Core P#14   |  | Core P#15   | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | |  | | PU P#8  | |  | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#32 | |  | | PU P#33 | |  | | PU P#34 | |  | | PU P#35 | |  | | PU P#36 | |  | | PU P#37 | |  | | PU P#38 | |  | | PU P#39 | |  | | PU P#40 | |  | | PU P#41 | |  | | PU P#42 | |  | | PU P#43 | |  | | PU P#44 | |  | | PU P#45 | |  | | PU P#46 | |  | | PU P#47 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                                                                                                                                        |
+| /------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#1 (126GB)                                                                                                                                                                                                                                                           | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                                                                                                                                                    | |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#1                                                                                                                                                                                                                                                                    | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (45MB)                                                                                                                                                                                                                                                                  | | | |
+| | | \----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    |  | Core P#9    |  | Core P#10   |  | Core P#11   |  | Core P#12   |  | Core P#13   |  | Core P#14   |  | Core P#15   | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#16 | |  | | PU P#17 | |  | | PU P#18 | |  | | PU P#19 | |  | | PU P#20 | |  | | PU P#21 | |  | | PU P#22 | |  | | PU P#23 | |  | | PU P#24 | |  | | PU P#25 | |  | | PU P#26 | |  | | PU P#27 | |  | | PU P#28 | |  | | PU P#29 | |  | | PU P#30 | |  | | PU P#31 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#48 | |  | | PU P#49 | |  | | PU P#50 | |  | | PU P#51 | |  | | PU P#52 | |  | | PU P#53 | |  | | PU P#54 | |  | | PU P#55 | |  | | PU P#56 | |  | | PU P#57 | |  | | PU P#58 | |  | | PU P#59 | |  | | PU P#60 | |  | | PU P#61 | |  | | PU P#62 | |  | | PU P#63 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                                                                                                                                        |
+|           /---------------\                                                                                                                                                                                                                                                            |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                                                                                                                                                            |
+|     |     \---------------/                                                                                                                                                                                                                                                            |
+|     |                                                                                                                                                                                                                                                                                  |
+|     |     /---------------\                                                                                                                                                                                                                                                            |
+|     +-----+ PCI 1013:00b8 |                                                                                                                                                                                                                                                            |
+|     |     \---------------/                                                                                                                                                                                                                                                            |
+|     |                                                                                                                                                                                                                                                                                  |
+|     |     /---------------\                                                                                                                                                                                                                                                            |
+|     +-----+ PCI 1d0f:ec20 |                                                                                                                                                                                                                                                            |
+|           |               |                                                                                                                                                                                                                                                            |
+|           | /------\      |                                                                                                                                                                                                                                                            |
+|           | | ens3 |      |                                                                                                                                                                                                                                                            |
+|           | \------/      |                                                                                                                                                                                                                                                            |
+|           \---------------/                                                                                                                                                                                                                                                            |
+\----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.large             | 200540     | 2       | 4170       | 59       59       | 144         | 8         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                2
+On-line CPU(s) list:   0,1
+Thread(s) per core:    2
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2701.601
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4600.15
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0,1
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology aperfmperf eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx xsaveopt
+/-------------------------------------------------\
+| Machine (15GB)                                  |
+|                                                 |
+| /----------------\            /---------------\ |
+| | Package P#0    |  ++--+-----+ PCI 8086:7010 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L3 (45MB)  | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1013:00b8 | |
+| |                |      |     \---------------/ |
+| | /------------\ |      |                       |
+| | | L2 (256KB) | |      |     /---------------\ |
+| | \------------/ |      +-----+ PCI 1d0f:ec20 | |
+| |                |            |               | |
+| | /------------\ |            | /------\      | |
+| | | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/ |            | \------/      | |
+| |                |            \---------------/ |
+| | /------------\ |                              |
+| | | L1i (32KB) | |                              |
+| | \------------/ |                              |
+| |                |                              |
+| | /------------\ |                              |
+| | | Core P#0   | |                              |
+| | |            | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#0 | | |                              |
+| | | \--------/ | |                              |
+| | | /--------\ | |                              |
+| | | | PU P#1 | | |                              |
+| | | \--------/ | |                              |
+| | \------------/ |                              |
+| \----------------/                              |
+\-------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.xlarge            | 435286     | 4       | 8940       | 65       65       | 277.8       | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+Thread(s) per core:    2
+Core(s) per socket:    2
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2699.894
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4600.10
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0-3
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology aperfmperf eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx xsaveopt
+/-----------------------------------------------------------------\
+| Machine (30GB)                                                  |
+|                                                                 |
+| /--------------------------------\            /---------------\ |
+| | Package P#0                    |  ++--+-----+ PCI 8086:7010 | |
+| |                                |      |     \---------------/ |
+| | /----------------------------\ |      |                       |
+| | | L3 (45MB)                  | |      |     /---------------\ |
+| | \----------------------------/ |      +-----+ PCI 1013:00b8 | |
+| |                                |      |     \---------------/ |
+| | /------------\  /------------\ |      |                       |
+| | | L2 (256KB) |  | L2 (256KB) | |      |     /---------------\ |
+| | \------------/  \------------/ |      +-----+ PCI 1d0f:ec20 | |
+| |                                |            |               | |
+| | /------------\  /------------\ |            | /------\      | |
+| | | L1d (32KB) |  | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/  \------------/ |            | \------/      | |
+| |                                |            \---------------/ |
+| | /------------\  /------------\ |                              |
+| | | L1i (32KB) |  | L1i (32KB) | |                              |
+| | \------------/  \------------/ |                              |
+| |                                |                              |
+| | /------------\  /------------\ |                              |
+| | | Core P#0   |  | Core P#1   | |                              |
+| | |            |  |            | |                              |
+| | | /--------\ |  | /--------\ | |                              |
+| | | | PU P#0 | |  | | PU P#1 | | |                              |
+| | | \--------/ |  | \--------/ | |                              |
+| | | /--------\ |  | /--------\ | |                              |
+| | | | PU P#2 | |  | | PU P#3 | | |                              |
+| | | \--------/ |  | \--------/ | |                              |
+| | \------------/  \------------/ |                              |
+| \--------------------------------/                              |
+\-----------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.2xlarge           | 327410     | 8       | 7170       | 44       44       | 270         | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 7 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                8
+On-line CPU(s) list:   0-7
+Thread(s) per core:    2
+Core(s) per socket:    4
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2710.496
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4600.12
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0-7
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology aperfmperf eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx xsaveopt
+/-------------------------------------------------------------------------------------------------\
+| Machine (60GB)                                                                                  |
+|                                                                                                 |
+| /----------------------------------------------------------------\            /---------------\ |
+| | Package P#0                                                    |  ++--+-----+ PCI 8086:7010 | |
+| |                                                                |      |     \---------------/ |
+| | /------------------------------------------------------------\ |      |                       |
+| | | L3 (45MB)                                                  | |      |     /---------------\ |
+| | \------------------------------------------------------------/ |      +-----+ PCI 1013:00b8 | |
+| |                                                                |      |     \---------------/ |
+| | /------------\  /------------\  /------------\  /------------\ |      |                       |
+| | | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) |  | L2 (256KB) | |      |     /---------------\ |
+| | \------------/  \------------/  \------------/  \------------/ |      +-----+ PCI 1d0f:ec20 | |
+| |                                                                |            |               | |
+| | /------------\  /------------\  /------------\  /------------\ |            | /------\      | |
+| | | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) |  | L1d (32KB) | |            | | ens3 |      | |
+| | \------------/  \------------/  \------------/  \------------/ |            | \------/      | |
+| |                                                                |            \---------------/ |
+| | /------------\  /------------\  /------------\  /------------\ |                              |
+| | | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) |  | L1i (32KB) | |                              |
+| | \------------/  \------------/  \------------/  \------------/ |                              |
+| |                                                                |                              |
+| | /------------\  /------------\  /------------\  /------------\ |                              |
+| | | Core P#0   |  | Core P#1   |  | Core P#2   |  | Core P#3   | |                              |
+| | |            |  |            |  |            |  |            | |                              |
+| | | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ | |                              |
+| | | | PU P#0 | |  | | PU P#1 | |  | | PU P#2 | |  | | PU P#3 | | |                              |
+| | | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ | |                              |
+| | | /--------\ |  | /--------\ |  | /--------\ |  | /--------\ | |                              |
+| | | | PU P#4 | |  | | PU P#5 | |  | | PU P#6 | |  | | PU P#7 | | |                              |
+| | | \--------/ |  | \--------/ |  | \--------/ |  | \--------/ | |                              |
+| | \------------/  \------------/  \------------/  \------------/ |                              |
+| \----------------------------------------------------------------/                              |
+\-------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.4xlarge           | 832230     | 16      | 18060      | 65       65       | 623.7       | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : true, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                16
+On-line CPU(s) list:   0-15
+Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2700.792
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4600.09
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0-15
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology aperfmperf eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx xsaveopt
+/--------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (120GB)                                                                                                                            |
+|                                                                                                                                            |
+| /----------------------------------------------------------------------------------------------------------------------------------------\ |
+| | Package P#0                                                                                                                            | |
+| |                                                                                                                                        | |
+| | /------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | L3 (45MB)                                                                                                                          | | |
+| | \------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| |                                                                                                                                        | |
+| | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | |
+| | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    | | |
+| | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | |
+| | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | |
+| | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | | | |
+| | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | |
+| | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | |
+| | | | PU P#8  | |  | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | | | |
+| | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | |
+| | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | |
+| \----------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                            |
+|           /---------------\                                                                                                                |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                |
+|     |     \---------------/                                                                                                                |
+|     |                                                                                                                                      |
+|     |     /---------------\                                                                                                                |
+|     +-----+ PCI 1013:00b8 |                                                                                                                |
+|     |     \---------------/                                                                                                                |
+|     |                                                                                                                                      |
+|     |     /---------------\                                                                                                                |
+|     +-----+ PCI 1d0f:ec20 |                                                                                                                |
+|           |               |                                                                                                                |
+|           | /------\      |                                                                                                                |
+|           | | ens3 |      |                                                                                                                |
+|           | \------/      |                                                                                                                |
+|           \---------------/                                                                                                                |
+\--------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r3.8xlarge           | 1059540    | 26      | 22320      | 71       71       | 991.9       | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 16 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 17 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 18 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 19 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 20 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 24 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 25 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 26 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 27 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 28 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                32
+On-line CPU(s) list:   0-31
+Thread(s) per core:    2
+Core(s) per socket:    8
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 62
+Model name:            Intel(R) Xeon(R) CPU E5-2670 v2 @ 2.50GHz
+Stepping:              4
+CPU MHz:               2500.088
+BogoMIPS:              5000.17
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              25600K
+NUMA node0 CPU(s):     0-7,16-23
+NUMA node1 CPU(s):     8-15,24-31
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology eagerfpu pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm fsgsbase smep erms xsaveopt
+/------------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (240GB total)                                                                                                                          |
+|                                                                                                                                                |
+| /--------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /----------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#0 (120GB)                                                                                                                   | | |
+| | \----------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                            | |
+| | /----------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#0                                                                                                                            | | |
+| | |                                                                                                                                        | | |
+| | | /------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (25MB)                                                                                                                          | | | |
+| | | \------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#16 | |  | | PU P#17 | |  | | PU P#18 | |  | | PU P#19 | |  | | PU P#20 | |  | | PU P#21 | |  | | PU P#22 | |  | | PU P#23 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \----------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \--------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                |
+| /--------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /----------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#1 (120GB)                                                                                                                   | | |
+| | \----------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                            | |
+| | /----------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#1                                                                                                                            | | |
+| | |                                                                                                                                        | | |
+| | | /------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (25MB)                                                                                                                          | | | |
+| | | \------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                        | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#8  | |  | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#24 | |  | | PU P#25 | |  | | PU P#26 | |  | | PU P#27 | |  | | PU P#28 | |  | | PU P#29 | |  | | PU P#30 | |  | | PU P#31 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \----------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \--------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                |
+|           /---------------\                                                                                                                    |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                    |
+|     |     \---------------/                                                                                                                    |
+|     |                                                                                                                                          |
+|     |     /---------------\                                                                                                                    |
+|     +-----+ PCI 1013:00b8 |                                                                                                                    |
+|     |     \---------------/                                                                                                                    |
+|     |                                                                                                                                          |
+|     |     /---------------\                                                                                                                    |
+|     +-----+ PCI 8086:10ed |                                                                                                                    |
+|           |               |                                                                                                                    |
+|           | /------\      |                                                                                                                    |
+|           | | ens3 |      |                                                                                                                    |
+|           | \------/      |                                                                                                                    |
+|           \---------------/                                                                                                                    |
+\------------------------------------------------------------------------------------------------------------------------------------------------/
+
+
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.16xlarge          | 102650     | 46      | 2100       | 49       49       | 57.5        | 7         | pool.supportxmr.com:443      |
+
+"cpu_threads_conf" :
+[
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 0 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 1 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 2 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 3 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 4 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 5 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 6 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 7 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 8 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 9 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 10 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 11 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 12 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 13 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 14 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 15 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 32 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 33 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 34 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 35 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 36 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 37 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 38 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 16 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 17 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 18 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 19 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 20 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 21 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 22 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 23 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 24 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 25 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 26 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 27 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 28 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 29 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 30 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 31 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 48 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 49 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 50 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 51 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 52 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 53 },
+    { "low_power_mode" : false, "no_prefetch" : true, "affine_to_cpu" : 54 },
+],
+
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                64
+On-line CPU(s) list:   0-63
+Thread(s) per core:    2
+Core(s) per socket:    16
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:              1
+CPU MHz:               2709.507
+CPU max MHz:           3000.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4600.06
+Hypervisor vendor:     Xen
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              46080K
+NUMA node0 CPU(s):     0-15,32-47
+NUMA node1 CPU(s):     16-31,48-63
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq monitor est ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx xsaveopt ida
+/----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+| Machine (480GB total)                                                                                                                                                                                                                                                                  |
+|                                                                                                                                                                                                                                                                                        |
+| /------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#0 (240GB)                                                                                                                                                                                                                                                           | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                                                                                                                                                    | |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#0                                                                                                                                                                                                                                                                    | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (45MB)                                                                                                                                                                                                                                                                  | | | |
+| | | \----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    |  | Core P#9    |  | Core P#10   |  | Core P#11   |  | Core P#12   |  | Core P#13   |  | Core P#14   |  | Core P#15   | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#0  | |  | | PU P#1  | |  | | PU P#2  | |  | | PU P#3  | |  | | PU P#4  | |  | | PU P#5  | |  | | PU P#6  | |  | | PU P#7  | |  | | PU P#8  | |  | | PU P#9  | |  | | PU P#10 | |  | | PU P#11 | |  | | PU P#12 | |  | | PU P#13 | |  | | PU P#14 | |  | | PU P#15 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#32 | |  | | PU P#33 | |  | | PU P#34 | |  | | PU P#35 | |  | | PU P#36 | |  | | PU P#37 | |  | | PU P#38 | |  | | PU P#39 | |  | | PU P#40 | |  | | PU P#41 | |  | | PU P#42 | |  | | PU P#43 | |  | | PU P#44 | |  | | PU P#45 | |  | | PU P#46 | |  | | PU P#47 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                                                                                                                                        |
+| /------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | NUMANode P#1 (240GB)                                                                                                                                                                                                                                                           | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| |                                                                                                                                                                                                                                                                                    | |
+| | /--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | |
+| | | Package P#1                                                                                                                                                                                                                                                                    | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\ | | |
+| | | | L3 (45MB)                                                                                                                                                                                                                                                                  | | | |
+| | | \----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  |  | L2 (256KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  |  | L1d (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  |  | L1i (32KB)  | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | |                                                                                                                                                                                                                                                                                | | |
+| | | /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\  /-------------\ | | |
+| | | | Core P#0    |  | Core P#1    |  | Core P#2    |  | Core P#3    |  | Core P#4    |  | Core P#5    |  | Core P#6    |  | Core P#7    |  | Core P#8    |  | Core P#9    |  | Core P#10   |  | Core P#11   |  | Core P#12   |  | Core P#13   |  | Core P#14   |  | Core P#15   | | | |
+| | | |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             |  |             | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#16 | |  | | PU P#17 | |  | | PU P#18 | |  | | PU P#19 | |  | | PU P#20 | |  | | PU P#21 | |  | | PU P#22 | |  | | PU P#23 | |  | | PU P#24 | |  | | PU P#25 | |  | | PU P#26 | |  | | PU P#27 | |  | | PU P#28 | |  | | PU P#29 | |  | | PU P#30 | |  | | PU P#31 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ |  | /---------\ | | | |
+| | | | | PU P#48 | |  | | PU P#49 | |  | | PU P#50 | |  | | PU P#51 | |  | | PU P#52 | |  | | PU P#53 | |  | | PU P#54 | |  | | PU P#55 | |  | | PU P#56 | |  | | PU P#57 | |  | | PU P#58 | |  | | PU P#59 | |  | | PU P#60 | |  | | PU P#61 | |  | | PU P#62 | |  | | PU P#63 | | | | |
+| | | | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ |  | \---------/ | | | |
+| | | \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/  \-------------/ | | |
+| | \--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ | |
+| \------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/ |
+|                                                                                                                                                                                                                                                                                        |
+|           /---------------\                                                                                                                                                                                                                                                            |
+| ++--+-----+ PCI 8086:7010 |                                                                                                                                                                                                                                                            |
+|     |     \---------------/                                                                                                                                                                                                                                                            |
+|     |                                                                                                                                                                                                                                                                                  |
+|     |     /---------------\                                                                                                                                                                                                                                                            |
+|     +-----+ PCI 1013:00b8 |                                                                                                                                                                                                                                                            |
+|     |     \---------------/                                                                                                                                                                                                                                                            |
+|     |                                                                                                                                                                                                                                                                                  |
+|     |     /---------------\                                                                                                                                                                                                                                                            |
+|     +-----+ PCI 1d0f:ec20 |                                                                                                                                                                                                                                                            |
+|           |               |                                                                                                                                                                                                                                                            |
+|           | /------\      |                                                                                                                                                                                                                                                            |
+|           | | ens3 |      |                                                                                                                                                                                                                                                            |
+|           | \------/      |                                                                                                                                                                                                                                                            |
+|           \---------------/                                                                                                                                                                                                                                                            |
+\----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
 
 

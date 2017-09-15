@@ -4,11 +4,13 @@ This directory contains simple way how to benchmark xmr-stak-cpu using AWS.
 
 The idea is to create Ubuntu 16.04 instances of different types and let xmr-stack-cpu running there for 20 minutes. Then the Hashrate/second is collected and saved in [aws_benchmark.log](results/aws_benchmark.log) file together with details about CPU.
 
+
 ## Requirements
 * AWS access credentials (access keys / secret access key)
 * SSH key (private: ```~/.ssh/id_rsa``` public: ```~/.ssh/id_rsa.pub```)
 * [Terraform](https://www.terraform.io/)
 * [jq](https://stedolan.github.io/jq/)
+
 
 ## Benchmark description
 * [run.sh](run.sh) - main executable script where you should define variables like (vpc_id, subnet_id, pool, wallet, ...)
@@ -25,6 +27,7 @@ Once the instances are created the ```userdata.sh``` script is executed. It's do
 * Get details about CPU (```lscpu```, ```lstopo```) and run xmr-stak-cpu.
 
 The script [run.sh](run.sh) gets the details from provisioned instances and save them to [results/aws_benchmark.log](results/aws_benchmark.log).
+
 
 ## Example
 
@@ -188,4 +191,77 @@ data.aws_ami.ubuntu: Destroying... (ID: ami-xxxxxx)
 data.aws_ami.ubuntu: Destruction complete
 
 Destroy complete! Resources: 4 destroyed.
+```
+
+
+## Sample results
+
+```
+$ grep '\*\*\*' aws_benchmark.log
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.nano              | 125380     | 1       | 2760       | 44       44       | 84.4        | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.micro             | 89740      | 1       | 2130       | 35       35       | 83.2        | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.small             | 115150     | 1       | 2580       | 46       46       | 83          | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.medium            | 218030     | 2       | 4830       | 57       57       | 161.4       | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.large             | 291100     | 2       | 6240       | 50       50       | 167.8       | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.xlarge            | 373422     | 4       | 8220       | 45       45       | 335.6       | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** t2.2xlarge           | 474650     | 8       | 10740      | 43       43       | 420.7       | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.large             | 206760     | 2       | 4530       | 48       48       | 157         | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.xlarge            | 252830     | 4       | 5460       | 49       49       | 175.2       | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.2xlarge           | 581550     | 8       | 11940      | 49       49       | 441         | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.4xlarge           | 152230     | 13      | 3210       | 59       59       | 92.8        | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** c4.8xlarge           | 1615500    | 26      | 33060      | 72       72       | 1040.1      | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.large             | 245610     | 2       | 5070       | 59       59       | 143.3       | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.4xlarge           | 887410     | 16      | 19920      | 58       58       | 688.1       | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.10xlarge          | 90060      | 30      | 2000       | 45       45       | 67          | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** m4.16xlarge          | 1778530    | 46      | 40590      | 79       79       | 1437.8      | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.large             | 200540     | 2       | 4170       | 59       59       | 144         | 8         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.xlarge            | 435286     | 4       | 8940       | 65       65       | 277.8       | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.2xlarge           | 327410     | 8       | 7170       | 44       44       | 270         | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.4xlarge           | 832230     | 16      | 18060      | 65       65       | 623.7       | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r3.8xlarge           | 1059540    | 26      | 22320      | 71       71       | 991.9       | 7         | pool.supportxmr.com:443      |
+*********************************************************************************************************************************************
+| *** Type                 | Hashes     | Threads | Difficulty | Shares Good/Total | Total (H/s) | Ping (ms) | Pool                         |
+| *** r4.16xlarge          | 102650     | 46      | 2100       | 49       49       | 57.5        | 7         | pool.supportxmr.com:443      |
 ```
