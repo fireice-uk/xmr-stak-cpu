@@ -531,7 +531,9 @@ void minethd::double_work_main()
 			iCount += 2;
 
 			*piNonce0 = ++iNonce;
-			*piNonce1 = ++iNonce;
+            if (piNonce1 != nullptr) {
+                *piNonce1 = ++iNonce;
+            }
 
 			hash_fun(bDoubleWorkBlob, oWork.iWorkSize, bDoubleHashOut, ctx0, ctx1);
 
