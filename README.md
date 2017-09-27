@@ -99,7 +99,7 @@ Reference: http://rybkaforum.net/cgi-bin/rybkaforum/topic_show.pl?pid=259791#pid
 
 If you set up the user rights properly (see above), and your system has 4-8GB of RAM (50%+ use), there is a significant chance that there simply won't be a large enough chunk of contiguous memory because Windows is fairly bad at mitigating memory fragmentation.
 
-If that happens, disable all auto-staring applications and run the miner after a reboot.
+If that happens, disable all auto-starting applications and run the miner after a reboot.
 
 **msvcp140.dll and vcruntime140.dll not available errors**
 
