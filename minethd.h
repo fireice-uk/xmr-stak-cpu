@@ -121,6 +121,7 @@ private:
 	void work_main();
 	void double_work_main();
 	void consume_work();
+	uint32_t* prep_double_work(uint8_t bDoubleWorkBlob[sizeof(miner_work::bWorkBlob) * 2]);
 
 	static std::atomic<uint64_t> iGlobalJobNo;
 	static std::atomic<uint64_t> iConsumeCnt;
