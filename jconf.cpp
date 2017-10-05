@@ -47,7 +47,7 @@ using namespace rapidjson;
  */
 enum configEnum { aCpuThreadsConf, sUseSlowMem, bNiceHashMode, bAesOverride,
 	bTlsMode, bTlsSecureAlgo, sTlsFingerprint, sPoolAddr, sWalletAddr, sPoolPwd,
-	iCallTimeout, iNetRetry, iGiveUpLimit, iVerboseLevel, iAutohashTime,
+	iCallTimeout, iNetRetry, iGiveUpLimit, iVerboseLevel, iAutohashTime, bFlushStdout,
 	bDaemonMode, sOutputFile, iHttpdPort, bPreferIpv4 };
 
 struct configVal {
@@ -74,6 +74,7 @@ configVal oConfigValues[] = {
 	{ iGiveUpLimit, "giveup_limit", kNumberType },
 	{ iVerboseLevel, "verbose_level", kNumberType },
 	{ iAutohashTime, "h_print_time", kNumberType },
+	{ bFlushStdout, "flush_stdout", kTrueType},
 	{ bDaemonMode, "daemon_mode", kTrueType },
 	{ sOutputFile, "output_file", kStringType },
 	{ iHttpdPort, "httpd_port", kNumberType },
@@ -462,6 +463,17 @@ bool jconf::parse_config(const char* sFilename)
 
 	if(!bHaveAes)
 		printer::inst()->print_msg(L0, "Your CPU doesn't support hardware AES. Don't expect high hashrates.");
+
+	if (prv->configValues[bFlushStdout]->IsBool())
+	{
+		bool bflush = prv->configValues[bFlushStdout]->GetBool();
+		printer::inst()->set_flush_stdout(bflush);
+		if (bflush)
+		{
+			printer::inst()->print_msg(L0, "Flush stdout forced.");
+		}
+	}
+		
 
 	return true;
 }
