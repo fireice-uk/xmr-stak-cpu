@@ -34,7 +34,11 @@
 
 void thd_setaffinity(std::thread::native_handle_type h, uint64_t cpu_id)
 {
+#ifdef __MINGW64__
+	SetThreadAffinityMask(&h, 1ULL << cpu_id);
+#else
 	SetThreadAffinityMask(h, 1ULL << cpu_id);
+#endif // __MINGW64__
 }
 #else
 #include <pthread.h>
