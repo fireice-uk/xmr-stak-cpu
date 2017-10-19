@@ -2,7 +2,7 @@
 
 ## Install Dependencies
 
-*Note: This guide is tested for FreeBSD 11.0-RELEASE*
+*Note: This guide is tested for FreeBSD 11.0-RELEASE and 11.1-RELEASE*
 
 From the root shell, run the following commands:
 
