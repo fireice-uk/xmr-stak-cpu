@@ -13,3 +13,11 @@ config-debug.txt
 
 # merge original backup files
 *.orig
+
+# post-build junk
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+libxmr-stak-c.a
