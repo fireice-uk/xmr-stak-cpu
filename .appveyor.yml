@@ -1,5 +1,5 @@
 # image
-image: Visual Studio 2017
+image: Visual Studio 2015
 
 # build platform
 platform: x64
@@ -11,6 +11,7 @@ install:
   - mkdir c:\xmr-stak-dep
   - curl -sL https://github.com/fireice-uk/xmr-stak-dep/releases/download/v1/xmr-stak-dep.zip -o xmr-stak-dep.zip
   - 7z x xmr-stak-dep.zip -o"c:\xmr-stak-dep" -y > nul
+  - call "c:\xmr-stak\CI\appveyor\install_cuda.bat"
 
 build_script:
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsMSBuildCmd.bat"
@@ -18,10 +19,10 @@ build_script:
   - mkdir build
   - cd build
   - set CMAKE_PREFIX_PATH=C:\xmr-stak-dep\hwloc;C:\xmr-stak-dep\libmicrohttpd;C:\xmr-stak-dep\openssl;
-  - cmake -G "Visual Studio 15 2017 Win64" -T v140,host=x64 -DCUDA_ENABLE=OFF -DOpenCL_ENABLE=OFF ..
+  - cmake -G "Visual Studio 15 2017 Win64" -T v140,host=x64 .. -DWIN_UAC=OFF
   - cmake --build . --config Release --target install
 
 test_script:
   - cd c:\xmr-stak\build\bin\Release
   - dir
-#  - xmr-stak.exe
+  - xmr-stak.exe --help
