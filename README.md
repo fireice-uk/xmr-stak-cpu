@@ -2,6 +2,14 @@
 
 XMR-Stak is a universal Stratum pool miner. This is the CPU-mining version; there is also an [AMD GPU version](https://github.com/fireice-uk/xmr-stak-amd) and an [NVIDA GPU version](https://github.com/fireice-uk/xmr-stak-nvidia)
 
+## Usage
+
+0. Clone this repository
+1. Compile for [Free BSD](FREEBSDCOMPILE.md), [Linux](LINUXCOMPILE.md), [MacOS](MACOSCOMPILE.md), or [Windows](WINCOMPILE.md)
+2. Run `xmr-stak-cpu` once (in generated `bin` directory) to output some config hints for `cpu_threads_conf`
+3. Edit `config.txt` with given output (and eventually other configurations, specially your **pool configuration**)
+4. Run `xmr-stak-cpu` (on Windows: double-click)
+
 ## HTML reports
 <img src="https://gist.githubusercontent.com/fireice-uk/2da301131ac01695ff79539a27b81d68/raw/4c09cdeee86f94df2e9dd86b927e64aded6184f5/xmr-stak-cpu-hashrate.png" width="260"> <img src="https://gist.githubusercontent.com/fireice-uk/2da301131ac01695ff79539a27b81d68/raw/4c09cdeee86f94df2e9dd86b927e64aded6184f5/xmr-stak-cpu-results.png" width="260"> <img src="https://gist.githubusercontent.com/fireice-uk/2da301131ac01695ff79539a27b81d68/raw/4c09cdeee86f94df2e9dd86b927e64aded6184f5/xmr-stak-cpu-connection.png" width="260">
 
@@ -9,9 +17,9 @@ XMR-Stak is a universal Stratum pool miner. This is the CPU-mining version; ther
 
 To configure the reports shown above you need to edit the httpd_port variable. Then enable wifi on your phone and navigate to [miner ip address]:[httpd_port] in your phone browser. If you want to use the data in scripts, you can get the JSON version of the data at url [miner ip address]:[httpd_port]/api.json
 
-## Usage on Windows 
-1) Edit the config.txt file to enter your pool login and password. 
-2) Double click the exe file. 
+## Usage on Windows
+1) Edit the config.txt file to enter your pool login and password.
+2) Double click the exe file.
 
 XMR-Stak should compile on any C++11 compliant compiler.
 ```
@@ -44,14 +52,8 @@ uM+B10XY0g7Qv376UoJRYKokpVaBxF08nD+JXLdL+zfQvnEfKgrhTnjaTkWFfEY=
 =jpgE
 -----END PGP SIGNATURE-----
 ```
-## Compile guides
 
-- [Free BSD](FREEBSDCOMPILE.md)
-- [Linux](LINUXCOMPILE.md)
-- [Windows](WINCOMPILE.md)
-
-
-#### CPU mining performance 
+#### CPU mining performance
 
 Performance is nearly identical to the closed source paid miners. Here are some numbers:
 
@@ -115,9 +117,9 @@ ulimit -l. To do do this you need to add following lines to /etc/security/limits
 
     * soft memlock 262144
     * hard memlock 262144
-    
+
 Save file.  You WILL need to log out and log back in for these settings to take affect on your user (no need to reboot, just relogin in your session).
-   
+
 You can also do it Windows-style and simply run-as-root, but this is NOT recommended for security reasons.
 
 **Illegal instruction (core dumped)**
