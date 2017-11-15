@@ -150,7 +150,7 @@ void telemetry::push_perf_value(size_t iThd, uint64_t iHashCount, uint64_t iTime
 	iBucketTop[iThd] = (iTop + 1) & iBucketMask;
 }
 
-minethd::minethd(miner_work& pWork, size_t iNo, bool double_work, bool no_prefetch, int64_t affinity)
+minethd::minethd(miner_work& pWork, size_t iNo, int iMultiple, bool no_prefetch, int64_t affinity)
 {
 	oWork = pWork;
 	bQuit = 0;
@@ -162,10 +162,22 @@ minethd::minethd(miner_work& pWork, size_t iNo, bool double_work, bool no_prefet
 	this->affinity = affinity;
 
 	std::lock_guard<std::mutex> lock(work_thd_mtx);
-	if(double_work)
+	switch (iMultiple)
+	{
+	case 5:
+		oWorkThd = std::thread(&minethd::pent_work_main, this);
+		break;
+	case 4:
+		oWorkThd = std::thread(&minethd::quad_work_main, this);
+		break;
+	case 2:
 		oWorkThd = std::thread(&minethd::double_work_main, this);
-	else
+		break;
+	case 1:
+	default:
 		oWorkThd = std::thread(&minethd::work_main, this);
+		break;
+	}
 }
 
 std::atomic<uint64_t> minethd::iGlobalJobNo;
@@ -247,42 +259,60 @@ bool minethd::self_test()
 	if(res == 0 && fatal)
 		return false;
 
-	cryptonight_ctx *ctx0, *ctx1;
-	if((ctx0 = minethd_alloc_ctx()) == nullptr)
-		return false;
-
-	if((ctx1 = minethd_alloc_ctx()) == nullptr)
+	cryptonight_ctx *ctx[5] = {0};
+	for (int i = 0; i < 5; i++)
 	{
-		cryptonight_free_ctx(ctx0);
-		return false;
+		if ((ctx[i] = minethd_alloc_ctx()) == nullptr)
+		{
+			for (int j = 0; j < i; j++)
+				cryptonight_free_ctx(ctx[j]);
+			return false;
+		}
 	}
 
-	unsigned char out[64];
+	unsigned char out[160];
 	bool bResult;
 
 	cn_hash_fun hashf;
 	cn_hash_fun_dbl hashdf;
+	cn_hash_fun_quad hashqf;
+	cn_hash_fun_pent hashpf;
 
 	hashf = func_selector(jconf::inst()->HaveHardwareAes(), false);
-	hashf("This is a test", 14, out, ctx0);
+	hashf("This is a test", 14, out, ctx[0]);
 	bResult = memcmp(out, "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05", 32) == 0;
 
 	hashf = func_selector(jconf::inst()->HaveHardwareAes(), true);
-	hashf("This is a test", 14, out, ctx0);
+	hashf("This is a test", 14, out, ctx[0]);
 	bResult &= memcmp(out, "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05", 32) == 0;
 
 	hashdf = func_dbl_selector(jconf::inst()->HaveHardwareAes(), false);
-	hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx0, ctx1);
+	hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx[0], ctx[1]);
 	bResult &= memcmp(out, "\x3e\xbb\x7f\x9f\x7d\x27\x3d\x7c\x31\x8d\x86\x94\x77\x55\x0c\xc8\x00\xcf\xb1\x1b\x0c\xad\xb7\xff\xbd\xf6\xf8\x9f\x3a\x47\x1c\x59"
 		                   "\xb4\x77\xd5\x02\xe4\xd8\x48\x7f\x42\xdf\xe3\x8e\xed\x73\x81\x7a\xda\x91\xb7\xe2\x63\xd2\x91\x71\xb6\x5c\x44\x3a\x01\x2a\x41\x22", 64) == 0;
 
 	hashdf = func_dbl_selector(jconf::inst()->HaveHardwareAes(), true);
-	hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx0, ctx1);
+	hashdf("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy log", 43, out, ctx[0], ctx[1]);
 	bResult &= memcmp(out, "\x3e\xbb\x7f\x9f\x7d\x27\x3d\x7c\x31\x8d\x86\x94\x77\x55\x0c\xc8\x00\xcf\xb1\x1b\x0c\xad\xb7\xff\xbd\xf6\xf8\x9f\x3a\x47\x1c\x59"
 		                   "\xb4\x77\xd5\x02\xe4\xd8\x48\x7f\x42\xdf\xe3\x8e\xed\x73\x81\x7a\xda\x91\xb7\xe2\x63\xd2\x91\x71\xb6\x5c\x44\x3a\x01\x2a\x41\x22", 64) == 0;
 
-	cryptonight_free_ctx(ctx0);
-	cryptonight_free_ctx(ctx1);
+	hashqf = func_quad_selector(jconf::inst()->HaveHardwareAes(), false);
+	hashqf("This is a testThis is a testThis is a testThis is a test", 14, out, ctx);
+	bResult &= memcmp(out, "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05", 128) == 0;
+
+	hashqf = func_pent_selector(jconf::inst()->HaveHardwareAes(), false);
+	hashqf("This is a testThis is a testThis is a testThis is a testThis is a test", 14, out, ctx);
+	bResult &= memcmp(out, "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05"
+		                   "\xa0\x84\xf0\x1d\x14\x37\xa0\x9c\x69\x85\x40\x1b\x60\xd4\x35\x54\xae\x10\x58\x02\xc5\xf5\xd8\xa9\xb3\x25\x36\x49\xc0\xbe\x66\x05", 160) == 0;
+
+	for (int i = 0; i < 5; i++)
+		cryptonight_free_ctx(ctx[i]);
 
 	if(!bResult)
 		printer::inst()->print_msg(L0,
@@ -307,13 +337,14 @@ std::vector<minethd*>* minethd::thread_starter(miner_work& pWork)
 	{
 		jconf::inst()->GetThreadConfig(i, cfg);
 
-		minethd* thd = new minethd(pWork, i, cfg.bDoubleMode, cfg.bNoPrefetch, cfg.iCpuAff);
+		minethd* thd = new minethd(pWork, i, cfg.iMultiple, cfg.bNoPrefetch, cfg.iCpuAff);
+
 		pvThreads->push_back(thd);
 
 		if(cfg.iCpuAff >= 0)
-			printer::inst()->print_msg(L1, "Starting %s thread, affinity: %d.", cfg.bDoubleMode ? "double" : "single", (int)cfg.iCpuAff);
+			printer::inst()->print_msg(L1, "Starting %dx thread, affinity: %d.", cfg.iMultiple, (int)cfg.iCpuAff);
 		else
-			printer::inst()->print_msg(L1, "Starting %s thread, no affinity.", cfg.bDoubleMode ? "double" : "single");
+			printer::inst()->print_msg(L1, "Starting %dx thread, no affinity.", cfg.iMultiple);
 	}
 
 	iThreadCount = n;
@@ -473,6 +504,48 @@ uint32_t* minethd::prep_double_work(uint8_t bDoubleWorkBlob[sizeof(miner_work::b
 	return (uint32_t*)(bDoubleWorkBlob + oWork.iWorkSize + 39);
 }
 
+minethd::cn_hash_fun_quad minethd::func_quad_selector(bool bHaveAes, bool bNoPrefetch)
+{
+	// We have two independent flag bits in the functions
+	// therefore we will build a binary digit and select the
+	// function as a two digit binary
+	// Digit order SOFT_AES, NO_PREFETCH
+
+	static const cn_hash_fun_quad func_table[4] = {
+		cryptonight_quad_hash<0x80000, MEMORY, false, false>,
+		cryptonight_quad_hash<0x80000, MEMORY, false, true>,
+		cryptonight_quad_hash<0x80000, MEMORY, true, false>,
+		cryptonight_quad_hash<0x80000, MEMORY, true, true>
+	};
+
+	std::bitset<2> digit;
+	digit.set(0, !bNoPrefetch);
+	digit.set(1, !bHaveAes);
+
+	return func_table[digit.to_ulong()];
+}
+
+minethd::cn_hash_fun_pent minethd::func_pent_selector(bool bHaveAes, bool bNoPrefetch)
+{
+	// We have two independent flag bits in the functions
+	// therefore we will build a binary digit and select the
+	// function as a two digit binary
+	// Digit order SOFT_AES, NO_PREFETCH
+
+	static const cn_hash_fun_pent func_table[4] = {
+		cryptonight_pent_hash<0x80000, MEMORY, false, false>,
+		cryptonight_pent_hash<0x80000, MEMORY, false, true>,
+		cryptonight_pent_hash<0x80000, MEMORY, true, false>,
+		cryptonight_pent_hash<0x80000, MEMORY, true, true>
+	};
+
+	std::bitset<2> digit;
+	digit.set(0, !bNoPrefetch);
+	digit.set(1, !bHaveAes);
+
+	return func_table[digit.to_ulong()];
+}
+
 void minethd::double_work_main()
 {
 	if(affinity >= 0) //-1 means no affinity
@@ -559,4 +632,222 @@ void minethd::double_work_main()
 
 	cryptonight_free_ctx(ctx0);
 	cryptonight_free_ctx(ctx1);
+}
+
+void minethd::quad_work_main()
+{
+	cn_hash_fun_quad hash_fun;
+	cryptonight_ctx *ctx[4];
+	uint64_t iCount = 0;
+	uint64_t *piHashVal0, *piHashVal1, *piHashVal2, *piHashVal3;
+	uint32_t *piNonce0, *piNonce1, *piNonce2, *piNonce3;
+	uint8_t bQuadHashOut[128];
+	uint8_t	bQuadWorkBlob[sizeof(miner_work::bWorkBlob) * 4];
+	uint32_t iNonce;
+	job_result res;
+
+	hash_fun = func_quad_selector(jconf::inst()->HaveHardwareAes(), bNoPrefetch);
+	for (int i = 0; i < 4; i++)
+		ctx[i] = minethd_alloc_ctx();
+
+	piHashVal0 = (uint64_t*)(bQuadHashOut + 24);
+	piHashVal1 = (uint64_t*)(bQuadHashOut + 32 + 24);
+	piHashVal2 = (uint64_t*)(bQuadHashOut + 64 + 24);
+	piHashVal3 = (uint64_t*)(bQuadHashOut + 96 + 24);
+	piNonce0 = (uint32_t*)(bQuadWorkBlob + 39);
+	piNonce1 = nullptr;
+	piNonce2 = nullptr;
+	piNonce3 = nullptr;
+
+	iConsumeCnt++;
+
+	while (bQuit == 0)
+	{
+		if (oWork.bStall)
+		{
+			/*	We are stalled here because the executor didn't find a job for us yet,
+			either because of network latency, or a socket problem. Since we are
+			raison d'etre of this software it us sensible to just wait until we have something*/
+
+			while (iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
+				std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+			consume_work();
+			memcpy(bQuadWorkBlob, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bQuadWorkBlob + oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bQuadWorkBlob + oWork.iWorkSize * 2, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bQuadWorkBlob + oWork.iWorkSize * 3, oWork.bWorkBlob, oWork.iWorkSize);
+			piNonce1 = (uint32_t*)(bQuadWorkBlob + oWork.iWorkSize + 39);
+			piNonce2 = (uint32_t*)(bQuadWorkBlob + oWork.iWorkSize*2 + 39);
+			piNonce3 = (uint32_t*)(bQuadWorkBlob + oWork.iWorkSize*3 + 39);
+			continue;
+		}
+
+		if(oWork.bNiceHash)
+			iNonce = calc_nicehash_nonce(*piNonce0, oWork.iResumeCnt);
+		else
+			iNonce = calc_start_nonce(oWork.iResumeCnt);
+
+		assert(sizeof(job_result::sJobID) == sizeof(pool_job::sJobID));
+
+		while (iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
+		{
+			if ((iCount & 0x7) == 0) //Store stats every 32 hashes
+			{
+				using namespace std::chrono;
+				uint64_t iStamp = time_point_cast<milliseconds>(high_resolution_clock::now()).time_since_epoch().count();
+				iHashCount.store(iCount, std::memory_order_relaxed);
+				iTimestamp.store(iStamp, std::memory_order_relaxed);
+			}
+
+			iCount += 4;
+
+			*piNonce0 = ++iNonce;
+			if (piNonce1) *piNonce1 = ++iNonce;
+			if (piNonce2) *piNonce2 = ++iNonce;
+			if (piNonce3) *piNonce3 = ++iNonce;
+
+			hash_fun(bQuadWorkBlob, oWork.iWorkSize, bQuadHashOut, ctx);
+
+			if (*piHashVal0 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-3, bQuadHashOut), oWork.iPoolId));
+
+			if (*piHashVal1 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-2, bQuadHashOut + 32), oWork.iPoolId));
+
+			if (*piHashVal2 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-1, bQuadHashOut + 64), oWork.iPoolId));
+
+			if (*piHashVal3 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce, bQuadHashOut + 96), oWork.iPoolId));
+
+			std::this_thread::yield();
+		}
+
+		consume_work();
+		memcpy(bQuadWorkBlob, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bQuadWorkBlob + oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bQuadWorkBlob + oWork.iWorkSize * 2, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bQuadWorkBlob + oWork.iWorkSize * 3, oWork.bWorkBlob, oWork.iWorkSize);
+		piNonce1 = (uint32_t*)(bQuadWorkBlob + oWork.iWorkSize + 39);
+		piNonce2 = (uint32_t*)(bQuadWorkBlob + oWork.iWorkSize*2 + 39);
+		piNonce3 = (uint32_t*)(bQuadWorkBlob + oWork.iWorkSize*3 + 39);
+	}
+
+	for (int i = 0; i < 4; i++)
+		cryptonight_free_ctx(ctx[i]);
+}
+
+void minethd::pent_work_main()
+{
+	cn_hash_fun_pent hash_fun;
+	cryptonight_ctx *ctx[5];
+	uint64_t iCount = 0;
+	uint64_t *piHashVal0, *piHashVal1, *piHashVal2, *piHashVal3, *piHashVal4;
+	uint32_t *piNonce0, *piNonce1, *piNonce2, *piNonce3, *piNonce4;
+	uint8_t bPentHashOut[160];
+	uint8_t	bPentWorkBlob[sizeof(miner_work::bWorkBlob) * 5];
+	uint32_t iNonce;
+	job_result res;
+
+	hash_fun = func_pent_selector(jconf::inst()->HaveHardwareAes(), bNoPrefetch);
+	for (int i = 0; i < 5; i++)
+		ctx[i] = minethd_alloc_ctx();
+
+	piHashVal0 = (uint64_t*)(bPentHashOut + 24);
+	piHashVal1 = (uint64_t*)(bPentHashOut + 32 + 24);
+	piHashVal2 = (uint64_t*)(bPentHashOut + 64 + 24);
+	piHashVal3 = (uint64_t*)(bPentHashOut + 96 + 24);
+	piHashVal4 = (uint64_t*)(bPentHashOut + 128 + 24);
+	piNonce0 = (uint32_t*)(bPentWorkBlob + 39);
+	piNonce1 = nullptr;
+	piNonce2 = nullptr;
+	piNonce3 = nullptr;
+	piNonce4 = nullptr;
+
+	iConsumeCnt++;
+
+	while (bQuit == 0)
+	{
+		if (oWork.bStall)
+		{
+			/*	We are stalled here because the executor didn't find a job for us yet,
+			either because of network latency, or a socket problem. Since we are
+			raison d'etre of this software it us sensible to just wait until we have something*/
+
+			while (iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
+				std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+			consume_work();
+			memcpy(bPentWorkBlob, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bPentWorkBlob + oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bPentWorkBlob + oWork.iWorkSize * 2, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bPentWorkBlob + oWork.iWorkSize * 3, oWork.bWorkBlob, oWork.iWorkSize);
+			memcpy(bPentWorkBlob + oWork.iWorkSize * 4, oWork.bWorkBlob, oWork.iWorkSize);
+			piNonce1 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize + 39);
+			piNonce2 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize*2 + 39);
+			piNonce3 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize*3 + 39);
+			piNonce4 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize*4 + 39);
+			continue;
+		}
+
+		if(oWork.bNiceHash)
+			iNonce = calc_nicehash_nonce(*piNonce0, oWork.iResumeCnt);
+		else
+			iNonce = calc_start_nonce(oWork.iResumeCnt);
+
+		assert(sizeof(job_result::sJobID) == sizeof(pool_job::sJobID));
+
+		while (iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
+		{
+			if ((iCount & 0x3) == 0)  //Store stats every 5*4 = 20 hashes
+			{
+				using namespace std::chrono;
+				uint64_t iStamp = time_point_cast<milliseconds>(high_resolution_clock::now()).time_since_epoch().count();
+				iHashCount.store(iCount, std::memory_order_relaxed);
+				iTimestamp.store(iStamp, std::memory_order_relaxed);
+			}
+
+			iCount += 5;
+
+			*piNonce0 = ++iNonce;
+			if (piNonce1) *piNonce1 = ++iNonce;
+			if (piNonce2) *piNonce2 = ++iNonce;
+			if (piNonce3) *piNonce3 = ++iNonce;
+			if (piNonce4) *piNonce4 = ++iNonce;
+
+			hash_fun(bPentWorkBlob, oWork.iWorkSize, bPentHashOut, ctx);
+
+			if (*piHashVal0 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-4, bPentHashOut), oWork.iPoolId));
+
+			if (*piHashVal1 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-3, bPentHashOut + 32), oWork.iPoolId));
+
+			if (*piHashVal2 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-2, bPentHashOut + 64), oWork.iPoolId));
+
+			if (*piHashVal3 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-1, bPentHashOut + 96), oWork.iPoolId));
+
+			if (*piHashVal4 < oWork.iTarget)
+				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce, bPentHashOut + 128), oWork.iPoolId));
+
+			std::this_thread::yield();
+		}
+
+		consume_work();
+		memcpy(bPentWorkBlob, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bPentWorkBlob + oWork.iWorkSize, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bPentWorkBlob + oWork.iWorkSize * 2, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bPentWorkBlob + oWork.iWorkSize * 3, oWork.bWorkBlob, oWork.iWorkSize);
+		memcpy(bPentWorkBlob + oWork.iWorkSize * 4, oWork.bWorkBlob, oWork.iWorkSize);
+		piNonce1 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize + 39);
+		piNonce2 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize*2 + 39);
+		piNonce3 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize*3 + 39);
+		piNonce4 = (uint32_t*)(bPentWorkBlob + oWork.iWorkSize*4 + 39);
+	}
+
+	for (int i = 0; i < 5; i++)
+		cryptonight_free_ctx(ctx[i]);
 }

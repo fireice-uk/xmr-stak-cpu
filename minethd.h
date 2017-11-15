@@ -101,8 +101,10 @@ public:
 private:
 	typedef void (*cn_hash_fun)(const void*, size_t, void*, cryptonight_ctx*);
 	typedef void (*cn_hash_fun_dbl)(const void*, size_t, void*, cryptonight_ctx* __restrict, cryptonight_ctx* __restrict);
+	typedef void (*cn_hash_fun_quad)(const void*, size_t, void*, cryptonight_ctx* __restrict [4]);
+	typedef void (*cn_hash_fun_pent)(const void*, size_t, void*, cryptonight_ctx* __restrict [5]);
 
-	minethd(miner_work& pWork, size_t iNo, bool double_work, bool no_prefetch, int64_t affinity);
+	minethd(miner_work& pWork, size_t iNo, int iMultiple, bool no_prefetch, int64_t affinity);
 
 	// We use the top 10 bits of the nonce for thread and resume
 	// This allows us to resume up to 128 threads 4 times before
@@ -117,9 +119,13 @@ private:
 
 	static cn_hash_fun func_selector(bool bHaveAes, bool bNoPrefetch);
 	static cn_hash_fun_dbl func_dbl_selector(bool bHaveAes, bool bNoPrefetch);
+	static cn_hash_fun_quad func_quad_selector(bool bHaveAes, bool bNoPrefetch);
+	static cn_hash_fun_pent func_pent_selector(bool bHaveAes, bool bNoPrefetch);
 
 	void work_main();
 	void double_work_main();
+	void quad_work_main();
+	void pent_work_main();
 	void consume_work();
 	uint32_t* prep_double_work(uint8_t bDoubleWorkBlob[sizeof(miner_work::bWorkBlob) * 2]);
 
