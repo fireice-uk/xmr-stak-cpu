@@ -481,7 +481,10 @@ inline const char* hps_format(double h, char* buf, size_t l)
 {
 	if(std::isnormal(h) || h == 0.0)
 	{
-		snprintf(buf, l, " %03.1f", h);
+                if(h < 10.0)
+		    snprintf(buf, l, "  %03.1f", h);
+                else
+		    snprintf(buf, l, " %04.1f", h);
 		return buf;
 	}
 	else
