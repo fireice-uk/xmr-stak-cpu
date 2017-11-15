@@ -2,7 +2,8 @@
  * Thread configuration for each thread. Make sure it matches the number above.
  * low_power_mode - This mode will double the cache usage, and double the single thread performance. It will 
  *                  consume much less power (as less cores are working), but will max out at around 80-85% of 
- *                  the maximum performance.
+ *                  the maximum performance. Also one may set this to 4 or 5 to do 4 or 5 hashes at the same 
+ *                  time. This may improve performance on certain systems.
  *
  * no_prefetch -    Some sytems can gain up to extra 5% here, but sometimes it will have no difference or make
  *                  things slower.
