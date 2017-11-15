@@ -455,3 +455,523 @@ void cryptonight_double_hash(const void* input, size_t len, void* output, crypto
 	keccakf((uint64_t*)ctx1->hash_state, 24);
 	extra_hashes[ctx1->hash_state[0] & 3](ctx1->hash_state, 200, (char*)output + 32);
 }
+
+// This lovelier creation will do 4 cn hashes at a time.
+template<size_t ITERATIONS, size_t MEM, bool SOFT_AES, bool PREFETCH>
+void cryptonight_quad_hash(const void* input, size_t len, void* output, cryptonight_ctx* __restrict ctx[4])
+{
+	keccak((const uint8_t *)input,       len, ctx[0]->hash_state, 200);
+	keccak((const uint8_t *)input+len,   len, ctx[1]->hash_state, 200);
+	keccak((const uint8_t *)input+len*2, len, ctx[2]->hash_state, 200);
+	keccak((const uint8_t *)input+len*3, len, ctx[3]->hash_state, 200);
+
+	// Optim - 99% time boundary
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[0]->hash_state, (__m128i*)ctx[0]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[1]->hash_state, (__m128i*)ctx[1]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[2]->hash_state, (__m128i*)ctx[2]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[3]->hash_state, (__m128i*)ctx[3]->long_state);
+
+	uint8_t* l0 = ctx[0]->long_state;
+	uint64_t* h0 = (uint64_t*)ctx[0]->hash_state;
+	uint8_t* l1 = ctx[1]->long_state;
+	uint64_t* h1 = (uint64_t*)ctx[1]->hash_state;
+	uint8_t* l2 = ctx[2]->long_state;
+	uint64_t* h2 = (uint64_t*)ctx[2]->hash_state;
+	uint8_t* l3 = ctx[3]->long_state;
+	uint64_t* h3 = (uint64_t*)ctx[3]->hash_state;
+
+	__m128i ax0 = _mm_set_epi64x(h0[1] ^ h0[5], h0[0] ^ h0[4]);
+	__m128i bx0 = _mm_set_epi64x(h0[3] ^ h0[7], h0[2] ^ h0[6]);
+	__m128i ax1 = _mm_set_epi64x(h1[1] ^ h1[5], h1[0] ^ h1[4]);
+	__m128i bx1 = _mm_set_epi64x(h1[3] ^ h1[7], h1[2] ^ h1[6]);
+	__m128i ax2 = _mm_set_epi64x(h2[1] ^ h2[5], h2[0] ^ h2[4]);
+	__m128i bx2 = _mm_set_epi64x(h2[3] ^ h2[7], h2[2] ^ h2[6]);
+	__m128i ax3 = _mm_set_epi64x(h3[1] ^ h3[5], h3[0] ^ h3[4]);
+	__m128i bx3 = _mm_set_epi64x(h3[3] ^ h3[7], h3[2] ^ h3[6]);
+	__m128i cx0, cx1, cx2, cx3;
+
+	uint64_t idx0 = h0[0] ^ h0[4];
+	uint64_t idx1 = h1[0] ^ h1[4];
+	uint64_t idx2 = h2[0] ^ h2[4];
+	uint64_t idx3 = h3[0] ^ h3[4];
+	uint64_t hi, lo;
+
+	// Optim - 90% time boundary
+	__m128i *ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+	__m128i *ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+	__m128i *ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+	__m128i *ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+	for (size_t i = 0; i < ITERATIONS/2; i++)
+	{
+		// EVEN ROUND
+		cx0 = _mm_load_si128(ptr0);
+		cx1 = _mm_load_si128(ptr1);
+		cx2 = _mm_load_si128(ptr2);
+		cx3 = _mm_load_si128(ptr3);
+
+		if(SOFT_AES)
+		{
+			cx0 = soft_aesenc(cx0, ax0);
+			cx1 = soft_aesenc(cx1, ax1);
+			cx2 = soft_aesenc(cx2, ax2);
+			cx3 = soft_aesenc(cx3, ax3);
+		}
+		else
+		{
+			cx0 = _mm_aesenc_si128(cx0, ax0);
+			cx1 = _mm_aesenc_si128(cx1, ax1);
+			cx2 = _mm_aesenc_si128(cx2, ax2);
+			cx3 = _mm_aesenc_si128(cx3, ax3);
+		}
+
+		_mm_store_si128(ptr0, _mm_xor_si128(bx0, cx0));
+		_mm_store_si128(ptr1, _mm_xor_si128(bx1, cx1));
+		_mm_store_si128(ptr2, _mm_xor_si128(bx2, cx2));
+		_mm_store_si128(ptr3, _mm_xor_si128(bx3, cx3));
+
+		idx0 = _mm_cvtsi128_si64(cx0);
+		idx1 = _mm_cvtsi128_si64(cx1);
+		idx2 = _mm_cvtsi128_si64(cx2);
+		idx3 = _mm_cvtsi128_si64(cx3);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+		}
+
+		bx0 = _mm_load_si128(ptr0);
+		bx1 = _mm_load_si128(ptr1);
+		bx2 = _mm_load_si128(ptr2);
+		bx3 = _mm_load_si128(ptr3);
+
+		lo = _umul128(idx0, _mm_cvtsi128_si64(bx0), &hi);
+		ax0 = _mm_add_epi64(ax0, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr0, ax0);
+
+		lo = _umul128(idx1, _mm_cvtsi128_si64(bx1), &hi);
+		ax1 = _mm_add_epi64(ax1, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr1, ax1);
+
+		lo = _umul128(idx2, _mm_cvtsi128_si64(bx2), &hi);
+		ax2 = _mm_add_epi64(ax2, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr2, ax2);
+
+		lo = _umul128(idx3, _mm_cvtsi128_si64(bx3), &hi);
+		ax3 = _mm_add_epi64(ax3, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr3, ax3);
+
+		ax0 = _mm_xor_si128(ax0, bx0);
+		ax1 = _mm_xor_si128(ax1, bx1);
+		ax2 = _mm_xor_si128(ax2, bx2);
+		ax3 = _mm_xor_si128(ax3, bx3);
+
+		idx0 = _mm_cvtsi128_si64(ax0);
+		idx1 = _mm_cvtsi128_si64(ax1);
+		idx2 = _mm_cvtsi128_si64(ax2);
+		idx3 = _mm_cvtsi128_si64(ax3);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+		}
+
+		// ODD ROUND
+		bx0 = _mm_load_si128(ptr0);
+		bx1 = _mm_load_si128(ptr1);
+		bx2 = _mm_load_si128(ptr2);
+		bx3 = _mm_load_si128(ptr3);
+
+		if(SOFT_AES)
+		{
+			bx0 = soft_aesenc(bx0, ax0);
+			bx1 = soft_aesenc(bx1, ax1);
+			bx2 = soft_aesenc(bx2, ax2);
+			bx3 = soft_aesenc(bx3, ax3);
+		}
+		else
+		{
+			bx0 = _mm_aesenc_si128(bx0, ax0);
+			bx1 = _mm_aesenc_si128(bx1, ax1);
+			bx2 = _mm_aesenc_si128(bx2, ax2);
+			bx3 = _mm_aesenc_si128(bx3, ax3);
+		}
+
+		_mm_store_si128(ptr0, _mm_xor_si128(bx0, cx0));
+		_mm_store_si128(ptr1, _mm_xor_si128(bx1, cx1));
+		_mm_store_si128(ptr2, _mm_xor_si128(bx2, cx2));
+		_mm_store_si128(ptr3, _mm_xor_si128(bx3, cx3));
+
+		idx0 = _mm_cvtsi128_si64(bx0);
+		idx1 = _mm_cvtsi128_si64(bx1);
+		idx2 = _mm_cvtsi128_si64(bx2);
+		idx3 = _mm_cvtsi128_si64(bx3);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+		}
+
+		cx0 = _mm_load_si128(ptr0);
+		cx1 = _mm_load_si128(ptr1);
+		cx2 = _mm_load_si128(ptr2);
+		cx3 = _mm_load_si128(ptr3);
+
+		lo = _umul128(idx0, _mm_cvtsi128_si64(cx0), &hi);
+		ax0 = _mm_add_epi64(ax0, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr0, ax0);
+
+		lo = _umul128(idx1, _mm_cvtsi128_si64(cx1), &hi);
+		ax1 = _mm_add_epi64(ax1, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr1, ax1);
+
+		lo = _umul128(idx2, _mm_cvtsi128_si64(cx2), &hi);
+		ax2 = _mm_add_epi64(ax2, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr2, ax2);
+
+		lo = _umul128(idx3, _mm_cvtsi128_si64(cx3), &hi);
+		ax3 = _mm_add_epi64(ax3, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr3, ax3);
+
+		ax0 = _mm_xor_si128(ax0, cx0);
+		ax1 = _mm_xor_si128(ax1, cx1);
+		ax2 = _mm_xor_si128(ax2, cx2);
+		ax3 = _mm_xor_si128(ax3, cx3);
+
+		idx0 = _mm_cvtsi128_si64(ax0);
+		idx1 = _mm_cvtsi128_si64(ax1);
+		idx2 = _mm_cvtsi128_si64(ax2);
+		idx3 = _mm_cvtsi128_si64(ax3);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+		}
+	}
+
+	// Optim - 90% time boundary
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[0]->long_state, (__m128i*)ctx[0]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[1]->long_state, (__m128i*)ctx[1]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[2]->long_state, (__m128i*)ctx[2]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[3]->long_state, (__m128i*)ctx[3]->hash_state);
+
+	// Optim - 99% time boundary
+
+	keccakf((uint64_t*)ctx[0]->hash_state, 24);
+	extra_hashes[ctx[0]->hash_state[0] & 3](ctx[0]->hash_state, 200, (char*)output);
+	keccakf((uint64_t*)ctx[1]->hash_state, 24);
+	extra_hashes[ctx[1]->hash_state[0] & 3](ctx[1]->hash_state, 200, (char*)output + 32);
+	keccakf((uint64_t*)ctx[2]->hash_state, 24);
+	extra_hashes[ctx[2]->hash_state[0] & 3](ctx[2]->hash_state, 200, (char*)output + 64);
+	keccakf((uint64_t*)ctx[3]->hash_state, 24);
+	extra_hashes[ctx[3]->hash_state[0] & 3](ctx[3]->hash_state, 200, (char*)output + 96);
+}
+
+
+// This even lovelier creation will do 5 cn hashes at a time.
+template<size_t ITERATIONS, size_t MEM, bool SOFT_AES, bool PREFETCH>
+void cryptonight_pent_hash(const void* input, size_t len, void* output, cryptonight_ctx* __restrict ctx[5])
+{
+	keccak((const uint8_t *)input,       len, ctx[0]->hash_state, 200);
+	keccak((const uint8_t *)input+len,   len, ctx[1]->hash_state, 200);
+	keccak((const uint8_t *)input+len*2, len, ctx[2]->hash_state, 200);
+	keccak((const uint8_t *)input+len*3, len, ctx[3]->hash_state, 200);
+	keccak((const uint8_t *)input+len*4, len, ctx[4]->hash_state, 200);
+
+	// Optim - 99% time boundary
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[0]->hash_state, (__m128i*)ctx[0]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[1]->hash_state, (__m128i*)ctx[1]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[2]->hash_state, (__m128i*)ctx[2]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[3]->hash_state, (__m128i*)ctx[3]->long_state);
+	cn_explode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[4]->hash_state, (__m128i*)ctx[4]->long_state);
+
+	uint8_t* l0 = ctx[0]->long_state;
+	uint64_t* h0 = (uint64_t*)ctx[0]->hash_state;
+	uint8_t* l1 = ctx[1]->long_state;
+	uint64_t* h1 = (uint64_t*)ctx[1]->hash_state;
+	uint8_t* l2 = ctx[2]->long_state;
+	uint64_t* h2 = (uint64_t*)ctx[2]->hash_state;
+	uint8_t* l3 = ctx[3]->long_state;
+	uint64_t* h3 = (uint64_t*)ctx[3]->hash_state;
+	uint8_t* l4 = ctx[4]->long_state;
+	uint64_t* h4 = (uint64_t*)ctx[4]->hash_state;
+
+	__m128i ax0 = _mm_set_epi64x(h0[1] ^ h0[5], h0[0] ^ h0[4]);
+	__m128i bx0 = _mm_set_epi64x(h0[3] ^ h0[7], h0[2] ^ h0[6]);
+	__m128i ax1 = _mm_set_epi64x(h1[1] ^ h1[5], h1[0] ^ h1[4]);
+	__m128i bx1 = _mm_set_epi64x(h1[3] ^ h1[7], h1[2] ^ h1[6]);
+	__m128i ax2 = _mm_set_epi64x(h2[1] ^ h2[5], h2[0] ^ h2[4]);
+	__m128i bx2 = _mm_set_epi64x(h2[3] ^ h2[7], h2[2] ^ h2[6]);
+	__m128i ax3 = _mm_set_epi64x(h3[1] ^ h3[5], h3[0] ^ h3[4]);
+	__m128i bx3 = _mm_set_epi64x(h3[3] ^ h3[7], h3[2] ^ h3[6]);
+	__m128i ax4 = _mm_set_epi64x(h4[1] ^ h4[5], h4[0] ^ h4[4]);
+	__m128i bx4 = _mm_set_epi64x(h4[3] ^ h4[7], h4[2] ^ h4[6]);
+	__m128i cx0, cx1, cx2, cx3, cx4;
+
+	uint64_t idx0 = h0[0] ^ h0[4];
+	uint64_t idx1 = h1[0] ^ h1[4];
+	uint64_t idx2 = h2[0] ^ h2[4];
+	uint64_t idx3 = h3[0] ^ h3[4];
+	uint64_t idx4 = h4[0] ^ h4[4];
+	uint64_t hi, lo;
+
+	// Optim - 90% time boundary
+	__m128i *ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+	__m128i *ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+	__m128i *ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+	__m128i *ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+	__m128i *ptr4 = (__m128i *)&l4[idx4 & 0x1FFFF0];
+	for (size_t i = 0; i < ITERATIONS/2; i++)
+	{
+		// EVEN ROUND
+		cx0 = _mm_load_si128(ptr0);
+		cx1 = _mm_load_si128(ptr1);
+		cx2 = _mm_load_si128(ptr2);
+		cx3 = _mm_load_si128(ptr3);
+		cx4 = _mm_load_si128(ptr4);
+
+		if(SOFT_AES)
+		{
+			cx0 = soft_aesenc(cx0, ax0);
+			cx1 = soft_aesenc(cx1, ax1);
+			cx2 = soft_aesenc(cx2, ax2);
+			cx3 = soft_aesenc(cx3, ax3);
+			cx4 = soft_aesenc(cx4, ax4);
+		}
+		else
+		{
+			cx0 = _mm_aesenc_si128(cx0, ax0);
+			cx1 = _mm_aesenc_si128(cx1, ax1);
+			cx2 = _mm_aesenc_si128(cx2, ax2);
+			cx3 = _mm_aesenc_si128(cx3, ax3);
+			cx4 = _mm_aesenc_si128(cx4, ax4);
+		}
+
+		_mm_store_si128(ptr0, _mm_xor_si128(bx0, cx0));
+		_mm_store_si128(ptr1, _mm_xor_si128(bx1, cx1));
+		_mm_store_si128(ptr2, _mm_xor_si128(bx2, cx2));
+		_mm_store_si128(ptr3, _mm_xor_si128(bx3, cx3));
+		_mm_store_si128(ptr4, _mm_xor_si128(bx4, cx4));
+
+		idx0 = _mm_cvtsi128_si64(cx0);
+		idx1 = _mm_cvtsi128_si64(cx1);
+		idx2 = _mm_cvtsi128_si64(cx2);
+		idx3 = _mm_cvtsi128_si64(cx3);
+		idx4 = _mm_cvtsi128_si64(cx4);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		ptr4 = (__m128i *)&l4[idx4 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr4, _MM_HINT_T0);
+		}
+
+		bx0 = _mm_load_si128(ptr0);
+		bx1 = _mm_load_si128(ptr1);
+		bx2 = _mm_load_si128(ptr2);
+		bx3 = _mm_load_si128(ptr3);
+		bx4 = _mm_load_si128(ptr4);
+
+		lo = _umul128(idx0, _mm_cvtsi128_si64(bx0), &hi);
+		ax0 = _mm_add_epi64(ax0, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr0, ax0);
+
+		lo = _umul128(idx1, _mm_cvtsi128_si64(bx1), &hi);
+		ax1 = _mm_add_epi64(ax1, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr1, ax1);
+
+		lo = _umul128(idx2, _mm_cvtsi128_si64(bx2), &hi);
+		ax2 = _mm_add_epi64(ax2, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr2, ax2);
+
+		lo = _umul128(idx3, _mm_cvtsi128_si64(bx3), &hi);
+		ax3 = _mm_add_epi64(ax3, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr3, ax3);
+
+		lo = _umul128(idx4, _mm_cvtsi128_si64(bx4), &hi);
+		ax4 = _mm_add_epi64(ax4, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr4, ax4);
+
+		ax0 = _mm_xor_si128(ax0, bx0);
+		ax1 = _mm_xor_si128(ax1, bx1);
+		ax2 = _mm_xor_si128(ax2, bx2);
+		ax3 = _mm_xor_si128(ax3, bx3);
+		ax4 = _mm_xor_si128(ax4, bx4);
+
+		idx0 = _mm_cvtsi128_si64(ax0);
+		idx1 = _mm_cvtsi128_si64(ax1);
+		idx2 = _mm_cvtsi128_si64(ax2);
+		idx3 = _mm_cvtsi128_si64(ax3);
+		idx4 = _mm_cvtsi128_si64(ax4);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		ptr4 = (__m128i *)&l4[idx4 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr4, _MM_HINT_T0);
+		}
+
+		// ODD ROUND
+		bx0 = _mm_load_si128(ptr0);
+		bx1 = _mm_load_si128(ptr1);
+		bx2 = _mm_load_si128(ptr2);
+		bx3 = _mm_load_si128(ptr3);
+		bx4 = _mm_load_si128(ptr4);
+
+		if(SOFT_AES)
+		{
+			bx0 = soft_aesenc(bx0, ax0);
+			bx1 = soft_aesenc(bx1, ax1);
+			bx2 = soft_aesenc(bx2, ax2);
+			bx3 = soft_aesenc(bx3, ax3);
+			bx4 = soft_aesenc(bx4, ax4);
+		}
+		else
+		{
+			bx0 = _mm_aesenc_si128(bx0, ax0);
+			bx1 = _mm_aesenc_si128(bx1, ax1);
+			bx2 = _mm_aesenc_si128(bx2, ax2);
+			bx3 = _mm_aesenc_si128(bx3, ax3);
+			bx4 = _mm_aesenc_si128(bx4, ax4);
+		}
+
+		_mm_store_si128(ptr0, _mm_xor_si128(bx0, cx0));
+		_mm_store_si128(ptr1, _mm_xor_si128(bx1, cx1));
+		_mm_store_si128(ptr2, _mm_xor_si128(bx2, cx2));
+		_mm_store_si128(ptr3, _mm_xor_si128(bx3, cx3));
+		_mm_store_si128(ptr4, _mm_xor_si128(bx4, cx4));
+
+		idx0 = _mm_cvtsi128_si64(bx0);
+		idx1 = _mm_cvtsi128_si64(bx1);
+		idx2 = _mm_cvtsi128_si64(bx2);
+		idx3 = _mm_cvtsi128_si64(bx3);
+		idx4 = _mm_cvtsi128_si64(bx4);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		ptr4 = (__m128i *)&l4[idx4 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr4, _MM_HINT_T0);
+		}
+
+		cx0 = _mm_load_si128(ptr0);
+		cx1 = _mm_load_si128(ptr1);
+		cx2 = _mm_load_si128(ptr2);
+		cx3 = _mm_load_si128(ptr3);
+		cx4 = _mm_load_si128(ptr4);
+
+		lo = _umul128(idx0, _mm_cvtsi128_si64(cx0), &hi);
+		ax0 = _mm_add_epi64(ax0, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr0, ax0);
+
+		lo = _umul128(idx1, _mm_cvtsi128_si64(cx1), &hi);
+		ax1 = _mm_add_epi64(ax1, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr1, ax1);
+
+		lo = _umul128(idx2, _mm_cvtsi128_si64(cx2), &hi);
+		ax2 = _mm_add_epi64(ax2, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr2, ax2);
+
+		lo = _umul128(idx3, _mm_cvtsi128_si64(cx3), &hi);
+		ax3 = _mm_add_epi64(ax3, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr3, ax3);
+
+		lo = _umul128(idx4, _mm_cvtsi128_si64(cx4), &hi);
+		ax4 = _mm_add_epi64(ax4, _mm_set_epi64x(lo, hi));
+		_mm_store_si128(ptr4, ax4);
+
+		ax0 = _mm_xor_si128(ax0, cx0);
+		ax1 = _mm_xor_si128(ax1, cx1);
+		ax2 = _mm_xor_si128(ax2, cx2);
+		ax3 = _mm_xor_si128(ax3, cx3);
+		ax4 = _mm_xor_si128(ax4, cx4);
+
+		idx0 = _mm_cvtsi128_si64(ax0);
+		idx1 = _mm_cvtsi128_si64(ax1);
+		idx2 = _mm_cvtsi128_si64(ax2);
+		idx3 = _mm_cvtsi128_si64(ax3);
+		idx4 = _mm_cvtsi128_si64(ax4);
+
+		ptr0 = (__m128i *)&l0[idx0 & 0x1FFFF0];
+		ptr1 = (__m128i *)&l1[idx1 & 0x1FFFF0];
+		ptr2 = (__m128i *)&l2[idx2 & 0x1FFFF0];
+		ptr3 = (__m128i *)&l3[idx3 & 0x1FFFF0];
+		ptr4 = (__m128i *)&l4[idx4 & 0x1FFFF0];
+		if(PREFETCH)
+		{
+			_mm_prefetch((const char*)ptr0, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr1, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr2, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr3, _MM_HINT_T0);
+			_mm_prefetch((const char*)ptr4, _MM_HINT_T0);
+		}
+	}
+
+	// Optim - 90% time boundary
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[0]->long_state, (__m128i*)ctx[0]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[1]->long_state, (__m128i*)ctx[1]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[2]->long_state, (__m128i*)ctx[2]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[3]->long_state, (__m128i*)ctx[3]->hash_state);
+	cn_implode_scratchpad<MEM, SOFT_AES, PREFETCH>((__m128i*)ctx[4]->long_state, (__m128i*)ctx[4]->hash_state);
+
+	// Optim - 99% time boundary
+
+	keccakf((uint64_t*)ctx[0]->hash_state, 24);
+	extra_hashes[ctx[0]->hash_state[0] & 3](ctx[0]->hash_state, 200, (char*)output);
+	keccakf((uint64_t*)ctx[1]->hash_state, 24);
+	extra_hashes[ctx[1]->hash_state[0] & 3](ctx[1]->hash_state, 200, (char*)output + 32);
+	keccakf((uint64_t*)ctx[2]->hash_state, 24);
+	extra_hashes[ctx[2]->hash_state[0] & 3](ctx[2]->hash_state, 200, (char*)output + 64);
+	keccakf((uint64_t*)ctx[3]->hash_state, 24);
+	extra_hashes[ctx[3]->hash_state[0] & 3](ctx[3]->hash_state, 200, (char*)output + 96);
+	keccakf((uint64_t*)ctx[4]->hash_state, 24);
+	extra_hashes[ctx[4]->hash_state[0] & 3](ctx[4]->hash_state, 200, (char*)output + 128);
+}
