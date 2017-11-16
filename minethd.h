@@ -1,6 +1,7 @@
 #pragma once
 #include <thread>
 #include <atomic>
+#include <mutex>
 #include "crypto/cryptonight.h"
 
 class telemetry
@@ -120,6 +121,7 @@ private:
 	void work_main();
 	void double_work_main();
 	void consume_work();
+	uint32_t* prep_double_work(uint8_t bDoubleWorkBlob[sizeof(miner_work::bWorkBlob) * 2]);
 
 	static std::atomic<uint64_t> iGlobalJobNo;
 	static std::atomic<uint64_t> iConsumeCnt;
@@ -130,6 +132,8 @@ private:
 	miner_work oWork;
 
 	void pin_thd_affinity();
+	// Held by the creating context to prevent a race cond with oWorkThd = std::thread(...)
+	std::mutex work_thd_mtx;
 
 	std::thread oWorkThd;
 	uint8_t iThreadNo;
