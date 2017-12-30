@@ -60,7 +60,7 @@ void thd_setaffinity(std::thread::native_handle_type h, uint64_t cpu_id)
 	CPU_ZERO(&mn);
 	CPU_SET(cpu_id, &mn);
 	pthread_setaffinity_np(h, sizeof(cpuset_t), &mn);
-#else
+#elif !defined(__OpenBSD__)
 	cpu_set_t mn;
 	CPU_ZERO(&mn);
 	CPU_SET(cpu_id, &mn);
